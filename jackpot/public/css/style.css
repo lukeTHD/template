@@ -1,0 +1,213 @@
+html, body {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.btn-group-margin .group-margin-right{
+    margin-right: 10px !important;
+
+}
+
+#sortable-game .g-col-1, #sortable-game .g-col-2 {
+    width: 40%;
+}
+
+#sortable-game .g-col-3 {
+    width: 10%;
+}
+
+#sortable-game .g-col-4 {
+    width: 10%;
+}
+
+.tickets {
+    display: flex;
+    width: 100%;
+}
+
+.ticket-action {
+    width: 20%;
+    flex-basis: 20%;
+    margin: 0 7.5px;
+}
+
+.ticket-pick {
+    width: 80%;
+    flex-basis: 80%;
+}
+
+.ticket-numbers {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ticket-number {
+    padding: 0 7.5px;
+    width: 20%;
+    flex-basis: 20%;
+}
+
+.ticket-number div {
+    border-radius: 5px;
+    border: 1px solid #EE1A2F;
+    margin-bottom: 15px;
+    padding: 15px 0;
+    cursor: pointer;
+    text-align: center;
+}
+
+.ticket-number div.active {
+    background-color: #EE1A2F;
+    color: white;
+}
+
+.ticket-action-text {
+    border-top: 2px solid #EE1A2F;
+    border-bottom: 2px solid #EE1A2F;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.tickets-preview {
+    display: flex;
+    /*padding: 10px;*/
+}
+
+.tickets-preview div {
+    /*width: 25%;*/
+}
+
+.tickets-preview div p {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    border: 1px solid #181818;
+}
+
+.ticket-action-text.active {
+    background: #EE1A2F;
+    color: white;
+}
+
+.kt-notification__item:hover {
+    color: black !important;
+}
+
+.kt-notification.kt-notification--fit .kt-notification__item:hover .kt-notification__item-title {
+    color: unset;
+}
+
+.picked-single {
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+    display: inline-block;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 25px;
+    margin-right: 5px;
+}
+
+.accordion.accordion-light .card:last-child {
+    margin-bottom: 0;
+}
+
+.accordion.accordion-toggle-arrow .card .card-header .card-title {
+    color: #74788d;
+}
+
+.accordion.accordion-solid .card .card-header .card-title {
+    border-radius: 6px;
+}
+
+.accordion.accordion-panel .card .card-body {
+    border-radius: 0 0 6px 6px;
+}
+
+.form-group {
+    align-items: center;
+}
+
+
+.row-user-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 3px 7px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.row-user-info .left, .row-user-info .right {
+    width: 50%;
+    flex-basis: 50%;
+}
+
+.row-user-info .left {
+    font-weight: 400;
+    color: #777777;
+}
+
+.row-user-info .right {
+    text-align: right;
+    color: #007AFE;
+    font-weight: 500;
+}
+
+.row-user-info:last-child {
+    margin-bottom: 0 !important;
+}
+
+.word-break {
+    word-break: break-all !important;
+}
+
+.user-info-wrap {
+    margin-top: 10px;
+    background-color: #EFEFF4;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.vault {
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 3px 3px 7px #ccc;
+    background: #EFEFF4;
+}
+
+.vault p {
+    color: black;
+}
+
+.btn-sack:hover .btn-sack-text {
+    display: none;
+}
+
+.btn-sack:hover .btn-sack-close {
+    display: block;
+}
+
+.btn-sack-close {
+    display: none;
+}
+
+.kt-avatar__holder {
+    background-size: cover !important;
+}
+
+
+@media (min-width: 1025px) {
+    .kt-header--fixed.kt-subheader--fixed.kt-subheader--enabled .kt-wrapper {
+        padding-top: 65px;
+    }
+}
+
+.logo-elegend path {
+    fill: white !important;
+}

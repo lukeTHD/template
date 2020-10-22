@@ -1,0 +1,242 @@
+.block-interest-calculation { padding-top: 90px; padding-bottom: 170px; }
+.block-interest-calculation .interest-calculation { display: flex; flex-wrap: wrap; }
+.block-interest-calculation .interest-calculation .block-item { width: 33.33%; }
+
+.block-interest-calculation .section-form .info h2.title { font-size: 40px; }
+.block-interest-calculation .section-form .wrap-form .form-group { width: 100%; padding-left: 50px; padding-right: 50px;}
+.block-interest-calculation .section-form .wrap-form .form-group .input::placeholder { text-align: center; }
+.block-interest-calculation .section-form .button-register { width: 100%; }
+.block-interest-calculation .block-2 { border: 3px solid #ebecef; }
+.block-interest-calculation hr {
+  background: #eeeeee;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.block-interest-calculation .interest-calculation {
+  display: flex;
+  flex-wrap: wrap;
+}
+.block-interest-calculation .inputs-container {
+  padding: 30px 10px 30px 0px;
+}
+.block-interest-calculation .results-container {
+  padding: 30px;
+}
+.block-interest-calculation .group-input {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.block-interest-calculation .group-input label {
+  display: block;
+  margin-bottom: 5px;
+}
+.block-interest-calculation .group-input .input {
+  display: block;
+  width: 100%;
+  padding: 5px 15px;
+  outline: none;
+}
+.block-interest-calculation [type=radio] {
+  margin-right: 10px;
+}
+.block-interest-calculation .results-container .title {
+  font-size: 20px;
+}
+.block-interest-calculation .results-container .results {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+  align-items: center;
+  justify-content: center;
+}
+.block-interest-calculation .results-container .results .chart-container {
+  width: 50%;
+  position: relative;
+  min-width: 200px;
+  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 10px;
+}
+
+.block-interest-calculation .results-container .results .chart-container .chart { position: relative; z-index: 20; }
+
+.block-interest-calculation .results-container .results .chart-container .price {
+  position: absolute;
+  z-index: 11;
+  pointer-events: none;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
+  line-height: 1.1
+}
+.block-interest-calculation .results-container .results .chart-container .price big {
+  font-size: 40px;
+  font-weight: bold;
+}
+.block-interest-calculation .results-container .results .description {
+  width: 50%;
+  min-width: 200px;
+  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.block-interest-calculation .results-container .results .payment-before {
+  color: #AC2408;
+}
+.block-interest-calculation .results-container .results .origin-payment {
+  color: #8A0381;
+}
+.block-interest-calculation .results-container .results .interest-payment {
+  color: #D28500;
+}
+.block-interest-calculation .download {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  text-align: center;
+  color: #fff;
+  background-color: #b8ab86;
+  text-decoration: none;
+}
+.block-interest-calculation .icon { display: inline-block; }
+.block-interest-calculation .popup-download {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: all ease .4s;
+}
+.block-interest-calculation .popup-download.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.block-interest-calculation .popup-download .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+  opacity: 1 !important;
+  cursor: auto;
+}
+.block-interest-calculation .popup-download .box {
+  margin: auto;
+  width: 500px;
+  max-width: 90%;
+  background: #fff;
+  position: relative;
+  z-index: 2;
+  transition: all ease .4s;
+  transform: translateY(50px);
+}
+.block-interest-calculation .popup-download .box.open {
+  transform: translateY(0px);
+}
+.block-interest-calculation .popup-download .close-btn {
+  position: absolute;
+  right: 0px;
+  top: 0;
+}
+.block-interest-calculation .popup-download .content {
+  padding: 20px 30px 30px;
+  overflow: auto;
+}
+.block-interest-calculation .popup-download .content .title {
+  margin-bottom: 20px;
+}
+.block-interest-calculation .popup-download .content .input-group {
+  margin-bottom: 15px;
+}
+.block-interest-calculation .popup-download .content .input {
+  width: 100%;
+  padding: 5px 15px;
+  border: 1px solid rgb(35, 22, 12);
+}
+.block-interest-calculation .popup-download .content .btn-submit {
+  width: 100%;
+  background-color: rgb(184, 171, 134);
+  padding: 5px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.block-interest-calculation.horizontal .inputs-container,
+.block-interest-calculation.horizontal .results-container{
+  width: 100%;
+}
+
+@media screen and (max-width: 1679px){
+  .block-interest-calculation .results-container { padding: 30px 15px; }
+  .block-interest-calculation .results-container .results .description {  padding: 0px 5px; min-width: unset; }
+  .block-interest-calculation .results-container .results .chart-container { padding: 0px 5px; min-width: unset; }
+  .block-interest-calculation .results-container .results .chart-container .price { font-size: 20px; }
+  .block-interest-calculation .results-container .results .chart-container .price big { font-size: 30px; }
+  .block-interest-calculation .section-form .info h2.title { font-size: 30px; }
+  .block-interest-calculation .section-form .wrap-form .form-group { padding: 0 30px; }
+}
+
+@media screen and (max-width: 1119px) {
+  .block-interest-calculation .results-container .results .chart-container .price {
+    font-size: 22px;
+  }
+
+  .block-interest-calculation .results-container .results .chart-container { width: 100%; max-width: 60%;}
+  .block-interest-calculation .results-container .results .description { width: 100%; text-align: center; }
+  .block-interest-calculation .section-form .info h2.title { font-size: 24px; }
+  .block-interest-calculation .section-form .wrap-form .form-group { padding: 0 15px; }
+}
+@media screen and (max-width: 991px) {
+  .block-interest-calculation .results-container .results .description {
+    min-width: 0;
+  }
+  .block-interest-calculation .results-container .results .chart-container {
+    min-width: 150px;
+  }
+
+  .block-interest-calculation .interest-calculation .block-item { width: 50%; }
+  .block-interest-calculation .interest-calculation .block-3 { width: 100% }
+  .block-interest-calculation .group-input .input { border: 1px solid #C5C5C5; }
+  .block-interest-calculation { padding-top: 50px; }
+
+}
+@media screen and (max-width: 767px) {
+  .block-interest-calculation .inputs-container,
+  .block-interest-calculation .results-container {
+    width: 100%;
+    padding: 15px;
+  }
+  .block-interest-calculation .popup-download .content {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 639px){ /* 540 */
+  .block-interest-calculation .results-container .results .chart-container { max-width: 100%; }
+  .block-interest-calculation .section-form .info h2.title { font-size: 22px; }
+}
+
+@media screen and (max-width: 539px){ /* 450 */
+  .block-interest-calculation .interest-calculation .block-item { width: 100%; }
+  .block-interest-calculation { padding-top: 30px; }
+}
+
+
+
+
+
