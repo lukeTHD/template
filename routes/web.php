@@ -32,3 +32,27 @@ Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search')
 
 //
 Route::get('/list_template', 'ListTemplateController@list_template');
+
+
+Route::get('/listcontact', function () {
+    $page_title = 'List Contact';
+    $page_description = 'This is list contact page';
+    return  view('contacts.HomeContact', [
+        "page_title" => $page_title,
+        "page_description" => $page_description,
+    ]);
+});
+
+Route::get('/home', function () {
+    return  view('contacts.home');
+});
+
+
+Route::get('/private', function () {
+    return  view('contacts.private');
+});
+
+
+Route::get('/testapi', function () {
+    return  view('testapi');
+});
