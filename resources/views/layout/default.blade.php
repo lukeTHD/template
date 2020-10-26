@@ -39,7 +39,7 @@ License: You must have a valid license purchased only from themeforest(the above
         @endforeach
 
         {{-- Includable CSS --}}
-        
+
         @yield('styles')
     </head>
 

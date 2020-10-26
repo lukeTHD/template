@@ -32,3 +32,10 @@ Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search')
 
 //
 Route::get('/list_template', 'ListTemplateController@list_template');
+Route::get('/details_template/{id}', 'ListTemplateController@details_template')->name('template.details');
+
+Route::get('/create_template', 'ListTemplateController@create')->name('template.create');
+Route::post('/store_template', 'ListTemplateController@store')->name('template.store');
+Route::get('/destroy_template/{id?}', 'ListTemplateController@destroy')->name('template.destroy');
+Route::get('/edit_template/{id}', 'ListTemplateController@edit')->name('template.edit');
+Route::post('/update_template/{id}', 'ListTemplateController@update')->name('template.update');

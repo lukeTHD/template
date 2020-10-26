@@ -97,6 +97,7 @@
         "sticky-js": "^1.2.0",
         "stream-exhaust": "^1.0.2",
         "summernote": "^0.8.16",
+        "sweetalert": "^2.1.2",
         "sweetalert2": "^9.17.1",
         "tempusdominus-bootstrap-4": "^5.1.2",
         "tether": "^1.4.3",
