@@ -70,4 +70,16 @@ class testAPi extends Controller
         }
         return $list;
     }
+
+    public function getSumIdCustomerNotSeen()
+    {
+        $list = contacts::where('status', 0)->distinct('fromId')->count();
+        return $list;
+    }
+
+    public function getContent()
+    {
+        $list = contacts::whereNotNull('fromId')->groupBy('fromId')->orderBy('id', 'DESC')->get();
+        return $list;
+    }
 }

@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('testapi', 'testApi');
 Route::get('testapi2/{customerId}', 'testApi@getMessage');
+Route::get('getSumID', 'testApi@getSumIdCustomerNotSeen');
+Route::get('getContent', 'testApi@getContent');

@@ -32,7 +32,6 @@ Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search')
 
 //
 Route::get('/list_template', 'ListTemplateController@list_template');
-<<<<<<< HEAD
 Route::get('/details_template/{id}', 'ListTemplateController@details_template')->name('template.details');
 
 Route::get('/create_template', 'ListTemplateController@create')->name('template.create');
@@ -40,7 +39,6 @@ Route::post('/store_template', 'ListTemplateController@store')->name('template.s
 Route::get('/destroy_template/{id?}', 'ListTemplateController@destroy')->name('template.destroy');
 Route::get('/edit_template/{id}', 'ListTemplateController@edit')->name('template.edit');
 Route::post('/update_template/{id}', 'ListTemplateController@update')->name('template.update');
-=======
 
 
 Route::get('/listcontact', function () {
@@ -65,4 +63,3 @@ Route::get('/private', function () {
 Route::get('/testapi', function () {
     return  view('testapi');
 });
->>>>>>> 5f23c935fc08ae38fcddfb054d60ed9feaef6b25
