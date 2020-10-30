@@ -57,12 +57,6 @@
 
         </li>
 
-        <li class="nav-item " id="btn-save-page">
-
-            <i class="flaticon2-telegram-logo"></i> Save
-
-        </li>
-
         <li class="nav-item">
 
             <i class="fa fa-facebook"></i> Delete
@@ -75,10 +69,42 @@
 
         </li>
     </ul>
+    <!-- Edit-text -->
+
+    <!-- Begin::Sticky toolbar delete session -->
+    <ul class="sticky-toolbar-setting-session nav flex-row ">
+
+        <li class="nav-item " >
+
+            <i class="fa fa-facebook"></i> Delete
+
+        </li>
+
+        <li class="nav-item ">
+
+            <i class="fa fa-facebook"></i> Add Session Top
+
+        </li>
+
+        <li class="nav-item">
+
+            <i class="fa fa-facebook"></i> Add Session Bottom
+
+        </li>
+
+        <li class="nav-item" >
+
+            <i class=""></i> Close
+
+        </li>
+    </ul>
+    <!-- Edit:: Sticky toolbar delete session-->
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="{{ asset('landingpage/src/jquery-contenteditable.js')}}"></script>
     <!-- End::Sticky toolbar image -->
     <style>
     .sticky-toolbar {
-        z-index: 999999;
+        z-index: 9;
         background: #dfdfdf;
         position: fixed;
         top: 50%;
@@ -97,7 +123,7 @@
     }
 
     .sticky-toolbar-setting-image {
-        z-index: 999999;
+        z-index: 9;
         background: #007bff;
         position: absolute;
         bottom: 0;
@@ -116,6 +142,27 @@
         text-align: center;
         cursor: pointer;
     }
+
+    .edit-section{
+        transition: all 600ms;
+    }
+    /* .edit-section:hover{
+        border: 2px solid red;
+    } */
+    .sticky-toolbar-setting-session{
+        z-index: 9;
+        background: #007bff;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        color: #fff;
+        border-radius: 5px;
+        font-size: 1rem;
+        text-align: left;
+        transition: all 600ms;
+        height: 34px;
+    }
     </style>
 </body>
 <!-- Begin::Sweetalert  -->
@@ -132,25 +179,23 @@ $(document).ready(function() {
         e.preventDefault();
         $(this).attr('contenteditable', 'true');
     });
-    let tmpDataText = getAllDataText();
-    let tmpDataImage = getAllDataImage();
-    let tmp = tmpDataText.concat(tmpDataImage);
+    $('.edit-text-double-click').on('dblclick', function(e) {
+        e.preventDefault();
+        $(this).attr('contenteditable', 'true');
+    });
 
-    // localStorage.setItem("page2", tmp);
-    // console.log(tmp);
-    // $(".edit-text").each(function(index){
-    //     let that = $(this);
-    //     let dataNumberText = that.data('number-text');
-    //     that.text(tmp[dataNumberText]['content']);
-    // });
+    var arrData = []
+    let tmpDataText = getAllDataText(arrData);
+    let tmpDataImage = getAllDataImage(arrData);
 
+    console.log(arrData);
     $(".edit-text").blur(function() {
         // console.log($(this).text());
         let that = $(this);
         let dataNumberText = that.data('number-text');
         let dataContent = that.text();
         let dataType = that.data('type');
-        tmp[dataNumberText] = {
+        arrData[dataNumberText] = {
             'number-text': dataNumberText,
             'content': dataContent,
             'type': dataType
@@ -163,7 +208,14 @@ $(document).ready(function() {
 
     $('#btn-save-page').on('click', function(e) {
         e.preventDefault();
-
+        swal({
+            content: {
+                element: "input",
+                attributes: {
+                    type: "text",
+                },
+            },
+        });
 
     });
 
@@ -182,12 +234,8 @@ $(document).ready(function() {
             "top": posP.top - 34
         });
 
-        // $('#imgupload').on('click', function(e){
-        //     // let that = $(this);
-        //     console.log(that.data('number-text'));
-        // });
-        //remove all class selected-image
         that.parent().find('.edit-image').removeClass('selected-image');
+        // $(".edit-image").removeClass("selected-image");
         that.addClass('selected-image');
     });
 
@@ -196,15 +244,13 @@ $(document).ready(function() {
             content: {
                 element: "input",
                 attributes: {
-                    type: "file"
+                    type: "file",
+                    accept: 'image/*',
                 },
             },
         }).then(async function(result) {
-            console.log(result);
-
             if (result != '') { // result: path name file
                 var formData = new FormData();
-                console.log( $('.swal-content__input')[0].files[0]);
                 formData.append('image', $('.swal-content__input')[0].files[0]);
                 let string = result.split('\\').pop()
                 $.ajax({
@@ -213,56 +259,60 @@ $(document).ready(function() {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     },
                     method: "POST",
-                    contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+                    contentType: false,
                     processData: false,
                     data: formData,
-                    success: function(image_url) {
-                        console.log(image_url);
-                        //debug
-                        image_url = 'http://localhost/template/public/landingpage/page2/images/profile1.png';
-                        $('.selected-image').find('img').attr("src",image_url);
+                    success: function(data) {
+                        console.log(data);
+                        let destinationPath = "{{url('/')}}/" + data
+                            .destinationPath;
+                        let nameImg = data.nameImg;
+                        $('.selected-image').attr("src", data.link);
+                        let height = $('.selected-image').data("height");
+                        let width  = $('.selected-image').data("width");
+                        $('.selected-image').css({"max-height" : height, "max-width": width});
+                        // $('.selected-image').css("max-width", width);
+                        $('.selected-image').data("content", data.link);
+                        // $(".edit-image").removeClass("selected-image");
+                        // console.log(getAllDataImage(arrData));
                     }
                 })
             }
         });
     });
-
+    console.log(arrData);
 });
 
-function getAllDataText() {
-    let arrEditText = [];
+function getAllDataText(arrData) {
     $(".edit-text").each(function(index) {
         let that = $(this);
         let dataNumberText = that.data('number-text');
         let dataContent = that.data('content');
         let dataType = that.data('type');
 
-        arrEditText[dataNumberText] = {
+        arrData[dataNumberText] = {
             'number-text': dataNumberText,
             'content': dataContent,
             'type': dataType
         }
-
     });
-    return arrEditText;
+
+    return arrData;
 }
 
-
-function getAllDataImage() {
-    let arrImage = [];
-    $(".edit-image").each(function(index) {
+function getAllDataImage(arrData) {
+    $(".edit-image").each(function() {
         let that = $(this);
         let dataNumberImage = that.data('number-text');
         let dataContent = that.data('content');
         let dataType = that.data('type');
-        arrImage[dataNumberImage] = {
+        arrData[dataNumberImage] = {
             'number-text': dataNumberImage,
             'content': dataContent,
             'type': dataType
         }
-
     });
-    return arrImage;
+    return arrData;
 }
 </script>
 

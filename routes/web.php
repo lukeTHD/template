@@ -70,3 +70,9 @@ Route::get('/private', function () {
 Route::get('/testapi', function () {
     return  view('testapi');
 });
+
+
+
+Route::get('/list-campaign', 'CampaignController@listCampaginsApi')->name('campaign.listCampaginsApi');
+Route::get('/list-product', 'CampaignController@listProductsApi')->name('campaign.listProductsApi');
+

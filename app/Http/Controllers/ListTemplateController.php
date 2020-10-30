@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ListTemplate;
+use URL;
 use App\Http\Requests\StoreTemplate;
 use App\Http\Requests\UpdateTemplate;
 use App\Repositories\ListTemplateRepository;
@@ -86,12 +87,16 @@ class ListTemplateController extends Controller
         //$filename = $request->image->storeAs('images', $request->image->getClientOriginalName());
         $file->move('upload/images', $nameImg);
         $destinationPath = public_path('upload/images/'. $nameImg); //link path image
-        $file_path = Config::get('app.url'); // http://yourhost.dev
+        // $destinationPath = 'upload/images/'. $nameImg; //link path image
+        $link = URL::to('/upload/images').'/'. $nameImg;
+
         // dd($destinationPath);
-        return ($file_path);
-        // $gethinh = time().'_'.$imagePath;
-        // $destinationPath = public_path('upload/avatar');
-        // $hinhthe->move($destinationPath, $destinationPath);
+        return response()->json([
+                        'destinationPath' => $destinationPath,
+                        'nameImg' => $nameImg,
+                        'link' =>$link,
+
+                    ]);
         // $param = $request->all();
         // if ($request->hasFile()) {
         //     //  Let's do everything here
