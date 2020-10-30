@@ -37,6 +37,7 @@ class Metronic
 
         if (isset(self::$classes[$scope]) && !empty(self::$classes[$scope])) {
             $classes = implode(' ', self::$classes[$scope]);
+
             if ($full) {
                 echo ' class="' . $classes . '" ';
             } else {

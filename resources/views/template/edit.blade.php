@@ -5,7 +5,7 @@
 @section('content')
 
 <!--begin::Card-->
-<div class="card card-custom card-transparent">
+<div class="card card-custom card-transparent" style="margin:34px 8px 34px 8px;">
     <div class="card-body p-0">
         <!--begin::Wizard-->
         <div class="wizard wizard-4" id="kt_wizard" data-wizard-state="step-first" data-wizard-clickable="true">
@@ -87,10 +87,10 @@
                                             <!--end::Group-->
                                             <!--begin::Group-->
                                             <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">Code Template</label>
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Link Code Template</label>
                                                 <div class="col-lg-9 col-xl-9">
                                                     <textarea class="form-control form-control-solid form-control-lg"
-                                                        rows="4" name="code">{{ $template->code }}</textarea>
+                                                        rows="2" name="code">{{ $template->code }}</textarea>
                                                 </div>
                                             </div>
                                             <!--end::Group-->
