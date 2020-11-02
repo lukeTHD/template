@@ -62,9 +62,6 @@ class ListTemplateController extends Controller
     public function detailsTemplate($code)
     {
         session()->put('tmp', 'edit');
-       // $link = 'landingpage.'. $code . '.index';
-
-        //return view($link);
         return view('template.edit_page');
     }
 
@@ -82,58 +79,15 @@ class ListTemplateController extends Controller
     {
         $file = $request->image;
         $nameImg = time().'_'.$request->image->getClientOriginalName();
-        // dd($request->image);
-        // $path = $request->image->store('images');
-        //$filename = $request->image->storeAs('images', $request->image->getClientOriginalName());
         $file->move('upload/images', $nameImg);
         $destinationPath = public_path('upload/images/'. $nameImg); //link path image
-        // $destinationPath = 'upload/images/'. $nameImg; //link path image
         $link = URL::to('/upload/images').'/'. $nameImg;
 
-        // dd($destinationPath);
         return response()->json([
                         'destinationPath' => $destinationPath,
                         'nameImg' => $nameImg,
                         'link' =>$link,
 
                     ]);
-        // $param = $request->all();
-        // if ($request->hasFile()) {
-        //     //  Let's do everything here
-        //     if ($request->file()->isValid()) {
-        //         //
-        //         $validated = $request->validate([
-        //             'name' => 'string|max:40',
-        //             'image' => 'mimes:jpeg,png|max:1014',
-        //         ]);
-        //         if($validated->hasError()){
-        //             return response()->json([
-        //                 'status' => false,
-        //                 'mess' => 'error',
-        //                 'link' => ''
-        //             ]);
-        //         }
-        //         $extension = $request->image->extension();
-        //         $request->image->storeAs('/public', $validated['name'].".".$extension);
-        //         $url = Storage::url($validated['name'].".".$extension);
-        //         // $file = File::create([
-        //         //    'name' => $validated['name'],
-        //         //     'url' => $url,
-        //         // ]);
-
-        //         return response()->json([
-        //             'status' => true,
-        //             'mess' => 'success',
-        //             'link' => $url
-        //         ]);
-
-
-        //     }
-        // }
-        // return response()->json([
-        //     'status' => false,
-        //     'mess' => 'error',
-        //     'link' => ''
-        // ]);
     }
 }

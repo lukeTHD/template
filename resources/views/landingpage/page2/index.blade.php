@@ -30,7 +30,7 @@
 <body>
 
     <!-- Navigation -->
-    <div id="menu_area" class="menu-area fixed-top edit-section" data-section="1">
+    <div id="menu_area" class="menu-area fixed-top edit-section section-page" data-section-index="1" data-section="1">
         <div class="container">
             <div class="row">
                 <nav class="navbar navbar-light navbar-expand-lg mainmenu">
@@ -75,7 +75,7 @@
     <!-- /Navigation -->
 
     <!-- Header -->
-    <header class="fixed-top-added edit-section" data-section="2">
+    <header class="fixed-top-added edit-section section-page" data-section-index="2" data-section="2">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-7">
@@ -106,7 +106,7 @@
     <!-- /Header -->
 
     <!-- Material Pills <Start> -->
-    <div class="bg-gray py-80 edit-section" data-section="3">
+    <div class="bg-gray py-80 edit-section section-page" data-section-index="3" data-section="3">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -262,7 +262,7 @@
     <!-- Material Pills </End> -->
 
     <!-- Media Call Action <Start> -->
-    <div class="bg-gray" >
+    <div class="bg-gray section-page" data-section-index="4">
         <div class="container">
             <div class="call-action-media">
                 <div class="row">
@@ -293,7 +293,7 @@
     <!-- Media Call Action </End> -->
 
     <!-- Features -->
-    <div class="bg-gray py-80" id="features">
+    <div class="bg-gray py-80 section-page" data-section-index="5" id="features">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -400,7 +400,7 @@
     <!-- /Features -->
 
     <!-- Video Block & Testimonials -->
-    <div class="py-80 bg-gray">
+    <div class="py-80 bg-gray section-page" data-section-index="6">
         <div class="box-shadow custom-witdth-box">
             <div class="floated-box">
                 <div class="container">
@@ -479,7 +479,7 @@
     <!-- /Video Block & Testimonials -->
 
     <!-- Price Tables -->
-    <div class="py-80" id="pricing">
+    <div class="py-80 section-page" data-section-index="7" id="pricing">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -729,7 +729,7 @@
     @include('template.list_product')
 
     <!-- Twitter widgets -->
-    <div class=" bg-gray py-80">
+    <div class=" bg-gray py-80 section-page section-page" data-section-index="8">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -776,7 +776,7 @@
     <!-- /Twitter widgets -->
 
     <!-- Partners -->
-    <div class="py-80">
+    <div class="py-80 section-page" data-section-index="9">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -818,7 +818,7 @@
     <!-- /Partners-->
 
     <!-- Webinars -->
-    <div class="bg-gray py-80" id="webinars">
+    <div class="bg-gray py-80 section-page" data-section-index="10" id="webinars">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -937,7 +937,7 @@
     <!-- /Webinars -->
 
     <!-- Call Action - Primary<Start> -->
-    <div class="call-action-primary py-80">
+    <div class="call-action-primary py-80 section-page" data-section-index="11">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -1116,7 +1116,7 @@
                                         <li class="media">
                                             <img class="mr-3 edit-image" data-number-text="149"
                                                 data-content="icn-1-white.svg" data-type="image" data-height="24"  data-width="234.98"
-                                                src="{{ asset('landingpage/page2/images/icn-1-white.svg')}}"
+                                                src="{{ asset('landingpage/page2/images/icn6.svg')}}"
                                                 alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <h4 class="text-white edit-text" data-number-text="150"
@@ -1130,7 +1130,7 @@
                                         <li class="media my-4">
                                             <img class="mr-3 edit-image" data-number-text="152"
                                                 data-content="icn-2-white.svg" data-type="image" data-height="24"  data-width="234.98"
-                                                src="{{ asset('landingpage/page2/images/icn-2-white.svg')}}"
+                                                src="{{ asset('landingpage/page2/images/icn6.svg')}}"
                                                 alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <h4 class="text-white edit-text" data-number-text="153"
@@ -1143,7 +1143,7 @@
                                         <li class="media">
                                             <img class="mr-3 edit-image" data-number-text="155"
                                                 data-content="icn-3-white.svg" data-type="image" data-height="24"  data-width="234.98"
-                                                src="{{ asset('landingpage/page2/images/icn-3-white.svg')}}"
+                                                src="{{ asset('landingpage/page2/images/icn6.svg')}}"
                                                 alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <h4 class="text-white edit-text" data-number-text="156"

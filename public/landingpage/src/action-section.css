@@ -1,0 +1,176 @@
+.option-section {
+    box-shadow: 0 5px 19px rgba(6, 21, 40, 0.3);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    width: 32px;
+    text-align: center;
+    padding: 8px 4px;
+    position: fixed;
+    transition: all 200ms ease-in-out;
+    opacity: 0;
+    background-color: #fff;
+    font-size: 2rem;
+}
+
+.option-section span {
+    cursor: pointer;
+    margin: 5px auto;
+    padding-top: 3px;
+}
+
+.option-section span:hover {
+    cursor: pointer;
+    font-weight: 600;
+    color: #0c61f2;
+}
+.option-section span.active-section {
+    cursor: pointer;
+    font-weight: 600;
+    color: #0c61f2;
+}
+
+.option-menu-left {
+    box-shadow: 0 5px 19px rgba(6, 21, 40, 0.3);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    width: 70px;
+    text-align: center;
+    padding: 8px 4px;
+    position: fixed;
+    transition: all 200ms ease-in-out;
+    opacity: 1;
+    background-color: #fff;
+    font-size: 2rem;
+    left: 10px;
+    top: 50vh;
+    transform: translateY(-50%);
+}
+
+.option-menu-left span {
+    display: inline-block;
+}
+.option-menu-left .section-text {
+    font-size: 1.4rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+.option-menu-left .item-section {
+    transition: all 200ms ease-in-out;
+    padding: 5px 3px;
+}
+.option-menu-left .item-section .dropdown-menu {
+    top: 10%;
+    left: 110%;
+    border-radius: 8px;
+    padding: 8px 5px;
+    box-shadow: 0 5px 19px rgba(6, 21, 40, 0.3);
+    border: none;
+}
+.option-menu-left .item-section .dropdown-menu .list-li-section {
+    padding: 0px;
+    list-style: none;
+    display: inline-table;
+    min-width: 260px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.option-menu-left .list-li-section li {
+    width: 50%;
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 200ms ease-in-out;
+}
+.option-menu-left .list-li-section li:hover {
+    color: #0c61f2;
+    background: rgba(6, 21, 40, 0.04);
+    border-bottom: 1px solid transparent;
+    border: none;
+}
+.option-menu-left .item-section:nth-child(1) {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.option-menu-left .item-section:hover {
+    background-color: #0c61f2;
+}
+.option-menu-left .item-section:hover .label-item {
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Modal list section */
+
+.modal-content-list-section .item-section-modal {
+    position: relative;
+    overflow: hidden;
+    transition: all 300ms ease-in;
+    height: 123px;
+    margin: 1rem auto;
+    cursor: pointer;
+}
+.modal-content-list-section .item-section-modal .btn-chose-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    z-index: 2;
+    outline-style: none;
+}
+#exampleModalLabel {
+    display: inline-block;
+}
+
+.modal-content-list-section .item-section-modal .img-item-section-modal {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+.modal-content-list-section .item-section-modal::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 1.5rem;
+    bottom: 0;
+    right: 1.5rem;
+    background-color: rgba(87, 87, 87, 0.5);
+    z-index: 1;
+    opacity: 0;
+}
+
+.modal-content-list-section .item-section-modal:hover::after,
+.modal-content-list-section .item-section-modal:hover .btn-chose-section {
+    opacity: 1;
+}
+.modal-content-list-section-loading {
+    position: relative;
+}
+.loading-add-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(87, 87, 87, 0.4);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+.loading-add-section svg {
+    animation: spin 600ms linear infinite;
+    font-size: 3rem;
+    color: #0c61f2;
+}
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

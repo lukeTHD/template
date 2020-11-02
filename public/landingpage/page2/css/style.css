@@ -13,7 +13,7 @@ Support    :
 /*---------------------------------------------
 Table of Contents
 -----------------------------------------------
-## Typography 
+## Typography
 ## Buttons
 ## Colors
 ## Utilities
@@ -29,7 +29,7 @@ Table of Contents
 ## Contact Google Maps
 ## Price Table
 ## About Portfolio
-## Icon text 
+## Icon text
 
 [Typography]
 font-family: 'Poppins', sans-serif;
@@ -92,13 +92,13 @@ p {
 Buttons
 ----------------------*/
 
-.btn {
+/* .btn {
     font-weight: 500 !important;
     border-radius: 5px;
     font-size: 1rem;
     padding: 11px 25px;
 
-}
+} */
 a,.btn,a:focus,.btn:focus{outline: none }
 @media(max-width:768px) {
     .btn {
