@@ -68,6 +68,13 @@ class Api
         return $this->connectApi($uri, [], 'GET');
     }
 
+    public function listProductByIds($arrParams){
+        $uri = "campaign_product?mod=get_list_product_by_ids";
+        foreach($arrParams as $key => $param){
+            $uri .= "&$key=$param";
+        }
+        return $this->connectApi($uri, [], 'GET');
+    }
 
 
 }
