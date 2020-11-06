@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ListTemplate;
 use URL;
+use File;
 use App\Http\Requests\StoreTemplate;
 use App\Http\Requests\UpdateTemplate;
 use App\Repositories\ListTemplateRepository;
@@ -46,6 +47,15 @@ class ListTemplateController extends Controller
 
     public function update(UpdateTemplate $updateTemplate, $id)
     {
+        $template = ListTemplate::find($id);
+        if($updateTemplate->code != $template->code)
+        {
+            $code = ListTemplate::where('code', $updateTemplate->code)->get()->toArray();
+            if($code)
+            {
+                return back()->with('error', 'Đường dẫn đã tồn tại. Vui lòng nhập đường dẫn khác!');
+            }
+        }
         $template = $this->listTemplateRepository->update($updateTemplate, $id);
         return back()->with('success', 'Cập nhật Template thành công');
     }
@@ -59,18 +69,46 @@ class ListTemplateController extends Controller
         return view('template.list_template', compact('page_title', 'page_description', 'list_template'));
     }
 
-    public function detailsTemplate($code)
+    public function detailsTemplate($id)
     {
-        session()->put('tmp', 'edit');
-        return view('template.edit_page');
+        $template = ListTemplate::where('id', $id)->first();
+        if(!empty($template))
+        {
+            $link = isset($template->code) ? './landingpage/page'.$template->code.'/index' : '';
+            $total = isset($template->code) ? $this->countImages($template->code) : 0;
+            $list_section_default = isset($template->list_section_default) ? json_decode($template->list_section_default, true) : [];
+            $arrSection = [];
+            $jpg = '.jpg';
+            for($i=1; $i<=$total; $i++)
+            {
+                if(!in_array($i,$list_section_default))
+                {
+                    $sectiontmp = [
+                        'page' => $template->code,
+                        'section' => $i,
+                        'img' => 'landingpage/page'.$template->code.'/images_section/section_'.$i.$jpg,
+                    ];
+                    array_push($arrSection,$sectiontmp);
+                }
+            }
+
+            return view('template.edit_page', ['link' => $link, 'arrSection' => $arrSection, 'listSectionDefault' => $list_section_default , 'code' => $id]);
+        }
+        return back();
     }
 
-
-    public function showPage($code)
+    public function previewTemplate($id)
     {
-        session()->forget('tmp');
-        $link = 'landingpage.'. $code . '.index';
-        return view($link);
+        $template = ListTemplate::where('id', $id)->first();
+        if(!empty($template))
+        {
+            $link = isset($template->code) ? './landingpage/page'.$template->code.'/index' : '';
+            $list_section_default = isset($template->list_section_default) ? json_decode($template->list_section_default, true) : [];
+
+            return view('template.edit_page', ['link' => $link,'listSectionDefault' => $list_section_default , 'code' => $id, 'preview' => true]);
+        }else{
+            return back();
+        }
     }
 
     //Upload file type image
@@ -87,7 +125,71 @@ class ListTemplateController extends Controller
                         'destinationPath' => $destinationPath,
                         'nameImg' => $nameImg,
                         'link' =>$link,
-
                     ]);
+    }
+
+    public function getDetailCodeSection( Request $request)
+    {
+        $param = $request->all();
+        if(!isset($param['page']) || !isset($param['section']) ){
+            return response()->json([
+                'code' => 300,
+                'status' => false,
+                'message' => 'error',
+                'data' => [],
+            ]);
+        }
+        $path = 'landingpage.page'.$param['page'].'.sections.section_'.$param['section'];
+        return response()->json([
+            'code' => 0,
+            'status' => true,
+            'message' => 'success',
+            'data' => view($path)->render(),
+        ]);
+    }
+
+    public function getListSection(Request $request)
+    {
+        $param = $request->all();
+
+        if(isset($param['code']) && isset($param['arr_section_used']))
+        {
+            $template = ListTemplate::where('id', $param['code'])->first();
+            $code = !empty($template) && $template->code ?  trim($template->code) : '';
+            $arrSectionUsed = $param['arr_section_used'];
+            $total = isset($code) ? $this->countImages($code) : 0;
+            $arrSection = [];
+            $jpg = '.jpg';
+            for($i=1; $i<=$total; $i++)
+            {
+                if(!in_array($i,$arrSectionUsed))
+                {
+                    $sectiontmp = [
+                        'page' => $code,
+                        'section' => $i,
+                        'img' => 'landingpage/page'.$code.'/images_section/section_'.$i.$jpg,
+                    ];
+                    array_push($arrSection,$sectiontmp);
+                }
+            }
+            return response()->json([
+                'code' => 0,
+                'status' => true,
+                'message' => 'success',
+                'data' => $arrSection,
+            ]);
+        }
+
+    }
+
+    public function countImages($code) {
+        $files = File::files(public_path('landingpage/page'.$code.'/images_section'));
+        $filecount = 0;
+
+        if ($files !== false) {
+            $filecount = count($files);
+        }
+
+        return $filecount;
     }
 }

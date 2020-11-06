@@ -29,6 +29,11 @@
                                 {{ session('success') }}
                             </div>
                             @endif
+                            @if (session('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ session('error') }}
+                            </div>
+                            @endif
                             <!--begin::Wizard Form-->
                             <form class="form" id="kt_form" action="{{ route('template.update', ['id' => $template['id']]) }}" method="POST"
                                 enctype="multipart/form-data">

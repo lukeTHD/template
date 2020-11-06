@@ -42,11 +42,15 @@ Route::get('/edit-template/{id}', 'ListTemplateController@edit')->name('template
 Route::post('/update-template/{id}', 'ListTemplateController@update')->name('template.update');
 
 //Upload file type image
-
 Route::post('/upload-file/{imagePath?}', 'ListTemplateController@upLoadFile')->name('template.upLoadFile');
+Route::get('/preview-template/{id}', 'ListTemplateController@previewTemplate')->name('template.previewTemplate');
+Route::get('/get-detail-code-section', 'ListTemplateController@getDetailCodeSection')->name('template.getDetailCodeSection');
+Route::get('/get-list-section', 'ListTemplateController@getListSection')->name('template.getListSection');
+// save Page
+Route::post('/save-page', 'PageContentController@savePage')->name('page.savePage');
+Route::get('/list-page', 'PageContentController@listPage')->name('page.listPage');
+Route::get('/page/{id}', 'PageContentController@showPage')->name('page.showPage');
 
-
-Route::get('/page/{code}', 'ListTemplateController@showPage')->name('template.showPage');
 //End::Template
 Route::get('/listcontact', function () {
     $page_title = 'List Contact';

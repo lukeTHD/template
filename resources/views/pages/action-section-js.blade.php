@@ -31,6 +31,7 @@ $(document).ready(function () {
     $('.option-section').on('click', 'span', function (e) {
         let that = $(this);
         let action = that.data('type');
+        let code = that.data('code');
         if (action == 'top') {
             let wrapper = $(`[data-section-index='${indexDiv}']`);
             let itemNew = wrapper.prev().offset();
@@ -66,79 +67,57 @@ $(document).ready(function () {
         }
 
         if (action == 'addsection') {
-            $('#addSectionModal').modal('show');
+            $.ajax({
+                    url: "{{ route('template.getListSection') }}",
+                    method: "GET",
+                    data: { code:code, arr_section_used: loadListIdSection() },
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        if(response.status){
+                            let listItemSectionDivHtml = response.data.map(function(item) {
+                                return getSectionHtml(item.page, item.section , item.img);
+                            });
+                           $('.modal-content-list-section').html(listItemSectionDivHtml.join(''));
+
+                            $('#addSectionModal').modal('show');
+                        }
+                    }
+                })
             return;
         }
     });
 
     // Add Section in page
-    $('.btn-chose-section').on('click', function (e) {
+    $('.modal-content-list-section').on('click','.btn-chose-section' , function (e) {
         let that = $(this);
         let _page = that.data('page');
         let _section = that.data('section');
         $('.loading-add-section').css('opacity', 1);
+        let listIdSection = loadListIdSection();
         //ajax to get html section
-        let divSectionHtml = ` <div class="banner-v3 section-page" data-section-index="10">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5 col-sm-12">
-                    <h3>Why Travel Gateway <img src="assets/img/logo-cricle.png" alt="logo"></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum ultricies nunc,met,
-                        consectetu condimentum ultricies nunc,met, consectetur adipiscing elit. Sed condimentum
-                        ultricies nunc, quis condimentum massa hendrerit sit amet. Duis at pharetra sem. </p>
-                    <p><a href="#" class="btn btn-read-more-v2"><i class="fa fa-hand-o-right"></i> Learn More</a></p>
-                </div>
-                <div class="col-md-7 hidden-sm hidden-xs">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="feature-box">
-                                <span><i class="fa fa-taxi"></i></span>
-                                <h4>TAXI DISCOUNT</h4>
-                                <p> Lorem ipsum dolor sit amet, consectetur adip. Maecenas dapibus facilisis cvallis.
-                                </p>
-
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="feature-box">
-                                <span><i class="fa fa-lock"></i></span>
-                                <h4>TRUST AND SECURITY
-                                </h4>
-                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing dapibus facilisis cvallis.</p>
-
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="feature-box">
-                                <span><i class="fa fa-map"></i></span>
-                                <h4>Around world</h4>
-                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maece facilisis cvallis.
-                                </p>
-
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="feature-box">
-                                <span><i class="fa fa-cutlery"></i></span>
-                                <h4>BEST FOOD
-                                </h4>
-                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing apibus facilisis cvallis.</p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>`;
-        $(`${divSectionHtml}`).insertAfter(`[data-section-index='${indexDiv}']`);
-        $('.loading-add-section').css('opacity', 0);
-        $('#addSectionModal').modal('hide');
-        let itemNew = $(`[data-section-index='${indexDiv}']`).next().offset();
-        $('html,body').animate({
-            scrollTop: itemNew.top - 10
-        }, 600);
-        loadListSection();
+        $.ajax({
+                    url: "{{ route('template.getDetailCodeSection') }}",
+                    method: "GET",
+                    data: { page:_page, section:_section },
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                       if(response.status){
+                        let divSectionHtml = `${response.data}`;
+                        $(`${divSectionHtml}`).insertAfter(`[data-section-index='${indexDiv}']`);
+                        $('.loading-add-section').css('opacity', 0);
+                        $('#addSectionModal').modal('hide');
+                        let itemNew = $(`[data-section-index='${indexDiv}']`).next().offset();
+                        $('html,body').animate({
+                            scrollTop: itemNew.top - 10
+                        }, 600);
+                        loadListSection();
+                       }
+                    }
+                })
         return;
     });
 
@@ -159,5 +138,22 @@ function loadListSection() {
         divList.push(itemSection);
     });
     $('#list-li-section').html(divList);
+}
+
+function loadListIdSection() {
+    let divList = [];
+    $('.section-page').each(function (index, value) {
+        let itemSection = $(this).data('section-index');
+        divList.push(itemSection);
+    });
+    return divList;
+}
+
+
+function getSectionHtml(page,section , img){
+   return  ` <div class="col-lg-3 col-md-4 item-section-modal">
+                <button class="btn btn-chose-section" data-page="${page}" data-section="${section}">Sử dụng</button>
+                <img class="img-item-section-modal" src="{{asset('${img}')}}" alt="">
+            </div>`;
 }
 </script>

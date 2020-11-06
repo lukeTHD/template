@@ -87,7 +87,7 @@
                                             <!--end::Group-->
                                             <!--begin::Group-->
                                             <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">Link Code Template</label>
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Page</label>
                                                 <div class="col-lg-9 col-xl-9">
                                                     <textarea class="form-control form-control-solid form-control-lg"
                                                         rows="2" name="code">{{ old('code') }}</textarea>

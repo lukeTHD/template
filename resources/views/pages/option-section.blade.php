@@ -1,6 +1,6 @@
 
-    <div class="option-section">
-        <span data-type="top">
+    <div class="option-section" style="width: auto;">
+        <span data-type="top" data-code="{{isset($code) ? $code : ''}}">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -8,7 +8,7 @@
                     d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z" />
             </svg>
         </span>
-        <span data-type="bottom">
+        <span data-type="bottom" data-code="{{isset($code) ? $code : ''}}">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -16,7 +16,7 @@
                     d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z" />
             </svg>
         </span>
-        <span data-type="addsection">
+        <span data-type="addsection" data-code="{{isset($code) ? $code : ''}}">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -24,7 +24,7 @@
                     d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
             </svg>
         </span>
-        <span data-type="delete">
+        <span data-type="delete" data-code="{{isset($code) ? $code : ''}}">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash2" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
@@ -38,9 +38,9 @@
 
     </div>
 
-    <div class="option-menu-left">
+    <div class="option-menu-left" style="width: auto;">
         <div class="list-section item-section ">
-            <div class="dropdown-toggle label-item" id="dropdownMenuListSection" data-toggle="dropdown"
+            <div class="dropdown-toggle label-item" id="dropdownMenuListSection" placement="right" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <span>
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-view-list" fill="currentColor"
@@ -49,7 +49,7 @@
                             d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z" />
                     </svg>
                 </span>
-                <p class="section-text">
+                <p class="section-text dropright">
                     Section
                 </p>
             </div>
@@ -63,7 +63,8 @@
             <!-- End:: dropright list section button  -->
         </div>
         <div class="setting-section item-section">
-            <div class="label-item">
+            <div class="label-item" id="dropdownSystemSection" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 <span>
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg">
@@ -73,13 +74,14 @@
                             d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
                     </svg>
                 </span>
-                <p class="section-text">
+                <p class="section-text dropright">
                     Thiết lập
                 </p>
             </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownSystemSection">
+                <a class="dropdown-item" id="btn-save-page" style="cursor: pointer;" data-code="{{isset($code) ? $code : ''}}">Save</a>
+            </div>
         </div>
-
-
     </div>
 
     <!-- Modal Add Section -->
@@ -95,48 +97,16 @@
                 </div>
                 <div class="modal-body modal-content-list-section-loading">
                     <div class="row modal-content-list-section">
-                        <div class="col-lg-3 col-md-4 item-section-modal">
-                            <button class="btn btn-chose-section" data-page="1" data-section="10">Sử dụng</button>
-                            <img class="img-item-section-modal"
-                                src="https://w.ladicdn.com/s250x250/57b167c9ca57d39c18a1c57c/oqoqeo8x5r20200727070202.jpg"
-                                alt="">
-                        </div>
-                        <div class="col-lg-3 col-md-4 item-section-modal">
-                            <button class="btn btn-chose-section" data-page="1" data-section="11">Sử dụng</button>
-                            <img class="img-item-section-modal"
-                                src="https://w.ladicdn.com/s250x250/57b167c9ca57d39c18a1c57c/fadqnn58rr20200522024043.jpg"
-                                alt="">
-                        </div>
-                        <div class="col-lg-3 col-md-4 item-section-modal">
-                            <button class="btn btn-chose-section" data-page="1" data-section="12">Sử dụng</button>
-                            <img class="img-item-section-modal"
-                                src="https://w.ladicdn.com/s250x250/57b167c9ca57d39c18a1c57c/jhtvnlifij20200522023803.jpg"
-                                alt="">
-                        </div>
-                        <div class="col-lg-3 col-md-4 item-section-modal">
-                            <button class="btn btn-chose-section" data-page="1" data-section="13">Sử dụng</button>
-                            <img class="img-item-section-modal"
-                                src="https://w.ladicdn.com/s250x250/57b167c9ca57d39c18a1c57c/723shu4khq20200522023355.jpg"
-                                alt="">
-                        </div>
-                        <div class="col-lg-3 col-md-4 item-section-modal">
-                            <button class="btn btn-chose-section" data-page="1" data-section="14">Sử dụng</button>
-                            <img class="img-item-section-modal"
-                                src="https://w.ladicdn.com/s250x250/57b167c9ca57d39c18a1c57c/hikual7kxk20200522022400.jpg"
-                                alt="">
-                        </div>
-                        <div class="col-lg-3 col-md-4 item-section-modal">
-                            <button class="btn btn-chose-section" data-page="1" data-section="15">Sử dụng</button>
-                            <img class="img-item-section-modal"
-                                src="https://w.ladicdn.com/s250x250/57b167c9ca57d39c18a1c57c/idmrxxlvan20200522021006.jpg"
-                                alt="">
-                        </div>
-                        <div class="col-lg-3 col-md-4 item-section-modal">
-                            <button class="btn btn-chose-section" data-page="1" data-section="16">Sử dụng</button>
-                            <img class="img-item-section-modal"
-                                src="https://w.ladicdn.com/s250x250/57b167c9ca57d39c18a1c57c/o0drvbml8k20200522022123.jpg"
-                                alt="">
-                        </div>
+                        @if(isset($arrSection) && !empty($arrSection))
+                            @foreach( $arrSection as $key => $section)
+                            <div class="col-lg-3 col-md-4 item-section-modal">
+                                <button class="btn btn-chose-section" data-page="{{isset($section['page'])?$section['page']:''}}" data-section="{{isset($section['section'])?$section['section']:''}}">Sử dụng</button>
+                                <img class="img-item-section-modal"
+                                    src="{{isset($section['img'])?asset($section['img']):''}}"
+                                    alt="">
+                            </div>
+                            @endforeach
+                        @endif
                     </div>
                     <div class="loading-add-section">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-clockwise"

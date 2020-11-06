@@ -5,7 +5,6 @@ $(document).ready(function() {
 
     $('.btn-href').on('click', function(e) {
         e.preventDefault();
-
     });
     $('.btn-href').on('dblclick', function(e) {
         e.preventDefault();
@@ -20,7 +19,6 @@ $(document).ready(function() {
     let tmpDataText = getAllDataText(arrData);
     let tmpDataImage = getAllDataImage(arrData);
     let tmpListProductId = updateListProductSave(); //Action save to run
-
 
     // console.log(arrData);
     $(".edit-text").blur(function() {
@@ -42,23 +40,46 @@ $(document).ready(function() {
 
     $('#btn-save-page').on('click', function(e) {
         e.preventDefault();
+        let list_product = updateListProductSave();
+        let id = $(this).data('code');
         swal({
             title: ' Bạn hãy nhập tên để lưu ',
             content: {
                 element: "input",
                 attributes: {
                     type: "text",
+                    id: "swal-input2",
+                    required: "required"
                 },
             },
         }).then((result) => {
-            if(result != ''){
-                let name = result
-                console.log(1);
-                console.log(name);
-
-            }else{
-
+            var namePage = result.trim();
+            if (result === "" || namePage.length <= 0) {
+                swal({
+                        icon: 'error',
+                        text: 'Bạn chưa nhập tên!',
+                    });
             }
+            else{
+                let _content = arrData;
+                let _list_product = list_product;
+                let _list_section = loadListIdSectionSave();
+                $.ajax({
+                    url: "{{ route('page.savePage') }}",
+                    method: "POST",
+                    data: { name:namePage, content:_content, list_product:_list_product, list_section:_list_section, id: id },
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(data) {
+                        swal({
+                            icon: 'success',
+                            text: 'Bạn đã lưu thành công!',
+                        });
+                    }
+                })
+            }
+
         })
 
     });
@@ -96,7 +117,7 @@ $(document).ready(function() {
             if (result != '') { // result: path name file
                 var formData = new FormData();
                 formData.append('image', $('.swal-content__input')[0].files[0]);
-                let string = result.split('\\').pop()
+                let string = result.split('\\').pop();
                 $.ajax({
                     url: "{{ route('template.upLoadFile') }}/" + string,
                     headers: {
@@ -107,7 +128,6 @@ $(document).ready(function() {
                     processData: false,
                     data: formData,
                     success: function(data) {
-                        console.log(data);
                         let destinationPath = "{{url('/')}}/" + data
                             .destinationPath;
                         let nameImg = data.nameImg;
@@ -129,50 +149,59 @@ $(document).ready(function() {
     });
 
     // Show list product
-$('.btn-add-product').on('click', function(e) {
-    $('#show-modal-list-product').modal('toggle');
-    let productId = updateListProductSave();
-    $.ajax({
-        url: "{{ route('campaign.listProductsApi') }}",
-        headers: {
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        },
-        method: "GET",
-        contentType: false,
-        processData: false,
-        success: function(data) {
-            let list_product_box = $('#list-product-box');
-            let dataLirProduct = data.data.result ? data.data.result : [];
-            let listItemProductDivHtml = dataLirProduct.map(function(item) {
-                return getDivItemProduct( item.id , item.price , item.currency , item.avatar , item.name, false, productId) ;
-            });
-            console.log(productId);
-            list_product_box.html( listItemProductDivHtml.join(''));
-        }
-    })
+    $('.btn-add-product').on('click', function(e) {
+        $('#show-modal-list-product').modal('toggle');
+        let productId = updateListProductSave();
+        $.ajax({
+            url: "{{ route('campaign.listProductsApi') }}",
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            method: "GET",
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                let list_product_box = $('#list-product-box');
+                let dataLirProduct = data.data.result ? data.data.result : [];
+                let listItemProductDivHtml = dataLirProduct.map(function(item) {
+                    return getDivItemProduct( item.id , item.price , item.currency , item.avatar , item.name, false, productId) ;
+                });
+                console.log(productId);
+                list_product_box.html( listItemProductDivHtml.join(''));
+            }
+        })
+        });
+
+        // Select product
+        $('#list-product-box').on('click', '.is-check-product', function(e) {
+            let that = $(this);
+            let divParent = $('.list-product-append');
+            if (that.is(":checked")) {
+                let id = that.data('id');
+                let name = that.data('name');
+                let price = that.data('price');
+                let avatar = that.data('avatar');
+                let currency = that.data('currency');
+                let newProductElement = getDivItemProduct(id , price , currency , avatar , name , true );
+                divParent.append(newProductElement);
+            }
+        });
+
+        // remove product
+        $('.list-product-append').on('click', '.remove-product', function(e){
+            $(this).parent().remove();
+        });
+
     });
 
-    // Select product
-    $('#list-product-box').on('click', '.is-check-product', function(e) {
-        let that = $(this);
-        let divParent = $('.list-product-append');
-        if (that.is(":checked")) {
-            let id = that.data('id');
-            let name = that.data('name');
-            let price = that.data('price');
-            let avatar = that.data('avatar');
-            let currency = that.data('currency');
-            let newProductElement = getDivItemProduct(id , price , currency , avatar , name , true );
-            divParent.append(newProductElement);
-        }
+function loadListIdSectionSave() {
+    let divList = [];
+    $('.section-page').each(function (index, value) {
+        let itemSection = $(this).data('section-index');
+        divList.push(itemSection);
     });
-
-    // remove product
-    $('.list-product-append').on('click', '.remove-product', function(e){
-        $(this).parent().remove();
-    });
-
-});
+    return divList;
+}
 
 function getAllDataText(arrData) {
     $(".edit-text").each(function(index) {

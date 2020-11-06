@@ -7,28 +7,15 @@
     <title>Document</title>
     <link href="{{ asset('landingpage/src/action-section.css ')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('landingpage/src/edit-text.css ')}}" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 </head>
 
 <body>
-    @include('./landingpage/page2/index')
 
+    @include($link, ['listSectionDefault' => isset($listSectionDefault)? $listSectionDefault : [] ])
 
     <!-- Begin::Sticky toolbar all page -->
     <!-- <ul class="sticky-toolbar nav flex-column pl-2 pr-2 pt-3 pb-3 mt-4">
-
-        <li class="nav-item mb-2">
-
-            <i class="flaticon2-drop"></i> Menu
-
-        </li>
-
-
-        <li class="nav-item mb-2">
-
-            <i class="fas fa-bahai"></i> Setting
-
-        </li>
-
 
         <li class="nav-item mb-2" id="btn-save-page">
 
@@ -36,15 +23,11 @@
 
         </li>
 
-
-        <li class="nav-item">
-
-            <i class="flaticon2-chat-1"></i> Delete
-
-        </li>
     </ul> -->
+    @if(isset($preview) && $preview == true)
+    @else
     <!-- End::Sticky toolbar all page -->
-    @include('pages.option-section')
+    @include('pages.option-section', [ 'arrSection' => isset($arrSection)? $arrSection : [] , 'code' => isset($code)? $code : '' ])
     <!-- Begin::Sticky toolbar image -->
     <ul class="sticky-toolbar-setting-image nav flex-row ">
 
@@ -107,10 +90,11 @@
     <!-- Begin::Sweetalert  -->
     <script src="{{ asset('js/sweetalert.min.js') }}"></script>
     <!-- End::Sweetalert -->
-    @include('pages.action-section')
-    @include('pages.edit-text')
-    <!-- End::Sticky toolbar image -->
 
+    @include('pages.edit-text-js')
+    @include('pages.action-section-js')
+    <!-- End::Sticky toolbar image -->
+    @endif
 </body>
 
 </html>

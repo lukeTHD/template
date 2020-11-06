@@ -4,8 +4,7 @@
 {{-- Content --}}
 @section('content')
 
-<div class="card card-custom card-container" style="padding-left: 30px;
-    padding-right: 30px; margin: 36px 8px 60px 8px;">
+<div class="card card-custom card-container" style="padding-left: 30px; padding-right: 30px; margin: 36px 8px 60px 8px;">
     <div style=" margin-top:30px;">
         @if (session('success'))
         <div class="alert alert-success" role="alert">
@@ -23,15 +22,17 @@
                         <img class="card-img-top" style="height: 225px; width: 100%; display: block;"
                             src="{{ asset('upload/avatar/'.$template->avatar)}}" data-holder-rendered="true">
                         <div class="theme-actions">
-                            <button type="button"><a
-                                    href="{{ route('template.detailsTemplate', ['code' => $template['code']] ) }}">Sử
-                                    dụng</button>
-                            <button type="button"><a
-                                    href="{{ route('template.showPage', ['code' => $template['code']] ) }}">Xem
-                                    trước</a></button> <br>
+                            <button type="button">
+                                <a href="{{ route('template.detailsTemplate', ['code' => $template['id']] ) }}">Sử dụng
+                            </button>
+                            <button type="button">
+                                <a href="{{ route('template.previewTemplate', ['id' => $template['id']] ) }}">Xem
+                                    trước</a>
+                            </button><br>
                             <button type="button" class="destroy_template" data-id="{{ $template['id'] }}">Xóa</button>
-                            <button type="button"><a href="{{ route('template.edit', ['id' => $template['id']] ) }}">Cập
-                                    nhật</a></button>
+                            <button type="button">
+                                <a href="{{ route('template.edit', ['id' => $template['id']] ) }}">Cập nhật</a>
+                            </button>
                         </div>
                         <div class="card-body" style="padding: 14px;">
                             <p class="card-text" style="font-size: 14px;">{{ $template->name }}</p>

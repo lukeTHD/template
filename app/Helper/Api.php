@@ -63,7 +63,10 @@ class Api
         return $this->connectApi($uri, [], 'GET');
     }
 
-
+    public function getCampaignDetail($id){
+        $uri = 'campaigns?mod=get_detail_campaign&campaign_id='.$id;
+        return $this->connectApi($uri, [], 'GET');
+    }
 
 
 

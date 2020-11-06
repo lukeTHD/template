@@ -27,7 +27,7 @@ return [
             'title' => 'Danh sách Theme của bạn',
             'root' => true,
             'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
-            'page' => '/list-template',
+            'page' => '/list-page',
             'new-tab' => false,
         ],
         // Custom
