@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\PageContentRepository;
+use App\Repositories\ListTemplateRepository;
 
 class PageContentController extends Controller
 {
     protected $pageContentRepository;
 
-    public function __construct(PageContentRepository $pageContentRepository)
+    public function __construct(PageContentRepository $pageContentRepository, ListTemplateRepository $listTemplateRepository)
     {
         $this->pageContentRepository = $pageContentRepository;
+        $this->listTemplateRepository = $listTemplateRepository;
     }
 
     public function savePage(Request $request)
@@ -42,6 +44,16 @@ class PageContentController extends Controller
 
     public function showPage($id)
     {
-        dd($this->pageContentRepository->findId($id));
+        $page = $this->pageContentRepository->find($id);
+        if(!empty($page))
+        {
+            $template = $this->listTemplateRepository->findByID($page->id_page);
+            $link = isset($template->code) ? './landingpage/page'.$template->code.'/index' : '';
+            $list_section_default = isset($page->list_section) ? json_decode($page->list_section, true) : [];
+            $list_content = isset($page->content) ? json_decode($page->content, true) : [];
+
+            return view('template.edit_page', ['link' => $link,'listSectionDefault' => $list_section_default ,
+                    'code' => $id, 'preview' => true, 'previewPage' => true, 'list_content' => $list_content]);
+        }
     }
 }

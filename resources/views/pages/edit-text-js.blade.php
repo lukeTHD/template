@@ -21,8 +21,9 @@ $(document).ready(function() {
     let tmpListProductId = updateListProductSave(); //Action save to run
 
     // console.log(arrData);
-    $(".edit-text").blur(function() {
+    $('body').on('click',".edit-text",(function() {
         // console.log($(this).text());
+        $(".edit-text").editable();
         let that = $(this);
         let dataNumberText = that.data('number-text');
         let dataContent = that.text();
@@ -36,7 +37,7 @@ $(document).ready(function() {
         if (dataType == "button") {
             that.attr('contenteditable', 'false');
         }
-    });
+    }));
 
     $('#btn-save-page').on('click', function(e) {
         e.preventDefault();
@@ -150,6 +151,9 @@ $(document).ready(function() {
 
     // Show list product
     $('.btn-add-product').on('click', function(e) {
+        $('body').removeClass('body-page4');
+        // $('body').addClass('body-page4');
+        // $('.body-page4 .bd-example-modal-lg').css("z-index", 1050);
         $('#show-modal-list-product').modal('toggle');
         let productId = updateListProductSave();
         $.ajax({
@@ -166,7 +170,6 @@ $(document).ready(function() {
                 let listItemProductDivHtml = dataLirProduct.map(function(item) {
                     return getDivItemProduct( item.id , item.price , item.currency , item.avatar , item.name, false, productId) ;
                 });
-                console.log(productId);
                 list_product_box.html( listItemProductDivHtml.join(''));
             }
         })

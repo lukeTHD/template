@@ -29,7 +29,7 @@
     </header>
 <!-- /Header -->
 <!-- Signup Modal -->
-    <div class="  bg-gray  ">
+    <!-- <div class="  bg-gray  ">
         <div class="row">
             <div class="col-lg-6 pr-0 h-100 hide-sm">
                 <div class="">
@@ -165,5 +165,5 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
 <!-- /Modal -->
