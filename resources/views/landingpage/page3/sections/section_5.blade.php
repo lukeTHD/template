@@ -1,5 +1,5 @@
 <!-- Get Start Area Start -->
-<section class="get-start">
+<section class="get-start section-page" data-section-index="5">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 d-flex align-self-center">

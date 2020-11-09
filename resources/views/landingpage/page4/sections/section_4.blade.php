@@ -59,7 +59,7 @@
             <div class="col-xs-12 col-sm-6 col-md-4" data-aos="fade-up">
                 <div class="featurebox">
                     <div class="feature-icon">
-                        <i class="fa fa-cog"></i><span class="number">5</span>
+                        <i class="fa fa-cog"></i><span class="number edit-text" data-number-text="293" data-content="5" data-type="text">5</span>
                     </div>
                     <h3 class=" edit-text" data-number-text="35" data-content="Recurring Buying" data-type="text">Recurring Buying</h3>
                     <p class=" edit-text" data-number-text="36" data-content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium beatae consectetur ea eaque facilis hic, impedit ipsa laudantium modi nostrum." data-type="text">Lorem ipsum dolor sit

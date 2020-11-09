@@ -10,7 +10,7 @@
             </div>
             <div class="col-xs-12 col-md-4">
                 <div class="work_action_btn">
-                    <a class="get_all_btn edit-text" data-number-text="194" data-content="Discover More" data-type="text" href="#">Discover More</a>
+                    <a class="get_all_btn edit-text btn-href" data-number-text="194" data-content="Discover More" data-type="button" href="#">Discover More</a>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
 		<!-- SITE TITLE -->
 		<title>Kaniz - Bitcoin & Cryptocurrency HTML Template</title>
 		<!-- Latest Bootstrap min CSS -->
-		<link rel="stylesheet" href="{{ asset('landingpage/page4/assets/bootstrap/css/bootstrap.min.css')}}">
+		<link rel="stylesheet" href="{{ asset('landingpage/page4/assets/bootstrap/css/bootstrap.css')}}">
 		<!-- Google Font -->
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,400i,500,500i,700,700i" rel="stylesheet">
 		<!--Favicon for this site -->
@@ -31,7 +31,7 @@
 		<![endif]-->
 	</head>
 
-    <body data-spy="scroll" data-offset="80" class="body-page4">
+    <body data-spy="scroll" data-offset="80">
 
 		<!-- START PRELOADER -->
 		<div class="preloader">

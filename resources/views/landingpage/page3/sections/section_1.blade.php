@@ -9,8 +9,8 @@
                         <div class="left-content">
                             <ul class="left-list">
                                 <li>
-                                    <p>
-                                        <i class="fas fa-headset edit-text" data-number-text="1" data-content="Support" data-type="text"></i> Support
+                                    <p class="edit-text" data-number-text="1" data-content="Support" data-type="text">
+                                        <i class="fas fa-headset"></i> Support
                                     </p>
                                 </li>
                                 <li>
@@ -21,9 +21,9 @@
                                 <li>
                                     <div class="language-selector">
                                         <select name="language" class="language">
-                                            <option value="1" class="edit-text" data-number-text="3" data-content="English" data-type="text">English</option>
-                                            <option value="2" class="edit-text" data-number-text="4" data-content="France" data-type="text">France</option>
-                                            <option value="3" class="edit-text" data-number-text="5" data-content="Japan" data-type="text">Japan</option>
+                                            <option value="1" class="edit-text btn-href" data-number-text="3" data-content="English" data-type="button">English</option>
+                                            <option value="2" class="edit-text btn-href" data-number-text="4" data-content="France" data-type="button">France</option>
+                                            <option value="3" class="edit-text btn-href" data-number-text="5" data-content="Japan" data-type="button">Japan</option>
                                         </select>
                                     </div>
                                 </li>

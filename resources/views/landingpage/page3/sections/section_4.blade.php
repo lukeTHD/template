@@ -1,5 +1,5 @@
 <!-- Latest Activities Area Start -->
-<section class="activities">
+<section class="activities section-page" data-section-index="4">
     <img class="shape shape1" src="{{ asset('landingpage/page3/assets/images/people/shape1.png')}}" alt="">
     <img class="shape shape2" src="{{ asset('landingpage/page3/assets/images/people/shape2.png')}}" alt="">
     <img class="shape shape3" src="{{ asset('landingpage/page3/assets/images/people/shape3.png')}}" alt="">

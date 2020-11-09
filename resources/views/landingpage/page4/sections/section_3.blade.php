@@ -4,17 +4,16 @@
         <div class="row">
             <div class="col-xs-12 col-md-6" data-aos="fade-right">
                 <div class="single_about_two">
-                    <h3 class="edit-text btn-href" data-number-text="16" data-content="Buy and Sell Bitcoin"
-                        data-type="button">Buy and Sell Bitcoin</h3>
-                    <p class="edit-text btn-href" data-number-text="17"
-                        data-content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.Lorem ipsum dolor sit amet.consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.Lorem ipsum dolor sit amet."
-                        data-type="button">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    <h3 class=" edit-text" data-number-text="16" data-content="Buy and Sell Bitcoin" data-type="text">Buy and Sell Bitcoin</h3>
+                    <p class=" edit-text" data-number-text="17" data-content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                        eiusmod tempor incididunt ut labore et.Lorem ipsum dolor sit amet.consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et.Lorem ipsum dolor sit amet." data-type="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                         eiusmod tempor incididunt ut labore et.Lorem ipsum dolor sit amet.consectetur adipisicing elit,
                         sed do eiusmod tempor incididunt ut labore et.Lorem ipsum dolor sit amet. </p>
-                    <p class="edit-text btn-href" data-number-text="18"
-                        data-content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.Lorem ipsum dolor sit amet."
-                        data-type="button">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    <p class=" edit-text" data-number-text="18" data-content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et.Lorem ipsum dolor sit amet." data-type="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et.Lorem ipsum dolor sit amet. </p>
                 </div>
                 <div class="our_video">
