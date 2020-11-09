@@ -24,7 +24,7 @@
 <!--new home page-->
 
 <!--start top-bar-->
-<div class="top_bar_travel hidden-xs text-center">
+<div class="top_bar_travel hidden-xs text-center section-page" data-section-index="1">
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-6">
@@ -717,8 +717,8 @@
 
 <div class="container">
     <div class="new-heading-box">
-        <h4 class="title">Featured tour package</h4>
-        <h2 class="subtitle">we'll take care of the rest</h2>
+        <h4 class="title edit-text" data-number-text="" data-content="Featured tour package" data-type="text">Featured tour package</h4>
+        <h2 class="subtitle edit-text" data-number-text="" data-content="we'll take care of the rest" data-type="text">we'll take care of the rest</h2>
     </div>
 
     <div class="row">

@@ -104,7 +104,6 @@ class ListTemplateController extends Controller
         {
             $link = isset($template->code) ? './landingpage/page'.$template->code.'/index' : '';
             $list_section_default = isset($template->list_section_default) ? json_decode($template->list_section_default, true) : [];
-
             return view('template.edit_page', ['link' => $link,'listSectionDefault' => $list_section_default , 'code' => $id, 'preview' => true]);
         }else{
             return back();
