@@ -78,4 +78,5 @@ Route::get('/testapi', function () {
 // API
 Route::get('/list-campaign', 'CampaignController@listCampaginsApi')->name('campaign.listCampaginsApi');
 Route::get('/list-product', 'CampaignController@listProductsApi')->name('campaign.listProductsApi');
+Route::get('/list-product-table', 'CampaignController@listProductsApiTable')->name('campaign.listProductsApiTable');
 

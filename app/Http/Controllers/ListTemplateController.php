@@ -10,14 +10,20 @@ use App\Http\Requests\StoreTemplate;
 use App\Http\Requests\UpdateTemplate;
 use App\Repositories\ListTemplateRepository;
 use Illuminate\Support\Facades\Storage;
+use App\Helper\Api;
 
 class ListTemplateController extends Controller
 {
+    private $api;
+    private $listCurrency;
+
     protected $listTemplateRepository;
 
-    public function __construct(ListTemplateRepository $listTemplateRepository)
+    public function __construct(ListTemplateRepository $listTemplateRepository , Api $api)
     {
         $this->listTemplateRepository = $listTemplateRepository;
+        $this->api = $api;
+        $this->listCurrency = ['VND', 'USD'];
     }
 
     public function create()
@@ -71,6 +77,23 @@ class ListTemplateController extends Controller
 
     public function detailsTemplate($id)
     {
+        //Lấy danh sách các chiến dịch 
+        $dataGetListCampaign = [
+            'limit' => 100,
+            'page' => 1
+        ];
+        $listCampaignResult =  $this->api->listCampaignsForHtmlBuilder($dataGetListCampaign);
+        $listCampaign = $listCampaignResult['status'] && !empty($listCampaignResult['data'][0]) ? $listCampaignResult['data'][0] : [] ;
+        
+        //Lấy danh sách sản phẩm mặc định
+        $dataGetDefaultListProduct = [
+            "page" => isset($param['page']) ? $param['page'] : 1 ,
+            "limit" => isset($param['limit']) ? $param['limit'] : 3,
+        ];
+        $listProductDefaultResult = $this->api->listProductForHtmlBuilder($dataGetDefaultListProduct);
+        $listProductDefault = $listProductDefaultResult['status'] && !empty($listProductDefaultResult['data'][0]['result']) ? $listProductDefaultResult['data'][0]['result'] : [] ;
+
+        //Lấy chi tiết thông tin của page
         $template = ListTemplate::where('id', $id)->first();
         if(!empty($template))
         {
@@ -92,7 +115,7 @@ class ListTemplateController extends Controller
                 }
             }
 
-            return view('template.edit_page', ['link' => $link, 'arrSection' => $arrSection, 'listSectionDefault' => $list_section_default , 'code' => $id]);
+            return view('template.edit_page', ['link' => $link, 'arrSection' => $arrSection, 'listSectionDefault' => $list_section_default , 'code' => $id , 'listCampaign' => $listCampaign , 'listProduct' => $listProductDefault]);
         }
         return back();
     }

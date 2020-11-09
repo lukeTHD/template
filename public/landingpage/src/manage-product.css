@@ -1,0 +1,35 @@
+#tool-manage-products-tmpl{
+    position: absolute;
+    opacity: 1;
+}
+
+#tool-manage-products-tmpl .btn-show-manage-products{
+    min-width: 32px;
+    cursor: pointer;
+    color: #2d4150;
+    line-height: 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 7px 0 0;
+    padding: 0px 10px;
+    font-size: 14px;
+    list-style: none;
+    vertical-align: top;
+    box-sizing: border-box;
+    height: 32px;
+    border: 0px;
+    background: linear-gradient(180deg,#fff 0,#eee);
+    box-shadow: 0 2px 6px 0 rgba(22,45,61,.55);
+    border-radius: 16px;
+}
+@media(min-width: 999px){
+    #show-modal-list-product-table .modal-lg.modal-lg-custom{
+        min-width: 90%;
+    }
+}
+
+#data-table-product .image-product{
+    max-width: 100px;
+    overflow: hidden;
+}
