@@ -24,18 +24,18 @@
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{ asset('landingpage/page2/css/style.css')}}">
     <link rel="stylesheet" href="{{ asset('landingpage/page2/css/components.css')}}">
+    <link rel="stylesheet" href="{{ asset('landingpage/page2/css/custom.css')}}">
 
 </head>
 
 <body>
     @if(isset($listSectionDefault) && count($listSectionDefault)>0)
         @foreach($listSectionDefault as $key => $sectionDefault)
-            @if($key == count($listSectionDefault)-1 )
-                @include('template.list_product')
-            @endif
             @include('landingpage.page2.sections.section_'.$sectionDefault)
         @endforeach
     @endif
+
+  
 
     <!-- Signin Modal -->
     <div class="modal cs-modal" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">

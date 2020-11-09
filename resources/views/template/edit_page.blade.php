@@ -7,7 +7,10 @@
     <title>Document</title>
     <link href="{{ asset('landingpage/src/action-section.css ')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('landingpage/src/edit-text.css ')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('landingpage/src/manage-product.css ')}}" rel="stylesheet" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
+ 
 </head>
 
 <body>
@@ -83,15 +86,19 @@
 
         </li>
     </ul>
+    @include('template.list_product_table')
+
     <!-- Edit:: Sticky toolbar delete session-->
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script src="{{ asset('landingpage/src/jquery-contenteditable.js')}}"></script>
     <!-- Begin::Sweetalert  -->
     <script src="{{ asset('js/sweetalert.min.js') }}"></script>
     <!-- End::Sweetalert -->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
 
     @include('pages.edit-text-js')
     @include('pages.action-section-js')
+    @include('pages.action-list-product-js' , [ 'listProduct' => isset($listProduct) ? $listProduct : [] ])
     <!-- End::Sticky toolbar image -->
     @endif
 </body>
