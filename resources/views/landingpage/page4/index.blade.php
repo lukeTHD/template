@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="{{ asset('landingpage/page4/assets/css/magnific-popup.css')}}">
 		<!-- Style CSS -->
 		<link rel="stylesheet" href="{{ asset('landingpage/page4/assets/css/style.css')}}">
+        <link rel="stylesheet" href="{{ asset('landingpage/page2/css/custom.css')}}">
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -43,9 +44,6 @@
 
         @if(isset($listSectionDefault) && count($listSectionDefault)>0)
             @foreach($listSectionDefault as $key => $sectionDefault)
-                @if($key == count($listSectionDefault)-1 )
-                    @include('template.list_product')
-                @endif
                 @include('landingpage.page4.sections.section_'.$sectionDefault)
             @endforeach
         @endif

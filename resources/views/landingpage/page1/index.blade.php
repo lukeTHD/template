@@ -23,14 +23,11 @@
 
 <!--new home page-->
 
-    @if(isset($listSectionDefault) && count($listSectionDefault)>0)
-        @foreach($listSectionDefault as $key => $sectionDefault)
-            @if($key == count($listSectionDefault)-1 )
-                @include('template.list_product')
-            @endif
-            @include('landingpage.page1.sections.section_'.$sectionDefault)
-        @endforeach
-    @endif
+        @if(isset($listSectionDefault) && count($listSectionDefault)>0)
+            @foreach($listSectionDefault as $key => $sectionDefault)
+                @include('landingpage.page1.sections.section_'.$sectionDefault)
+            @endforeach
+        @endif
 
 <!--page loader-->
 <div id="loading section-page">

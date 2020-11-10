@@ -3,9 +3,6 @@ $(document).ready(function() {
 
     $(".edit-text").editable();
 
-    $('.btn-href').on('click', function(e) {
-        e.preventDefault();
-    });
     $('.btn-href').on('dblclick', function(e) {
         e.preventDefault();
         $(this).attr('contenteditable', 'true');
@@ -21,7 +18,7 @@ $(document).ready(function() {
     let tmpListProductId = updateListProductSave(); //Action save to run
 
     // console.log(arrData);
-    $('body').on('click',".edit-text",(function() {
+    $('body').on('click',".edit-text",(function(e) {
         // console.log($(this).text());
         e.preventDefault();
         $(".edit-text").editable();
