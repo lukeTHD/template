@@ -18,8 +18,8 @@
                                 </div>
                                 <div class="cs-price-card-content" >
                                     <div class="cs-price-card-features">
-                                        <a href="" class="href-product"><h4 class="card-title text-primary name-product" data-name-product=""></h4></a>
-                                        <h3 > <span data-price-product="" class="price-product"></span> <small data-currency-product="" class="currency-product"></small></h3> 
+                                        <a href="" class="href-product"><h5 class="card-title text-primary name-product" data-name-product=""></h5></a>
+                                        <h4 > <span data-price-product="" class="price-product"></span> <small data-currency-product="" class="currency-product"></small></h4> 
                                     </div>
                                     <div><a href="#" data-href-product="" class="cbtn btn-grad btn-round btn-sm href-product">Mua ngay</a></div>
                                 </div>

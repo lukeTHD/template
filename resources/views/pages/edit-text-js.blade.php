@@ -269,8 +269,11 @@ function getDivItemProduct( id , price , currency , avatar , name , isDelete = f
 
 function updateListProductSave(){
     let arrproductId = [];
-    $('.list-product-append .item-product').each(function(e){
-        arrproductId.push($(this).data('id'));
+    // $('.list-product-append .item-product').each(function(e){
+    //     arrproductId.push($(this).data('id'));
+    // });
+    $('#list-product-page-tmpl .id-product-tmpl').each(function(e){
+        arrproductId.push($(this).data('id-product'));
     });
     return arrproductId;
 }

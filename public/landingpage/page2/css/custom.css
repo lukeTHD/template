@@ -1,4 +1,4 @@
-#list-product-page .card-img-top {
+#list-product-page-tmpl .card-img-top {
     width: 100%;
     min-height: 230px;
     max-height: 230px;
@@ -6,9 +6,9 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-#list-product-page .cs-webnair-card {
+#list-product-page-tmpl .cs-webnair-card {
     margin: 6px 0 15px 0;
 }
-#list-product-page .cs-price-card-content{
+#list-product-page-tmpl .cs-price-card-content{
     padding: 10px 10px 30px;
 }

@@ -158,7 +158,8 @@ class CampaignController extends Controller
         $dataList = [
            "page" => $page,
            "limit" => $limit,
-           'keyword' => isset($arrsearch['keyword'])?$arrsearch['keyword']:'',
+           'product_name' => isset($arrsearch['key_word'])?$arrsearch['key_word']:'',
+           'campaign_id' => isset($arrsearch['campaign_id'])?$arrsearch['campaign_id']:'',
            "order_by" => isset($arrsearch['order_by'])? $arrsearch['order_by'] :'', 
            "order_column" => isset($arrsearch['order_column'])? $arrsearch['order_column'] :'', 
            'from_date' => isset($arrsearch['from_date'])?(date('yy-m-d 00:00:00', strtotime($arrsearch['from_date']))):'',

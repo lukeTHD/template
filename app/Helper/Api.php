@@ -76,5 +76,10 @@ class Api
         return $this->connectApi($uri, [], 'GET');
     }
 
+    public function getListPaymentMethod() {
+        $uri = 'payment?mod=list_payment_method';
+        return $this->connectApi($uri, [], 'GET');
+    }
+
 
 }

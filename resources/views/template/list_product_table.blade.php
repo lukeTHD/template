@@ -13,26 +13,41 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label mb-0">Tìm kiếm:</label>
+                        
                         <div class="row">
-                            <div class="col-lg-10 col-md-10 mb-2">
-                                <input type="text" class="form-control" id="key-word">
+                            <div class="col-lg-4 col-md-4 mb-2">
+                                <label  class="col-form-label mb-0">Tìm kiếm:</label>
+                                <input type="text" class="form-control kt-input form-control-border-shadow" data-col-index="key_word">
                             </div>
-                            <div class="col-lg-2 col-md-2 mb-2 text-center">
-                                <button type="button" class="btn btn-success w-100" id="btn-search-product">Tìm
-                                    kiếm</button>
+                            <div class="col-lg-4 col-md-4 mb-2">         
+                                <label class="col-form-label mb-0">Chiến dịch:</label>
+                                <select class="form-control kt-input form-control-border-shadow"  data-col-index="campaign_id">
+                                    <option value="">Tất cả</option>
+                                    @if(isset($listCampaign) && !empty($listCampaign))
+                                        @foreach($listCampaign as $item)
+                                            <option value="{{isset($item['id']) ? $item['id'] : ''}}"> {{isset($item['name']) ? $item['name'] : ''}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
                             </div>
+                            <div class="col-lg-2 col-md-2 mb-2 text-center" style="padding-top: 2.4rem;">
+                                <button type="button" class="btn btn-success btn-control-purple form-control-border-shadow w-100" id="kt_search">Tìm kiếm</button>
+                            </div>
+                            <div class="col-lg-2 col-md-2 mb-2 text-center" style="padding-top: 2.4rem;">
+                                <button type="button" class="btn btn-warning btn-control-yellow form-control-border-shadow w-100" id="kt_reset">Làm mới</button>
+                            </div>
+                           
                         </div>
                     </div>
                 </form>
                 <div id="list-product-box">
-                    <table class="table  table-hover" id="data-table-product">
-                   
+                    <table class="table w-100" id="data-table-product">
+
                     </table>
                 </div>
 
                 <div class="modal-footer mt-4">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
                 </div>
             </div>
         </div>

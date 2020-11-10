@@ -83,8 +83,7 @@ class ListTemplateController extends Controller
             'page' => 1
         ];
         $listCampaignResult =  $this->api->listCampaignsForHtmlBuilder($dataGetListCampaign);
-        $listCampaign = $listCampaignResult['status'] && !empty($listCampaignResult['data'][0]) ? $listCampaignResult['data'][0] : [] ;
-        
+        $listCampaign = $listCampaignResult['status'] && !empty($listCampaignResult['data'][0]['result']) ? $listCampaignResult['data'][0]['result'] : [] ;
         //Lấy danh sách sản phẩm mặc định
         $dataGetDefaultListProduct = [
             "page" => isset($param['page']) ? $param['page'] : 1 ,
@@ -92,6 +91,35 @@ class ListTemplateController extends Controller
         ];
         $listProductDefaultResult = $this->api->listProductForHtmlBuilder($dataGetDefaultListProduct);
         $listProductDefault = $listProductDefaultResult['status'] && !empty($listProductDefaultResult['data'][0]['result']) ? $listProductDefaultResult['data'][0]['result'] : [] ;
+
+        // --------------------------------------Thoong tin san pham---------------------------------
+        $result = $this->api->getProductDetail(65);
+
+        if(!$result['status']){
+            return view('errors.404' , ['error' => __('error.error506')] );
+        }
+
+        $detailProduct = isset($result['data'][0]) ?  $result['data'][0] : [];
+        
+        $data =[
+            'product_id' => isset($product_id) ? $product_id : '',
+            'campaign_id' => isset($campaign_id) ? $campaign_id : '',
+            'user_code' => isset($affiliator) ? $affiliator : '',
+        ];
+
+        $resultPayment = $this->api->getListPaymentMethod();
+        $listPaymentMethod = ($resultPayment['status'] == true) && isset($resultPayment['data']) ? $resultPayment['data'] : [];
+
+        if( isset($detailProduct['type_cd']) && $detailProduct['type_cd'] == 'form'){
+            foreach($listPaymentMethod as $key => $method){
+                if($method['code'] == 'Request'){
+                    $listPaymentMethod[$key]['name'] = 'Thanh Toán tại trung tâm' ;
+                    $listPaymentMethod[$key]['name_en'] = 'Payment at the center' ;
+                }
+            }
+        }
+       
+        // --------------------------------------Thoong tin san pham---------------------------------
 
         //Lấy chi tiết thông tin của page
         $template = ListTemplate::where('id', $id)->first();
@@ -115,7 +143,7 @@ class ListTemplateController extends Controller
                 }
             }
 
-            return view('template.edit_page', ['link' => $link, 'arrSection' => $arrSection, 'listSectionDefault' => $list_section_default , 'code' => $id , 'listCampaign' => $listCampaign , 'listProduct' => $listProductDefault]);
+            return view('template.edit_page', ['link' => $link, 'arrSection' => $arrSection, 'listSectionDefault' => $list_section_default , 'code' => $id , 'listCampaign' => $listCampaign , 'listProduct' => $listProductDefault , 'detailProduct' => $detailProduct , 'listPaymentMethod' => $listPaymentMethod]);
         }
         return back();
     }
