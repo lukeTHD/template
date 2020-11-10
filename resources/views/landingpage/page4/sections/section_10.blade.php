@@ -16,14 +16,14 @@
                 <div class="ticker_item">
                     <span class="name edit-text" data-number-text="134" data-content="<b>GNT</b> / BTC" data-type="text"><b>GNT</b> / BTC</span>
                     <span class="price edit-text" data-number-text="135" data-content="0.00002861" data-type="text">0.00002861</span>
-                    <span class="change change--red" class="edit-text" data-number-text="136" data-content="-2.81%" data-type="text">-2.81%</span>
+                    <span class="change change--red edit-text" data-number-text="136" data-content="-2.81%" data-type="text">-2.81%</span>
                 </div>
             </div><!-- END COL-->
             <div class="col-md-2 col-sm-3 col-xs-12 text-center">
                 <div class="ticker_item">
                     <span class="name edit-text" data-number-text="137" data-content="<b>ITC</b> / BTC" data-type="text"><b>ITC</b> / BTC</span>
                     <span class="price edit-text" data-number-text="138" data-content="0.00006148" data-type="text">0.00006148</span>
-                    <span class="change change--red" class="edit-text" data-number-text="139" data-content="-1.85%" data-type="text">-1.85%</span>
+                    <span class="change change--red edit-text" data-number-text="139" data-content="-1.85%" data-type="text">-1.85%</span>
                 </div>
             </div><!-- END COL-->
             <div class="col-md-2 col-sm-3 col-xs-12 text-center">
@@ -36,7 +36,7 @@
             <div class="col-md-2 col-sm-3 col-xs-12 text-center">
                 <div class="ticker_item">
                     <span class="name edit-text" data-number-text="143" data-content="<b>DGD</b> / BTC" data-type="text"><b>DGD</b> / BTC</span>
-                    <span class="price dit-text" data-number-text="144" data-content="0.009051" data-type="text">0.009051</span>
+                    <span class="price edit-text" data-number-text="144" data-content="0.009051" data-type="text">0.009051</span>
                     <span class="change change--red edit-text" data-number-text="145" data-content="-2.67%" data-type="text">-2.67%</span>
                 </div>
             </div><!-- END COL-->

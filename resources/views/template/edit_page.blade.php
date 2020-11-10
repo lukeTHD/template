@@ -17,7 +17,6 @@
 <body>
 
     @include($link, ['listSectionDefault' => isset($listSectionDefault)? $listSectionDefault : [] ])
-
     <!-- Begin::Sticky toolbar all page -->
     <!-- <ul class="sticky-toolbar nav flex-column pl-2 pr-2 pt-3 pb-3 mt-4">
 

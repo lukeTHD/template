@@ -9,7 +9,7 @@
 		<!-- SITE TITLE -->
 		<title>Kaniz - Bitcoin & Cryptocurrency HTML Template</title>
 		<!-- Latest Bootstrap min CSS -->
-		<link rel="stylesheet" href="{{ asset('landingpage/page4/assets/bootstrap/css/bootstrap.min.css')}}">
+		<link rel="stylesheet" href="{{ asset('landingpage/page4/assets/bootstrap/css/bootstrap.css')}}">
 		<!-- Google Font -->
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,400i,500,500i,700,700i" rel="stylesheet">
 		<!--Favicon for this site -->
@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="{{ asset('landingpage/page4/assets/css/magnific-popup.css')}}">
 		<!-- Style CSS -->
 		<link rel="stylesheet" href="{{ asset('landingpage/page4/assets/css/style.css')}}">
+        <link rel="stylesheet" href="{{ asset('landingpage/page2/css/custom.css')}}">
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -31,7 +32,7 @@
 		<![endif]-->
 	</head>
 
-    <body data-spy="scroll" data-offset="80" class="body-page4">
+    <body data-spy="scroll" data-offset="80">
 
 		<!-- START PRELOADER -->
 		<div class="preloader">
@@ -43,9 +44,6 @@
 
         @if(isset($listSectionDefault) && count($listSectionDefault)>0)
             @foreach($listSectionDefault as $key => $sectionDefault)
-                @if($key == count($listSectionDefault)-1 )
-                    @include('template.list_product')
-                @endif
                 @include('landingpage.page4.sections.section_'.$sectionDefault)
             @endforeach
         @endif

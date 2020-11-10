@@ -1,6 +1,6 @@
 
  @include('template.tool.manage_product')
-<div class="modal fade bd-example-modal-lg show" tabindex="-1" role="dialog" id="show-modal-list-product-table"
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="show-modal-list-product-table"
     aria-labelledby="listProductTable" aria-modal="true">
     <div class="modal-dialog modal-lg modal-lg-custom">
         <div class="modal-content">

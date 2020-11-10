@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row list-product-append">
         <div class="col-lg-3 col-md-3">
-            <div class="card mb-4 box-shadow list-product-append-add">
+            <div class="card mb-4 box-shadow list-product-append-add" style="background-color: white;">
                 <div class="card-body">
                     <div class="justify-content-between text-center">
                         <div class="btn-group">
@@ -18,11 +18,11 @@
 
     </div>
 </div>
-<div class="modal fade bd-example-modal-lg show" tabindex="-1" role="dialog" id="show-modal-list-product"
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="show-modal-list-product"
     aria-labelledby="listProduct" aria-modal="true">
     <div class="modal-dialog modal-lg" >
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content-new">
+            <div class="modal-header-new">
                 <h5 class="modal-title" id="exampleModalLabel">Danh sách các sản phẩm</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

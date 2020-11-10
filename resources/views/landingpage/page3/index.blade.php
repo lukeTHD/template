@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="{{ asset('landingpage/page3/assets/css/style.css')}}">
 	<!-- responsive -->
 	<link rel="stylesheet" href="{{ asset('landingpage/page3/assets/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{ asset('landingpage/page2/css/custom.css')}}">
 </head>
 
 <body>
@@ -33,9 +34,6 @@
 
     @if(isset($listSectionDefault) && count($listSectionDefault)>0)
         @foreach($listSectionDefault as $key => $sectionDefault)
-            @if($key == count($listSectionDefault)-1 )
-                @include('template.list_product')
-            @endif
             @include('landingpage.page3.sections.section_'.$sectionDefault)
         @endforeach
     @endif

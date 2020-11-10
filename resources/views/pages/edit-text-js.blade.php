@@ -3,9 +3,6 @@ $(document).ready(function() {
 
     $(".edit-text").editable();
 
-    $('.btn-href').on('click', function(e) {
-        e.preventDefault();
-    });
     $('.btn-href').on('dblclick', function(e) {
         e.preventDefault();
         $(this).attr('contenteditable', 'true');
@@ -21,8 +18,9 @@ $(document).ready(function() {
     let tmpListProductId = updateListProductSave(); //Action save to run
 
     // console.log(arrData);
-    $('body').on('click',".edit-text",(function() {
+    $('body').on('click',".edit-text",(function(e) {
         // console.log($(this).text());
+        e.preventDefault();
         $(".edit-text").editable();
         let that = $(this);
         let dataNumberText = that.data('number-text');
@@ -92,6 +90,7 @@ $(document).ready(function() {
     });
 
     $('.edit-image').on('click', function(e) {
+        e.preventDefault();
         let that = $(this);
         var posP = that.offset();
         $(".sticky-toolbar-setting-image").css({
@@ -173,6 +172,7 @@ $(document).ready(function() {
                 list_product_box.html( listItemProductDivHtml.join(''));
             }
         })
+        // $(".edit-text").editable();
         });
 
         // Select product

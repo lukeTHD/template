@@ -65,8 +65,8 @@
                     <form novalidate="" target="_blank" class="validate" name="mc-embedded-subscribe-form" method="post"
                         action="http://site90.us11.list-manage.com/subscribe/post?u=599a2153f4b86cb2f92d4af3a&amp;id=26d7c26287">
                         <input type="email" placeholder="Enter Email" id="mce-email" class="form-control" name="EMAIL">
-                        <span><button class="btn btn-default get_all_btn" name="subscribe"
-                                type="submit" class="edit-text btn-href" data-number-text="291" data-content="Subscribe" data-type="button">Subscribe</button></span>
+                        <span><button class="btn btn-default get_all_btn edit-text btn-href" name="subscribe"
+                                type="submit" data-number-text="291" data-content="Subscribe" data-type="button">Subscribe</button></span>
                         <div id="mce-responses">
                             <div style="display:none" id="mce-error-response" class="response"></div>
                             <div style="display:none" id="mce-success-response" class="response"></div>
