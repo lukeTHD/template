@@ -1,5 +1,5 @@
-@if(isset($listProduct) && !empty($listProduct))
-    <div class="bg-gray py-80 no-header section-page" data-section-index="14">
+<div class="bg-gray py-80 no-header section-page" data-section-index="14">
+    @if(isset($listProduct) && !empty($listProduct))
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -30,5 +30,6 @@
             @endforeach
             </div>
         </div>
-    </div>
-@endif
+    @endif
+</div>
+

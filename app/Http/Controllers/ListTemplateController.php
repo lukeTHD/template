@@ -77,7 +77,7 @@ class ListTemplateController extends Controller
 
     public function detailsTemplate($id)
     {
-        //Lấy danh sách các chiến dịch 
+        //Lấy danh sách các chiến dịch
         $dataGetListCampaign = [
             'limit' => 100,
             'page' => 1
@@ -100,7 +100,7 @@ class ListTemplateController extends Controller
         }
 
         $detailProduct = isset($result['data'][0]) ?  $result['data'][0] : [];
-        
+
         $data =[
             'product_id' => isset($product_id) ? $product_id : '',
             'campaign_id' => isset($campaign_id) ? $campaign_id : '',
@@ -118,7 +118,7 @@ class ListTemplateController extends Controller
                 }
             }
         }
-       
+
         // --------------------------------------Thoong tin san pham---------------------------------
 
         //Lấy chi tiết thông tin của page

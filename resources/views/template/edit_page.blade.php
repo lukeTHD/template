@@ -30,6 +30,7 @@
 
     </ul> -->
     @if(isset($preview) && $preview == true)
+
     @else
     <!-- End::Sticky toolbar all page -->
     @include('pages.option-section', [ 'arrSection' => isset($arrSection)? $arrSection : [] , 'code' => isset($code)? $code : '' ])

@@ -18,8 +18,7 @@ $(document).ready(function() {
     let tmpListProductId = updateListProductSave(); //Action save to run
 
     // console.log(arrData);
-    $('body').on('click',".edit-text",(function(e) {
-        // console.log($(this).text());
+    $('body').on('blur',".edit-text",(function(e) {
         e.preventDefault();
         $(".edit-text").editable();
         let that = $(this);
@@ -38,6 +37,7 @@ $(document).ready(function() {
     }));
 
     $('#btn-save-page').on('click', function(e) {
+        console.log(arrData);
         e.preventDefault();
         let list_product = updateListProductSave();
         let id = $(this).data('code');
@@ -98,8 +98,8 @@ $(document).ready(function() {
             "left": posP.left,
             "top": posP.top - 34
         });
-
-        that.parent().find('.edit-image').removeClass('selected-image');
+        // that.parent().find('.edit-image').removeClass('selected-image');
+        $('.edit-image').removeClass('selected-image');
         // $(".edit-image").removeClass("selected-image");
         that.addClass('selected-image');
     });
@@ -128,8 +128,7 @@ $(document).ready(function() {
                     processData: false,
                     data: formData,
                     success: function(data) {
-                        let destinationPath = "{{url('/')}}/" + data
-                            .destinationPath;
+                        let destinationPath = "{{url('/')}}/" + data.destinationPath;
                         let nameImg = data.nameImg;
                         $('.selected-image').attr("src", data.link);
                         let height = $('.selected-image').data("height");

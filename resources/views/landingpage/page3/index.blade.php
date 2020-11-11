@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="{{ asset('landingpage/page3/assets/css/style.css')}}">
 	<!-- responsive -->
 	<link rel="stylesheet" href="{{ asset('landingpage/page3/assets/css/responsive.css')}}">
-    <link rel="stylesheet" href="{{ asset('landingpage/page2/css/custom.css')}}">
+
 </head>
 
 <body>

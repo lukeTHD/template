@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\PageContentRepository;
 use App\Repositories\ListTemplateRepository;
+use App\Helper\Api;
 
 class PageContentController extends Controller
 {
     protected $pageContentRepository;
+    private $api;
 
-    public function __construct(PageContentRepository $pageContentRepository, ListTemplateRepository $listTemplateRepository)
+    public function __construct(PageContentRepository $pageContentRepository, ListTemplateRepository $listTemplateRepository, Api $api)
     {
         $this->pageContentRepository = $pageContentRepository;
         $this->listTemplateRepository = $listTemplateRepository;
+        $this->api = $api;
     }
 
     public function savePage(Request $request)
@@ -50,10 +53,23 @@ class PageContentController extends Controller
             $template = $this->listTemplateRepository->findByID($page->id_page);
             $link = isset($template->code) ? './landingpage/page'.$template->code.'/index' : '';
             $list_section_default = isset($page->list_section) ? json_decode($page->list_section, true) : [];
+            $list_product = isset($page->list_product) ? json_decode($page->list_product, true) : [];
+            $listProduct = [];
+            if(!empty($list_product))
+            {
+                foreach($list_product as $key => $value)
+                {
+                    $result = $this->api->getProductDetail($value);
+                    $listProduct[] = $result['data'][0];
+                }
+            }
+            // dd($listProduct);
+            $flag = true;
             $list_content = isset($page->content) ? json_decode($page->content, true) : [];
 
             return view('template.edit_page', ['link' => $link,'listSectionDefault' => $list_section_default ,
-                    'code' => $id, 'preview' => true, 'previewPage' => true, 'list_content' => $list_content]);
+                    'code' => $id, 'preview' => true, 'previewPage' => true, 'list_content' => $list_content,
+                    'listProduct' => $listProduct, 'flag' => $flag ]);
         }
     }
 }
