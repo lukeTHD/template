@@ -1,3 +1,4 @@
+    @if(isset($flag)) @else
     <div class="bg-gray py-80 no-header section-page" data-section-index="16">
         <div class="container" >
             <div class="row">
@@ -8,7 +9,7 @@
                     </div>
                 </div>
             </div>
-           
+
             <div class="row " id="list-product-page-tmpl">
                  <!-- Price-Box  <Start> -->
                         <div class="col-md-4 item-product-page-tmpl id-product-tmpl" data-id-product="">
@@ -19,7 +20,7 @@
                                 <div class="cs-price-card-content" >
                                     <div class="cs-price-card-features">
                                         <a href="" class="href-product"><h5 class="card-title text-primary name-product" data-name-product=""></h5></a>
-                                        <h4 > <span data-price-product="" class="price-product"></span> <small data-currency-product="" class="currency-product"></small></h4> 
+                                        <h4 > <span data-price-product="" class="price-product"></span> <small data-currency-product="" class="currency-product"></small></h4>
                                     </div>
                                     <div><a href="#" data-href-product="" class="cbtn btn-grad btn-round btn-sm href-product">Mua ngay</a></div>
                                 </div>
@@ -29,4 +30,5 @@
             </div>
         </div>
     </div>
+@endif
 

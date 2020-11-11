@@ -11,7 +11,7 @@
     <link href="{{ asset('landingpage/src/form-product.css ')}}" rel="stylesheet" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
- 
+
 </head>
 
 <body>
@@ -28,6 +28,7 @@
 
     </ul> -->
     @if(isset($preview) && $preview == true)
+
     @else
     <!-- End::Sticky toolbar all page -->
     @include('pages.option-section', [ 'arrSection' => isset($arrSection)? $arrSection : [] , 'code' => isset($code)? $code : '' ])
