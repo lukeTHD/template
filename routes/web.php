@@ -59,6 +59,10 @@ Route::get('/private', function () {
     return  view('contacts.private');
 });
 
+Route::get('/contact', function () {
+    return  view('contacts.contact');
+});
+
 
 Route::get('/testapi', function () {
     return  view('testapi');

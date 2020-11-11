@@ -18,8 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::apiResource('testapi', 'testApi');
-Route::get('testapi2/{customerId}', 'testApi@getMessage');
-Route::get('getSumID', 'testApi@getSumIdCustomerNotSeen');
-Route::get('getContent', 'testApi@getContent');
+Route::apiResource('getSubject', 'Api\contacts');
+Route::get('getContentsByIdTitle/{id}', 'Api\contacts@getContentsByIdTitle');
+Route::get('getTitle/{id}', 'Api\contacts@getTitle');
+Route::post('uploadImg', 'Api\contacts@uploadImg');
+Route::post('getSubjectByNameStatus', 'Api\contacts@getSubjectByNameStatus');
+Route::post('getSubjectByStatus', 'Api\contacts@getSubjectByStatus');
+Route::post('fillData', 'Api\contacts@fillData');
+Route::post('addContent', 'Api\contacts@addContent');

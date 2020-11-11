@@ -14,7 +14,7 @@ class AddForeignKeyToContactsTable extends Migration
     public function up()
     {
         Schema::table('contacts', function (Blueprint $table) {
-            $table->foreign('fromId')->references('id')->on('customers')->onDelete('cascade');
+            // $table->foreign('fromId')->references('id')->on('customers')->onDelete('cascade');
         });
     }
 
