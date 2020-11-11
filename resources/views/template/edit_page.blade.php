@@ -4,14 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Template Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700;800&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,300&display=swap" rel="stylesheet">
     <link href="{{ asset('landingpage/src/action-section.css ')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('landingpage/src/edit-text.css ')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('landingpage/src/manage-product.css ')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('landingpage/src/form-product.css ')}}" rel="stylesheet" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
- 
+    <!--end::Layout Skins -->
+	<link rel="shortcut icon" href="{{ asset('img/logos/favicon.ico') }}" />
 </head>
 
 <body>
