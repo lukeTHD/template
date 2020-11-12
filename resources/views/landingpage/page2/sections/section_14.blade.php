@@ -1,5 +1,5 @@
 <div class="bg-gray py-80 no-header section-page" data-section-index="14">
-    @if(isset($listProduct) && !empty($listProduct))
+    @if(isset($listProduct) && !empty($listProduct) && isset($preview))
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -22,7 +22,7 @@
                                 <a href="blog-single.html"><h4 class="card-title text-primary">{{isset($product['name']) ? $product['name'] : ''}}</h4></a>
                                 <h3>{{ isset($product['currency']) && $product['currency'] == 'USD'  ?  number_format($product['price'],2) : number_format($product['price'])}}<sub><small>{{isset($product['currency']) ?  $product['currency'] : '' }}</small></sub></h3>
                             </div>
-                            <div><a href="#" class="cbtn btn-grad btn-round btn-sm">Get Started</a></div>
+                            <div><a href="#" data-href-product="" class="cbtn btn-grad btn-round btn-sm href-product">Mua ngay</a></div>
                         </div>
                     </div>
                     <!-- Price-Box </End> -->

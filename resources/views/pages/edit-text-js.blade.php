@@ -17,7 +17,6 @@ $(document).ready(function() {
     let tmpDataImage = getAllDataImage(arrData);
     let tmpListProductId = updateListProductSave(); //Action save to run
 
-    // console.log(arrData);
     $('body').on('blur',".edit-text",(function(e) {
         e.preventDefault();
         $(".edit-text").editable();
@@ -37,7 +36,6 @@ $(document).ready(function() {
     }));
 
     $('#btn-save-page').on('click', function(e) {
-        console.log(arrData);
         e.preventDefault();
         let list_product = updateListProductSave();
         let id = $(this).data('code');
@@ -75,6 +73,7 @@ $(document).ready(function() {
                             icon: 'success',
                             text: 'Bạn đã lưu thành công!',
                         });
+                        window.location.href = "{{ route('page.showPage') }}/" + data.id;
                     }
                 })
             }
@@ -100,7 +99,6 @@ $(document).ready(function() {
         });
         // that.parent().find('.edit-image').removeClass('selected-image');
         $('.edit-image').removeClass('selected-image');
-        // $(".edit-image").removeClass("selected-image");
         that.addClass('selected-image');
     });
 
@@ -139,7 +137,7 @@ $(document).ready(function() {
                         });
                         // $('.selected-image').css("max-width", width);
                         $('.selected-image').data("content", data.link);
-                        // $(".edit-image").removeClass("selected-image");
+                        console.log(arrData);
                         // console.log(getAllDataImage(arrData));
                     }
                 })

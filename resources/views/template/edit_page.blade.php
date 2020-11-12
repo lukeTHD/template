@@ -27,6 +27,45 @@
         </li>
 
     </ul> -->
+    @if(isset($list_content))
+        <script>
+            $( document ).ready(function() {
+                let id = <?php echo $code; ?>;
+
+                $.ajax({
+                    url: "{{ route('page.getDetailPage') }}/" + id,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    method: "GET",
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        $.each(data.list_content, function(k,v){
+                            if(v!= null){
+                                var arr = Object.keys(v).map(function (key) { return v[key]; });
+                                $('.edit-text , .edit-image').each(function(){
+                                    if($(this).data("number-text") == (arr[0]))
+                                    {
+                                            $(this).attr("data-content", arr[1]);
+                                            $(this).text(arr[1]);
+                                            console.log(arr[1]);
+                                    }
+                                });
+                            }
+
+                        })
+
+                        // data.list_content.map(function(item) {
+                        //     // $('.edit-text').html("aaaaaa");
+                        //     // console.log(item);
+                        // });
+                    }
+                })
+            });
+        </script>
+    @endif
+
     @if(isset($preview) && $preview == true)
 
     @else
@@ -104,6 +143,7 @@
     @include('pages.form-product-js')
     <!-- End::Sticky toolbar image -->
     @endif
+
 </body>
 
 </html>

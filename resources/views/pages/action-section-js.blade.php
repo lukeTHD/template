@@ -80,7 +80,6 @@ $(document).ready(function () {
                                 return getSectionHtml(item.page, item.section , item.img);
                             });
                            $('.modal-content-list-section').html(listItemSectionDivHtml.join(''));
-
                             $('#addSectionModal').modal('show');
                         }
                     }
@@ -110,6 +109,7 @@ $(document).ready(function () {
                         $(`${divSectionHtml}`).insertAfter(`[data-section-index='${indexDiv}']`);
                         $('.loading-add-section').css('opacity', 0);
                         $('#addSectionModal').modal('hide');
+                        $(".edit-text").editable();
                         let itemNew = $(`[data-section-index='${indexDiv}']`).next().offset();
                         $('html,body').animate({
                             scrollTop: itemNew.top - 10
@@ -120,7 +120,6 @@ $(document).ready(function () {
                 })
         return;
     });
-
 
 });
 

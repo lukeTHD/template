@@ -63,13 +63,25 @@ class PageContentController extends Controller
                     $listProduct[] = $result['data'][0];
                 }
             }
-            // dd($listProduct);
-            $flag = true;
             $list_content = isset($page->content) ? json_decode($page->content, true) : [];
-
             return view('template.edit_page', ['link' => $link,'listSectionDefault' => $list_section_default ,
                     'code' => $id, 'preview' => true, 'previewPage' => true, 'list_content' => $list_content,
-                    'listProduct' => $listProduct, 'flag' => $flag ]);
+                    'listProduct' => $listProduct]);
         }
+    }
+
+    public function getDetailPage($id)
+    {
+        $page = $this->pageContentRepository->find($id);
+        if(!empty($page))
+        {
+            $list_content = isset($page->content) ? json_decode($page->content, true) : [];
+        }
+        return response()->json([
+                    'code' => 0,
+                    'status' => true,
+                    'message' => 'success',
+                    'list_content' => $list_content,
+                    ]);
     }
 }

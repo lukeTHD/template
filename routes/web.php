@@ -49,7 +49,8 @@ Route::get('/get-list-section', 'ListTemplateController@getListSection')->name('
 // save Page
 Route::post('/save-page', 'PageContentController@savePage')->name('page.savePage');
 Route::get('/list-page', 'PageContentController@listPage')->name('page.listPage');
-Route::get('/page/{id}', 'PageContentController@showPage')->name('page.showPage');
+Route::get('/page/{id?}', 'PageContentController@showPage')->name('page.showPage');
+Route::get('/get-detail-page/{id?}', 'PageContentController@getDetailPage')->name('page.getDetailPage');
 
 //End::Template
 Route::get('/listcontact', function () {

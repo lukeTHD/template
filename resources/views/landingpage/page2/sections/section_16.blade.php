@@ -1,4 +1,4 @@
-    @if(isset($flag)) @else
+    @if(isset($preview)) @else
     <div class="bg-gray py-80 no-header section-page" data-section-index="16">
         <div class="container" >
             <div class="row">
