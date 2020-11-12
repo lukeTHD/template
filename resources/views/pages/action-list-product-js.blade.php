@@ -44,8 +44,10 @@ $(document).ready(function () {
         if(that.prop("checked")){
             let listItemProductDivHtml =   getItemProduct( itemProductHtml , valIdProduct , valNameProduct , valAvatarProduct, valHrefProduct , valPriceProduct , valCurrencyProduct);
             $('#list-product-page-tmpl').append(listItemProductDivHtml);
+            that.parent().addClass('border-active');
         }else{
             $(`.id-product-tmpl[data-id-product="${valIdProduct}"]`).remove();
+            that.parent().removeClass('border-active');
         }
     }); 
 
@@ -69,7 +71,8 @@ let DatatablesSearchOptionsAdvancedSearchTableProduct = function() {
 
             lengthMenu: [5, 10, 25, 50],
 
-            pageLength: 10,
+            pageLength: 5,
+
             language: {
                 info: " Hiển thị _START_ đến _END_ trong _TOTAL_ kết quả",
                 infoEmpty: "Không có kết quả",
@@ -80,7 +83,7 @@ let DatatablesSearchOptionsAdvancedSearchTableProduct = function() {
             searchDelay: 500,
             processing: true,
             serverSide: true,
-            orderable: false,
+            pagingType: "numbers",
             ajax: {
                 url: "{{route('campaign.listProductsApiTable')}}",
                 method: 'GET',
@@ -88,15 +91,22 @@ let DatatablesSearchOptionsAdvancedSearchTableProduct = function() {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             },
-            order: [[ 0, "desc" ]],
             columns: [
                 {
                     data: 'id',
+                    name: 'id',
+                    title: 'Chọn',
+                    width: 30,
+                    className: "select-checkbox text-center",
                     orderable: false,
-                    className: 'select-checkbox text-center',
                     render: function (data, type, full, meta){
                         let listIdChecked = getListIdProductChecked();
-                        return `<label class="kt-checkbox kt-checkbox--bold kt-checkbox--brand"><input type="checkbox" class="check-product" value="" data-id-product="${data}" ${listIdChecked.includes(data) ? 'checked' : ''} data-name-product="${full.name}"  data-avatar-product="${full.avatar}"  data-price-product="${full.price}" data-href-product="${full.href}" data-currency-product="${full.currency}"><span></span></label>`; 
+
+                        return `<span class="check-box-cs ${listIdChecked.includes(data) ? 'border-active' : ''}"><input class="inp-cbx check-product" id="cbx-${data}" type="checkbox"  data-id-product="${data}" ${listIdChecked.includes(data) ? 'checked' : ''} data-name-product="${full.name}"  data-avatar-product="${full.avatar}"  data-price-product="${full.price}" data-href-product="${full.href}" data-currency-product="${full.currency}" />
+                                    <label class="cbx" for="cbx-${data}"><span>
+                                        <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </svg></span><span></span></label></span>`;
                     }
                 },
                 {
@@ -104,16 +114,17 @@ let DatatablesSearchOptionsAdvancedSearchTableProduct = function() {
                     name: 'avatar',
                     title: 'Hình ảnh',
                     width: 150,
-                    autoWidth: false,
+                    orderable: false,
                     render: function(data, type, full, meta) {   
                         return  `<img class="image-product" src="` + (data !== '' && data !== null ? data :'') +`" alt="avatar" >`
                     },
+                    // autoWidth: false,
                 },
                 {
                     data: 'campaign_name',
                     name: 'campaign_name',
                     title: 'Chiến dịch',
-                    className: 'text-uppercase',
+                    orderable: false,
                     render: function(data, type, full, meta) {
                         return `<p>${data}</p>`;
                     },
@@ -122,7 +133,7 @@ let DatatablesSearchOptionsAdvancedSearchTableProduct = function() {
                     data: 'name',
                     name: 'name',
                     title: 'Tên sản phẩm',
-                    className: 'text-inherit',
+                    orderable: false,
                     render: function(data, type, full, meta) {
                         return `<p>${data}</p>`;
                     },
@@ -132,6 +143,7 @@ let DatatablesSearchOptionsAdvancedSearchTableProduct = function() {
                     name: 'price',
                     width: 150,
                     title: 'Giá',
+                    orderable: false,
                     render: function(data, type, full, meta) {
                         return `<p>${formatPrice( data , full.currency )}</p>`;
                     },
@@ -141,9 +153,10 @@ let DatatablesSearchOptionsAdvancedSearchTableProduct = function() {
                     name: 'currency',
                     width: 150,
                     title: 'Tiền tệ',
-                    className: 'text-uppercase',
+                    className: 'pl-4 pr-4 ',
+                    orderable: false,
                     render: function(data, type, full, meta) {
-                        return `<p>${data}</p>`;
+                        return `<p class="text-center">${data}</p>`;
                     },
                 },
                

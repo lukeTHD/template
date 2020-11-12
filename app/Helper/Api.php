@@ -4,12 +4,12 @@ use GuzzleHttp\Client;
 class Api
 {
     const API = "http://mkt68.com:2323/";
-    const FCODE = 2;
-    public function connectApi($uri, $data, $method, $isMultipart = false, $isJson = true, $token = '', $customHeader = []){
+    const FCODE =  2 ;
+    public function connectApi($uri, $data, $method, $isMultipart = false, $isJson = true, $token = '', $customHeader = [] , $fcode = ''){
         $client = new Client(['base_uri' => self::API, 'verify' => false]);
         if ($method == 'POST' || $method == 'PUT') {
             if($isMultipart){
-                $arrHeader = array('Authorization' => 'aff '. (session('user_data')&&!$token ? session('user_data')['token'] : $token), 'fcode' => self::FCODE);
+                $arrHeader = array('Authorization' => 'aff '. (session('user_data')&&!$token ? session('user_data')['token'] : $token), 'fcode' => ( session('f_code') ? session('f_code') : ( $fcode !== '' ? $fcode : self::FCODE ) ) );
                 if(!empty($customHeader)){
                     $arrHeader = array_merge($arrHeader, $customHeader);
                 }
@@ -18,7 +18,7 @@ class Api
                     'multipart' => $data
                 ]);
             }else{
-                $arrHeader = array('Content-Type' => 'application/json', 'Authorization' => 'aff '. (session('user_data')&&!$token ? session('user_data')['token'] : $token), 'fcode' => self::FCODE);
+                $arrHeader = array('Content-Type' => 'application/json', 'Authorization' => 'aff '. (session('user_data')&&!$token ? session('user_data')['token'] : $token), 'fcode' => ( session('f_code') ? session('f_code') : ( $fcode !== '' ? $fcode : self::FCODE )  ) );
                 if(!empty($customHeader)){
                     $arrHeader = array_merge($arrHeader, $customHeader);
                 }
@@ -28,7 +28,7 @@ class Api
                 ]);
             }
         } else {
-            $arrHeader = array('Content-Type' => 'application/json', 'Authorization' => 'aff '. (session('user_data')&&!$token ? session('user_data')['token'] : $token), 'fcode' => self::FCODE);
+            $arrHeader = array('Content-Type' => 'application/json', 'Authorization' => 'aff '. (session('user_data')&&!$token ? session('user_data')['token'] : $token), 'fcode' => ( session('f_code') ? session('f_code') : ( $fcode !== '' ? $fcode : self::FCODE )  ));
             if(!empty($customHeader)){
                 $arrHeader = array_merge($arrHeader, $customHeader);
             }
@@ -41,6 +41,20 @@ class Api
         }else{
             return $res->getBody()->getContents();
         }
+    }
+
+    public function login($data){
+        if(!session()->has('f_code')){
+            session(['f_code' => self::FCODE ]);
+        };
+        $uri = 'users';
+        return $this->connectApi($uri, $data, 'POST');
+    }
+
+    // Check user
+    public function getMyProfile($token = '' , $fcode = '' ) {
+        $uri = "users?mod=my_profile";
+        return $this->connectApi($uri, [], 'GET', $isMultipart = false, $isJson = true, $token, $customHeader = [] , $fcode );
     }
 
     public function listCampaignsForHtmlBuilder($arrParams){

@@ -1,5 +1,5 @@
 
-    <div class="option-section" style="width: auto; color: black;">
+    <div class="option-section" style="width: auto;">
         <span data-type="top" data-code="{{isset($code) ? $code : ''}}">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
@@ -38,7 +38,7 @@
 
     </div>
 
-    <div class="option-menu-left" style="width: auto;color: black;">
+    <div class="option-menu-left" style="width: auto;">
         <div class="list-section item-section ">
             <div class="dropdown-toggle label-item" id="dropdownMenuListSection" placement="right" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
@@ -49,7 +49,7 @@
                             d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z" />
                     </svg>
                 </span>
-                <p class="section-text dropright" style="color: black;">
+                <p class="section-text dropright">
                     Section
                 </p>
             </div>
@@ -74,7 +74,7 @@
                             d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
                     </svg>
                 </span>
-                <p class="section-text dropright" style="color: black;">
+                <p class="section-text dropright" >
                     Thiết lập
                 </p>
             </div>

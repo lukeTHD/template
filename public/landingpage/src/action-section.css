@@ -11,6 +11,8 @@
     opacity: 0;
     background-color: #fff;
     font-size: 1.4rem;
+    font-family: 'K2D', 'Roboto', sans-serif;
+    
 }
 
 .option-section span {
@@ -46,6 +48,7 @@
     left: 10px;
     top: 50vh;
     transform: translateY(-50%);
+    font-family: 'K2D', 'Roboto', sans-serif;
 }
 
 .option-menu-left span {
@@ -55,6 +58,7 @@
     font-size: 1rem;
     cursor: pointer;
     text-decoration: none;
+    font-family: 'K2D', 'Roboto', sans-serif;
 }
 .option-menu-left .item-section {
     transition: all 200ms ease-in-out;
@@ -78,6 +82,7 @@
     min-width: 260px;
     font-size: 0.8rem;
     font-weight: 500;
+    font-family: 'K2D', 'Roboto', sans-serif;
 }
 .option-menu-left .list-li-section li {
     width: 50%;
@@ -99,6 +104,7 @@
 }
 .option-menu-left .item-section:hover {
     background-color: #0c61f2;
+
 }
 .option-menu-left .item-section:hover .label-item {
     color: #fff;
@@ -138,9 +144,9 @@
     content: "";
     position: absolute;
     top: 0;
-    left: 1.5rem;
+    left: 1rem;
     bottom: 0;
-    right: 1.5rem;
+    right: 1rem;
     background-color: rgba(87, 87, 87, 0.5);
     z-index: 1;
     opacity: 0;
@@ -170,6 +176,7 @@
     animation: spin 600ms linear infinite;
     font-size: 3rem;
     color: #0c61f2;
+    
 }
 @keyframes spin {
     100% {
@@ -193,6 +200,7 @@
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.18);
     transition: all 0.2s;
     -webkit-transition: all 0.2s;
+    font-family: 'K2D', 'Roboto', sans-serif;
 }
 
 .modal-header-new {
@@ -258,6 +266,7 @@
     color: #000;
     text-shadow: 0 1px 0 #fff;
     opacity: .5;
+    font-family: 'K2D', 'Roboto', sans-serif;
 }
 
 .form-control {
@@ -293,4 +302,7 @@
     box-shadow: 0 20px 25px -5px rgba(0,0,0,.1), 0 10px 10px -5px rgba(0,0,0,.04);
     min-height: 300px;
 
+}
+#addSectionModal , #addSectionModal h4{
+    font-family: 'K2D', 'Roboto', sans-serif;
 }
