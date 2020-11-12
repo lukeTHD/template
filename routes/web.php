@@ -30,8 +30,23 @@ Route::get('/icons/svg', 'PagesController@svg');
 // Quick search dummy route to display html elements in search dropdown (header search)
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
 
-//Begin::Template
-Route::get('/list-template', 'ListTemplateController@listTemplate');
+//Begin:: Set Language Website
+Route::get('set-lang/{locale}', 'UserController@setLang')->name('user.get.setLanguage');
+
+
+//Begin::Check Login Admin 
+Route::get('/check-login', 'UserController@checkLogin')->name('user.get.checkLogin');
+Route::get('/login', 'UserController@showLogin')->name('user.get.login');
+Route::post('/login', 'UserController@login')->name('user.post.login');
+Route::get('/logout', 'UserController@logout')->name('user.get.logout');
+
+Route::group(['prefix' => '/', 'middleware' => ['checkLogin']], function () {
+    Route::get('/', 'UserController@showDashboard')->name('user.get.showDashboard');
+    //Begin::Template
+    Route::get('/list-template', 'ListTemplateController@listTemplate')->name('template.listTemplate');
+});
+
+
 
 Route::get('/details-template/{code}', 'ListTemplateController@detailsTemplate')->name('template.detailsTemplate');
 

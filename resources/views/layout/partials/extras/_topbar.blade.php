@@ -113,10 +113,13 @@
         <div class="dropdown">
             <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
                 <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
-                    <img class="h-20px w-20px rounded-sm" src="{{ asset('media/svg/flags/226-united-states.svg') }}" alt=""/>
+                    @if(!empty(session('locale')) && ((session('locale')) == 'en'))
+                        <img class="h-20px w-20px rounded-sm" src="{{ asset('media/svg/flags/226-united-states.svg') }}" alt="en"/>
+                    @else
+                        <img class="h-20px w-20px rounded-sm" src="{{ asset('media/svg/flags/220-vietnam.svg') }}" alt="vi"/>
+                    @endif
                 </div>
             </div>
-
             <div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right">
                 @include('layout.partials.extras.dropdown._languages')
             </div>
@@ -128,10 +131,10 @@
         @if (config('layout.extras.user.layout') == 'offcanvas')
             <div class="topbar-item">
                 <div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
-                    <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
-                    <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Sean</span>
+                    <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">{{__('label.hi')}},</span>
+                    <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{ session('profile') ? session('profile')['display_name'] : ''}}</span>
                     <span class="symbol symbol-35 symbol-light-success">
-                        <span class="symbol-label font-size-h5 font-weight-bold">S</span>
+                        <span class="symbol-label font-size-h5 font-weight-bold">{{ session('profile') ? substr(session('profile')['display_name'], 0, 1) : ''}}</span>
                     </span>
                 </div>
             </div>
@@ -140,10 +143,10 @@
                 {{-- Toggle --}}
                 <div class="topbar-item" data-toggle="dropdown" data-offset="0px,0px">
                     <div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2">
-                        <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
-                        <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Sean</span>
+                        <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">{{__('label.hi')}},</span>
+                        <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{ session('profile') ? session('profile')['display_name'] : ''}}</span>
                         <span class="symbol symbol-35 symbol-light-success">
-                            <span class="symbol-label font-size-h5 font-weight-bold">S</span>
+                            <span class="symbol-label font-size-h5 font-weight-bold">{{ session('profile') ? substr(session('profile')['display_name'], 0, 1) : ''}}</span>
                         </span>
                     </div>
                 </div>

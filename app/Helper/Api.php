@@ -43,6 +43,14 @@ class Api
         }
     }
 
+    public function login($data){
+        if(!session()->has('f_code')){
+            session(['f_code' => self::FCODE ]);
+        };
+        $uri = 'users';
+        return $this->connectApi($uri, $data, 'POST');
+    }
+
     // Check user
     public function getMyProfile($token = '' , $fcode = '' ) {
         $uri = "users?mod=my_profile";

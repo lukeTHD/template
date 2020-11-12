@@ -89,7 +89,7 @@
             </div>
             <div class="navi-text">
                 <div class="font-weight-bold">
-                    My Tasks
+                    Nguyen Văn Thắng
                 </div>
                 <div class="text-muted">
                     latest tasks and projects
@@ -101,7 +101,7 @@
     {{-- Footer --}}
     <div class="navi-separator mt-3"></div>
     <div class="navi-footer  px-8 py-5">
-        <a href="#" target="_blank" class="btn btn-light-primary font-weight-bold">Sign Out</a>
+        <a href="{{route('user.get.logout')}}" target="_blank" class="btn btn-light-primary font-weight-bold">{{__('label.logout')}}</a>
         <a href="#" target="_blank" class="btn btn-clean font-weight-bold">Upgrade Plan</a>
     </div>
 </div>
