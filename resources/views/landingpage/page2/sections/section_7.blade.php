@@ -35,7 +35,7 @@
                                             <h5 class="edit-text" data-number-text="70" data-content="Free"
                                                 data-type="text">Free</h5>
                                             <h1 class="edit-text" data-number-text="71"
-                                                data-content="<sup>$</sup>0.00<small>Month</small>" data-type="text">
+                                                data-content="$ 0.00 Month" data-type="text">
                                                 <sup>$</sup>0.00<small>Month</small>
                                             </h1>
                                         </div>
@@ -69,7 +69,7 @@
                                             <h5 class="edit-text" data-number-text="78" data-content="Premium"
                                                 data-type="text">Premium</h5>
                                             <h1 class="edit-text" data-number-text="79"
-                                                data-content="<sup>$</sup>12.00<small>Month</small>" data-type="text">
+                                                data-content="$ 12.00 Month" data-type="text">
                                                 <sup>$</sup>12.00<small>Month</small>
                                             </h1>
                                         </div>
@@ -103,7 +103,7 @@
                                             <h5 class="edit-text" data-number-text="86" data-content="Advanced"
                                                 data-type="text">Advanced</h5>
                                             <h1 class="edit-text" data-number-text="87"
-                                                data-content="<sup>$</sup>28.00<small>Month</small>" data-type="text">
+                                                data-content="$ 28.00 Month" data-type="text">
                                                 <sup>$</sup>28.00<small>Month</small>
                                             </h1>
                                         </div>
@@ -143,7 +143,7 @@
                                             <h5 class="edit-text" data-number-text="94" data-content="Silver"
                                                 data-type="text">Silver</h5>
                                             <h1 class="edit-text" data-number-text="95"
-                                                data-content="<sup>$</sup>40.00<small>Month</small>" data-type="text">
+                                                data-content="$ 40.00 Month" data-type="text">
                                                 <sup>$</sup>40.00<small>Month</small>
                                             </h1>
                                         </div>
@@ -176,7 +176,7 @@
                                             <h5 class="text-white edit-text" data-number-text="102"
                                                 data-content="Diamond" data-type="text">Diamond</h5>
                                             <h1 class="text-white edit-text" data-number-text="103"
-                                                data-content="<sup>$</sup>212.00<small>Month</small>" data-type="text">
+                                                data-content="$ 212.00 Month" data-type="text">
                                                 <sup>$</sup>212.00<small>Month</small>
                                             </h1>
                                         </div>
@@ -209,7 +209,7 @@
                                             <h5 class="edit-text" data-number-text="110" data-content="Gold"
                                                 data-type="text">Gold</h5>
                                             <h1 class="edit-text" data-number-text="111"
-                                                data-content="<sup>$</sup>128.00<small>Month</small>" data-type="text">
+                                                data-content="$ 128.00 Month" data-type="text">
                                                 <sup>$</sup>128.00<small>Month</small>
                                             </h1>
                                         </div>

@@ -1,5 +1,5 @@
 <!-- Login Area Start -->
-<div class="modal fade login-modal" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+<div class="modal fade login-modal section-page" data-section-index="8" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span

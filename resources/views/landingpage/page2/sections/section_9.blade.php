@@ -15,23 +15,23 @@
                     <ul class="partners-horiz-list clearfix">
                         <li class="partners-horiz-item" data-aos="flip-up" data-aos-anchor-placement="top-bottom"
                             data-aos-duration="800"><img src="{{ asset('landingpage/page2/images/partners/p1.png')}}"
-                                class="img-fluid partner-img edit-image" data-number-text="121" data-content="p1.png"
+                                class="img-fluid partner-img edit-image" data-number-text="121" data-content="{{ asset('landingpage/page2/images/partners/p1.png')}}"
                             data-type="image" data-height="60"  data-width="180" alt="partner"></li>
                         <li class="partners-horiz-item" data-aos="flip-up" data-aos-anchor-placement="top-bottom"
                             data-aos-duration="1000"><img src="{{ asset('landingpage/page2/images/partners/p2.png')}}"
-                                class="img-fluid partner-img edit-image" data-number-text="122" data-content="p1.png"
+                                class="img-fluid partner-img edit-image" data-number-text="122" data-content="{{ asset('landingpage/page2/images/partners/p2.png')}}"
                             data-type="image" data-height="60"  data-width="180" alt="partner"></li>
                         <li class="partners-horiz-item" data-aos="flip-up" data-aos-anchor-placement="top-bottom"
                             data-aos-duration="1300"><img src="{{ asset('landingpage/page2/images/partners/p3.png')}}"
-                                class="img-fluid partner-img edit-image" data-number-text="123" data-content="p1.png"
+                                class="img-fluid partner-img edit-image" data-number-text="123" data-content="{{ asset('landingpage/page2/images/partners/p3.png')}}"
                             data-type="image" data-height="60"  data-width="180" alt="partner"></li>
                         <li class="partners-horiz-item" data-aos="flip-up" data-aos-anchor-placement="top-bottom"
                             data-aos-duration="1600"><img src="{{ asset('landingpage/page2/images/partners/p4.png')}}"
-                                class="img-fluid partner-img edit-image" data-number-text="124" data-content="p1.png"
+                                class="img-fluid partner-img edit-image" data-number-text="124" data-content="{{ asset('landingpage/page2/images/partners/p4.png')}}"
                             data-type="image" data-height="60"  data-width="180" alt="partner"></li>
                         <li class="partners-horiz-item" data-aos="flip-up" data-aos-anchor-placement="top-bottom"
                             data-aos-duration="1900"><img src="{{ asset('landingpage/page2/images/partners/p5.png')}}"
-                                class="img-fluid partner-img edit-image" data-number-text="125" data-content="p1.png"
+                                class="img-fluid partner-img edit-image" data-number-text="125" data-content="{{ asset('landingpage/page2/images/partners/p5.png')}}"
                             data-type="image" data-height="60"  data-width="180" alt="partner"></li>
                     </ul>
                 </div>

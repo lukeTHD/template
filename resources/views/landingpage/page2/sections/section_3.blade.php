@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-sm-6 col-md-8">
                                     <img src="{{ asset('landingpage/page2/images/mockup.png')}}"
-                                        class="img-fluid edit-image" data-number-text="22" data-content="mockup.png"
+                                        class="img-fluid edit-image" data-number-text="22" data-content="{{ asset('landingpage/page2/images/mockup.png')}}"
                                         data-type="image" data-height="427.28"  data-width="729.99" alt="" data-aos="fade-up"
                                         data-aos-anchor-placement="top-bottom">
                                 </div>
@@ -70,8 +70,8 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <img src="{{ asset('landingpage/page2/images/features-5.png')}}"
-                                        class="img-fluid edit-image" data-number-text="23" data-content="features-5.png"
-                                        data-type="image" data-height="400"  data-width="" alt="400">
+                                        class="img-fluid edit-image" data-number-text="23" data-content="{{ asset('landingpage/page2/images/features-5.png')}}"
+                                        data-type="image" data-height="400"  data-width="400" alt="400">
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="material-pills-text">
@@ -115,7 +115,7 @@
                                 <div class="col-sm-6 col-md-8">
                                     <img src="{{ asset('landingpage/page2/images/dashboard.png')}}"
                                         class="img-fluid edit-text edit-image" data-number-text="30"
-                                        data-type="image" data-content="dashboard.png" data-height="374.09"  data-width="729.99"
+                                        data-type="image" data-content="{{ asset('landingpage/page2/images/dashboard.png')}}" data-height="374.09"  data-width="729.99"
                                         alt="">
                                 </div>
                             </div>
@@ -141,7 +141,7 @@
                                 </div>
                                 <div class="col-sm-6 ">
                                     <img src="{{ asset('landingpage/page2/images/features-2.png')}}"
-                                        class="img-fluid edit-image" data-number-text="33" data-content="features-2.png"
+                                        class="img-fluid edit-image" data-number-text="33" data-content="{{ asset('landingpage/page2/images/features-2.png')}}"
                                         data-type="image" data-height="400"  data-width="400" alt="">
                                 </div>
                             </div>

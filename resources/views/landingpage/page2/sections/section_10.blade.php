@@ -26,7 +26,7 @@
                                 data-type="text">Li Europan lingues es membres del sam familie. Lor separat existentie
                                 es un myth. Por scientie, musica, sport etc, litot Europa.</p>
                             <div class="media">
-                                <img class="mr-3 edit-image" data-number-text="130" data-content="profile1.png"
+                                <img class="mr-3 edit-image" data-number-text="130" data-content="{{ asset('landingpage/page2/images/profile1.png')}}"
                                     data-type="image" data-height="50"  data-width="50" src="{{ asset('landingpage/page2/images/profile1.png')}}"
                                     alt="image" width="50" height="50">
                                 <div class="media-body">
@@ -76,7 +76,7 @@
                                 data-type="text">Li Europan lingues es membres del sam familie. Lor separat existentie
                                 es un myth. Por scientie, musica, sport etc, litot Europa.</p>
                             <div class="media">
-                                <img class="mr-3 edit-image" data-number-text="138" data-content="profile1.png"
+                                <img class="mr-3 edit-image" data-number-text="138" data-content="{{ asset('landingpage/page2/images/profile1.png')}}"
                                     data-type="image" data-height="50"  data-width="50" src="{{ asset('landingpage/page2/images/profile1.png')}}"
                                     alt="image">
                                 <div class="media-body">

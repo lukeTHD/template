@@ -7,7 +7,7 @@
                         <div class="media">
                             <div class="media-left"> <img src="{{ asset('landingpage/page2/images/call-down.svg')}}"
                                     alt="img" class="img-fluid edit-image" data-number-text="34"
-                                    data-content="call-down.svg" data-type="image" data-height="49"  data-width="49"> </div>
+                                    data-content="{{ asset('landingpage/page2/images/call-down.svg')}}" data-type="image" data-height="49"  data-width="49"> </div>
                             <div class="media-body">
                                 <h3 class="text-primary edit-text" data-number-text="35"
                                     data-content="Want to try CRM Software for Free?" data-type="text">Want to try CRM

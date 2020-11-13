@@ -274,7 +274,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <img class="edit-image" data-number-text="201" data-type="image" data-height="40"  data-width="40" data-content="" src="{{ asset('landingpage/page3/assets/images/people/p1.png')}}"
+                                            <img class="edit-image" data-number-text="201" data-type="image" data-height="40"  data-width="40" data-content="{{ asset('landingpage/page3/assets/images/people/p1.png')}}" src="{{ asset('landingpage/page3/assets/images/people/p1.png')}}"
                                                 alt="">
                                             <span class="edit-text" data-number-text="202" data-content="Tom Bass" data-type="text">Tom Bass</span>
                                         </td>

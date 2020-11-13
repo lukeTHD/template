@@ -24,6 +24,8 @@ return [
         'username_is_email' =>  'Tài khoản phải là email.',
         'password_required' =>  'Mật khẩu không được bỏ trống.',
         'error_login' => 'Xin lỗi, có vẻ như đã phát hiện thấy một số lỗi, vui lòng thử lại.'
+    ],
+    'template' => [
+        'add_template' => 'Thêm Template',
     ]
-
 ];

@@ -4,7 +4,8 @@
 {{-- Content --}}
 @section('content')
 
-<div class="card card-custom card-container" style="padding-left: 30px; padding-right: 30px; margin: 36px 8px 60px 8px;">
+<div class="card card-custom card-container"
+    style="padding-left: 30px; padding-right: 30px; margin: 36px 8px;">
     <div style=" margin-top:30px;">
         @if (session('success'))
         <div class="alert alert-success" role="alert">
@@ -43,7 +44,8 @@
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection
 
     {{-- Styles Section --}}
     @section('styles')
@@ -89,8 +91,6 @@
         });
     })
     </script>
-
-
     @endsection
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

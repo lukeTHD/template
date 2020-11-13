@@ -51,17 +51,19 @@
                                     {
                                             $(this).attr("data-content", arr[1]);
                                             $(this).text(arr[1]);
-                                            console.log(arr[1]);
+                                            $(this).attr("src", arr[1]);
+                                            let type = $(this).attr("data-type");
+                                            if(type == 'image'){
+                                                let height = $(this).attr("data-height");
+                                                let width = $(this).attr("data-width");
+                                                $(this).attr("height", height);
+                                                $(this).attr("width", width);
+                                            }
                                     }
                                 });
                             }
 
                         })
-
-                        // data.list_content.map(function(item) {
-                        //     // $('.edit-text').html("aaaaaa");
-                        //     // console.log(item);
-                        // });
                     }
                 })
             });

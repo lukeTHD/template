@@ -24,6 +24,8 @@ return [
         'username_is_email' =>  'The username must be a valid email address.',
         'password_required' =>  'The password is required',
         'error_login' => 'Sorry, looks like there are some errors detected, please try again.'
+    ],
+    'template' => [
+        'add_template' => 'Add Template',
     ]
-
 ];

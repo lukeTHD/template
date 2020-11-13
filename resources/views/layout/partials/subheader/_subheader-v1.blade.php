@@ -47,7 +47,8 @@
                         <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                         <i class="flaticon2-plus"></i>
                         <!--end::Svg Icon-->
-                    </span>Thêm Template</a>
+                    <!-- </span>Thêm Template</a> -->
+                    </span>{{__('label.template.add_template')}}</a>
             </div>
         </div>
 

@@ -2,7 +2,7 @@
 $(document).ready(function() {
 
     $(".edit-text").editable();
-
+    $(".btn-href").removeAttr("href");
     $('.btn-href').on('dblclick', function(e) {
         e.preventDefault();
         $(this).attr('contenteditable', 'true');
@@ -16,7 +16,7 @@ $(document).ready(function() {
     let tmpDataText = getAllDataText(arrData);
     let tmpDataImage = getAllDataImage(arrData);
     let tmpListProductId = updateListProductSave(); //Action save to run
-
+    console.log(arrData);
     $('body').on('blur',".edit-text",(function(e) {
         e.preventDefault();
         $(".edit-text").editable();
@@ -39,6 +39,7 @@ $(document).ready(function() {
         e.preventDefault();
         let list_product = updateListProductSave();
         let id = $(this).data('code');
+        console.log(arrData);
         swal({
             title: ' Bạn hãy nhập tên để lưu ',
             content: {
@@ -129,16 +130,21 @@ $(document).ready(function() {
                         let destinationPath = "{{url('/')}}/" + data.destinationPath;
                         let nameImg = data.nameImg;
                         $('.selected-image').attr("src", data.link);
+                        $('.selected-image').attr("data-content", data.link);
                         let height = $('.selected-image').data("height");
                         let width = $('.selected-image').data("width");
                         $('.selected-image').css({
                             "max-height": height,
                             "max-width": width
                         });
-                        // $('.selected-image').css("max-width", width);
-                        $('.selected-image').data("content", data.link);
-                        console.log(arrData);
-                        // console.log(getAllDataImage(arrData));
+                        let dataNumberText = $('.selected-image').attr("data-number-text");
+                        let dataContent = $('.selected-image').attr("data-content");
+                        let dataType = $('.selected-image').attr("data-type");
+                        arrData[dataNumberText] = {
+                            'number-text': parseInt(dataNumberText),
+                            'content': dataContent,
+                            'type': dataType
+                        };
                     }
                 })
             }
@@ -148,8 +154,6 @@ $(document).ready(function() {
     // Show list product
     $('.btn-add-product').on('click', function(e) {
         $('body').removeClass('body-page4');
-        // $('body').addClass('body-page4');
-        // $('.body-page4 .bd-example-modal-lg').css("z-index", 1050);
         $('#show-modal-list-product').modal('toggle');
         let productId = updateListProductSave();
         $.ajax({

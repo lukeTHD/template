@@ -8,7 +8,7 @@
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand btn-href edit-text" data-number-text="1" data-content="CRM" data-type="button"
+                <a class="navbar-brand edit-text btn-href" data-number-text="1" data-content="CRM" data-type="button"
                     href="index.html">CRM
                     <!-- <img src="images/logo.png" class="logo" alt="" height="60">-->
                 </a>

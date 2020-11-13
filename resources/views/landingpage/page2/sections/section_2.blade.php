@@ -22,7 +22,7 @@
                 <div class="col-sm-6 col-md-5">
                     <img src="{{ asset('landingpage/page2/images/hero-img.png')}}" alt=""
                         class="hero-img img-fluid cs-fade-in-up edit-image" data-number-text="17"
-                        data-content="hero-img.png" data-type="image" data-height="365.19" data-width="445">
+                        data-content="{{ asset('landingpage/page2/images/hero-img.png')}}" data-type="image" data-height="365.19" data-width="445">
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
                             activity capture and more.</p>
                         <ul class="list-unstyled mt-5">
                             <li class="media">
-                                <img class="mr-3 edit-image" data-number-text="149" data-content="icn-1-white.svg"
+                                <img class="mr-3 edit-image" data-number-text="149" data-content="{{ asset('landingpage/page2/images/icn6.svg')}}"
                                     data-type="image" data-height="24" data-width="234.98"
                                     src="{{ asset('landingpage/page2/images/icn6.svg')}}" alt="Generic placeholder image">
                                 <div class="media-body">
@@ -55,7 +55,7 @@
                                 </div>
                             </li>
                             <li class="media my-4">
-                                <img class="mr-3 edit-image" data-number-text="152" data-content="icn-2-white.svg"
+                                <img class="mr-3 edit-image" data-number-text="152" data-content="{{ asset('landingpage/page2/images/icn6.svg')}}"
                                     data-type="image" data-height="24" data-width="234.98"
                                     src="{{ asset('landingpage/page2/images/icn6.svg')}}" alt="Generic placeholder image">
                                 <div class="media-body">
@@ -67,7 +67,7 @@
                                 </div>
                             </li>
                             <li class="media">
-                                <img class="mr-3 edit-image" data-number-text="155" data-content="icn-3-white.svg"
+                                <img class="mr-3 edit-image" data-number-text="155" data-content="{{ asset('landingpage/page2/images/icn6.svg')}}"
                                     data-type="image" data-height="24" data-width="234.98"
                                     src="{{ asset('landingpage/page2/images/icn6.svg')}}" alt="Generic placeholder image">
                                 <div class="media-body">
