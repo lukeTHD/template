@@ -32,8 +32,7 @@
     @if(isset($list_content))
         <script>
             $( document ).ready(function() {
-                let id = <?php echo $code; ?>;
-
+                let id = <?php echo $id; ?>;
                 $.ajax({
                     url: "{{ route('page.getDetailPage') }}/" + id,
                     headers: {
@@ -71,7 +70,6 @@
     @endif
 
     @if(isset($preview) && $preview == true)
-
     @else
     <!-- End::Sticky toolbar all page -->
     @include('pages.option-section', [ 'arrSection' => isset($arrSection)? $arrSection : [] , 'code' => isset($code)? $code : '' ])

@@ -14,9 +14,8 @@ $(document).ready(function() {
 
     var arrData = []
     let tmpDataText = getAllDataText(arrData);
-    let tmpDataImage = getAllDataImage(arrData);
+    let tmpDataImage = getAllDataImage(arrData); console.log(arrData);
     let tmpListProductId = updateListProductSave(); //Action save to run
-    console.log(arrData);
     $('body').on('blur',".edit-text",(function(e) {
         e.preventDefault();
         $(".edit-text").editable();
@@ -39,7 +38,6 @@ $(document).ready(function() {
         e.preventDefault();
         let list_product = updateListProductSave();
         let id = $(this).data('code');
-        console.log(arrData);
         swal({
             title: ' Bạn hãy nhập tên để lưu ',
             content: {
@@ -80,7 +78,42 @@ $(document).ready(function() {
             }
 
         })
+    });
 
+    $('#btn-save-edit-page').on('click', function(e) {
+        e.preventDefault();
+        let list_product = updateListProductSave();
+        let id = $(this).data('code');
+        var arrData = []
+        let tmpDataText = getAllAttrText(arrData);
+        let tmpDataIMG = getAllAttrImage(arrData);
+        swal({
+            title: "Bạn chắc chắn muốn lưu?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((result) => {
+            if (result) {
+                let _content = arrData;
+                let _list_product = list_product;
+                let _list_section = loadListIdSectionSave();
+                $.ajax({
+                    url: "{{ route('page.updatePage') }}/" + id,
+                    method: "POST",
+                    data: { content:_content, list_product:_list_product, list_section:_list_section, id: id },
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(data) {
+                        swal({
+                            icon: 'success',
+                            text: 'Bạn đã lưu thành công!',
+                        });
+                        window.location.href = "{{ route('page.showPage') }}/" + id;
+                    }
+                })
+            }
+        })
     });
 
     $('#closeToolbarImg').on('click', function(e) {
@@ -230,6 +263,38 @@ function getAllDataImage(arrData) {
         let dataNumberImage = that.data('number-text');
         let dataContent = that.data('content');
         let dataType = that.data('type');
+        arrData[dataNumberImage] = {
+            'number-text': dataNumberImage,
+            'content': dataContent,
+            'type': dataType
+        }
+    });
+    return arrData;
+}
+
+function getAllAttrText(arrData) {
+    $(".edit-text").each(function(index) {
+        let that = $(this);
+        let dataNumberText = that.attr('data-number-text');
+        let dataContent = that.attr('data-content');
+        let dataType = that.attr('data-type');
+
+        arrData[dataNumberText] = {
+            'number-text': dataNumberText,
+            'content': dataContent,
+            'type': dataType
+        }
+    });
+
+    return arrData;
+}
+
+function getAllAttrImage(arrData) {
+    $(".edit-image").each(function() {
+        let that = $(this);
+        let dataNumberImage = that.attr('data-number-text');
+        let dataContent = that.attr('data-content');
+        let dataType = that.attr('data-type');
         arrData[dataNumberImage] = {
             'number-text': dataNumberImage,
             'content': dataContent,

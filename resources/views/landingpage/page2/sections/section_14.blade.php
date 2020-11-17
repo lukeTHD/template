@@ -19,7 +19,7 @@
                         </div>
                         <div class="cs-price-card-content" style="padding: 10px 10px 30px;">
                             <div class="cs-price-card-features">
-                                <a href="blog-single.html"><h4 class="card-title text-primary">{{isset($product['name']) ? $product['name'] : ''}}</h4></a>
+                                <a href="{{ route('page.showDetailProduct',['id' => $id, 'id_product' => $product['id'] ]) }}"><h4 class="card-title text-primary">{{isset($product['name']) ? $product['name'] : ''}}</h4></a>
                                 <h3>{{ isset($product['currency']) && $product['currency'] == 'USD'  ?  number_format($product['price'],2) : number_format($product['price'])}}<sub><small>{{isset($product['currency']) ?  $product['currency'] : '' }}</small></sub></h3>
                             </div>
                             <div><a href="#" data-href-product="" class="cbtn btn-grad btn-round btn-sm href-product">Mua ngay</a></div>

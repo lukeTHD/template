@@ -143,7 +143,8 @@ class ListTemplateController extends Controller
                 }
             }
 
-            return view('template.edit_page', ['link' => $link, 'arrSection' => $arrSection, 'listSectionDefault' => $list_section_default , 'code' => $id , 'listCampaign' => $listCampaign , 'listProduct' => $listProductDefault , 'detailProduct' => $detailProduct , 'listPaymentMethod' => $listPaymentMethod]);
+            return view('template.edit_page', ['link' => $link, 'arrSection' => $arrSection, 'listSectionDefault' => $list_section_default , 'code' => $id , 'listCampaign' => $listCampaign , 'listProduct' => $listProductDefault , 'listPaymentMethod' => $listPaymentMethod]);
+            // return view('template.edit_page', ['link' => $link, 'arrSection' => $arrSection, 'listSectionDefault' => $list_section_default , 'code' => $id , 'listCampaign' => $listCampaign , 'listProduct' => $listProductDefault , 'detailProduct' => $detailProduct , 'listPaymentMethod' => $listPaymentMethod]);
         }
         return back();
     }

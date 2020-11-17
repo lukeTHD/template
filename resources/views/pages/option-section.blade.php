@@ -79,7 +79,11 @@
                 </p>
             </div>
             <div class="dropdown-menu" aria-labelledby="dropdownSystemSection">
+                @if(isset($editPage) && $editPage == true)
+                <a class="dropdown-item" id="btn-save-edit-page" style="cursor: pointer;" data-code="{{isset($id) ? $id : ''}}">Save</a>
+                @else
                 <a class="dropdown-item" id="btn-save-page" style="cursor: pointer;" data-code="{{isset($code) ? $code : ''}}">Save</a>
+                @endif
             </div>
         </div>
     </div>

@@ -17,22 +17,30 @@
                 <div class="col-sm-12">
                     <ul class="nav nav-pills material-pills nav-border-tabs nav-fill" id="pills-tab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active edit-text edit-text-double-click" id="cs-pills-one-tab" data-toggle="pill" href="#cs-pills-one"
+                            <a class="nav-link active edit-text edit-text-double-click" data-number-text="189"
+                                data-content="Use Built-in Phone and Email"
+                                data-type="button" id="cs-pills-one-tab" data-toggle="pill" href="#cs-pills-one"
                                 role="tab" aria-controls="cs-pills-one" aria-selected="true">Use Built-in<br>
                                 Phone and Email</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link edit-text edit-text-double-click" id="cs-pills-two-tab" data-toggle="pill" href="#cs-pills-two" role="tab"
+                            <a class="nav-link edit-text edit-text-double-click" data-number-text="190"
+                                data-content="Finds the Best Sales Leads"
+                                data-type="button" id="cs-pills-two-tab" data-toggle="pill" href="#cs-pills-two" role="tab"
                                 aria-controls="cs-pills-two" aria-selected="false">Finds the<br>
                                 Best Sales Leads</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link edit-text edit-text-double-click" id="cs-pills-three-tab" data-toggle="pill" href="#cs-pills-three"
+                            <a class="nav-link edit-text edit-text-double-click" data-number-text="191"
+                            data-content=" Have Relevant Conversation"
+                            data-type="button" id="cs-pills-three-tab" data-toggle="pill" href="#cs-pills-three"
                                 role="tab" aria-controls="cs-pills-three" aria-selected="false">Have Relevant<br>
                                 Conversation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link edit-text edit-text-double-click" id="cs-pills-five-tab" data-toggle="pill" href="#cs-pills-five"
+                            <a class="nav-link edit-text edit-text-double-click" data-number-text="192"
+                            data-content=" Manage Sales Pipeline Better"
+                            data-type="button" id="cs-pills-five-tab" data-toggle="pill" href="#cs-pills-five"
                                 role="tab" aria-controls="cs-pills-five" aria-selected="false">Manage Sales<br>
                                 Pipeline Better</a>
                         </li>

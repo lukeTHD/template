@@ -34,7 +34,7 @@ Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search')
 Route::get('set-lang/{locale}', 'UserController@setLang')->name('user.get.setLanguage');
 
 
-//Begin::Check Login Admin 
+//Begin::Check Login Admin
 Route::get('/check-login', 'UserController@checkLogin')->name('user.get.checkLogin');
 Route::get('/login', 'UserController@showLogin')->name('user.get.login');
 Route::post('/login', 'UserController@login')->name('user.post.login');
@@ -65,6 +65,10 @@ Route::get('/get-list-section', 'ListTemplateController@getListSection')->name('
 Route::post('/save-page', 'PageContentController@savePage')->name('page.savePage');
 Route::get('/list-page', 'PageContentController@listPage')->name('page.listPage');
 Route::get('/page/{id?}', 'PageContentController@showPage')->name('page.showPage');
+Route::get('/page-detail-product/{id?}/{id_product?}', 'PageContentController@showDetailProduct')->name('page.showDetailProduct');
+Route::get('/edit-page/{id?}', 'PageContentController@editPage')->name('page.editPage');
+Route::post('/update-page/{id?}', 'PageContentController@updatePage')->name('page.updatePage');
+Route::get('/destroy-page/{id?}', 'PageContentController@destroy')->name('page.destroy');
 Route::get('/get-detail-page/{id?}', 'PageContentController@getDetailPage')->name('page.getDetailPage');
 
 //End::Template

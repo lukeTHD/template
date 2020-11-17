@@ -7,6 +7,11 @@
 <div class="card card-custom gutter-b">
     <div class="card-body">
         <!--begin: Datatable-->
+        @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+        @endif
         <div class="datatable datatable-bordered datatable-head-custom datatable-default datatable-primary datatable-loaded"
             id="kt_datatable" style="">
             <table class="datatable-table" style="display: block;">
@@ -49,7 +54,7 @@
                                             </g>
                                         </svg> </span>
                                 </a>
-                                <a href="javascript:;"
+                                <a href="{{ route('page.editPage',['id'=> $page['id']]) }}"
                                     class="btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon mr-2"
                                     title="View details"> <span class="svg-icon svg-icon-md"> <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -68,8 +73,8 @@
                                             </g>
                                         </svg> </span>
                                 </a>
-                                <a href="javascript:;"
-                                    class="btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon"
+                                <a data-id="{{ $page->id }}"
+                                    class="btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon destroy_page"
                                     title="Delete">
                                     <span class="svg-icon svg-icon-md"> <svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
@@ -97,4 +102,36 @@
     </div>
 </div>
 <!--end::Card-->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$( document ).ready(function() {
+    $('.destroy_page').on('click', function(e) {
+        let id = $(this).data('id');
+        swal.fire({
+            title: ' Bạn có chắc ? ',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: ' OK ',
+            cancelButtonText: ' Hủy ',
+        }).then(async function(result) {
+            if (result.value) {
+                $.ajax({
+                    url: "{{ route('page.destroy') }}/" + id,
+                    method: "GET",
+                    success: function() {
+                        Swal.fire({
+                            title: "Bạn đã xóa thành công !",
+                            icon: "success",
+                        }).then((OK) => {
+                            if (OK) {
+                                location.reload();
+                            }
+                        });
+                    }
+                })
+            }
+        });
+    })
+});
+</script>
 @endsection
