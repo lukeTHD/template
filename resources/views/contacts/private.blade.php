@@ -166,7 +166,6 @@
         function showSweetAlertErr(){
             Swal.fire("Thất bại", "Vui lòng điền dữ liệu", "error");
         }
-
         function LoadIcon(){
             Swal.fire({
                 title: "",
@@ -269,9 +268,50 @@
                         this.text_content='';
                         this.getListMessages();
                     })
-                    .catch(function (error) {
+                },
+
+                reload:function(){
+                    LoadIcon();
+                    this.getListContact();
+                },
+
+                addContent:function(){
+                    if(this.text_content == null || this.text_content == '')
+                    {
                         showSweetAlertErr();
-                    });
+                    }
+                    else{
+                        axios.post('http://localhost:81/template/public/api/getSubject',{
+                            idTitle:this.id_subject,
+                            userId:this.id_user,
+                            content:this.text_content,
+                            create_at:this.getNow(),
+                            update_at:this.getNow()               
+                        })
+                        .then(response=>{
+                            this.text_content='';
+                            this.getListContact();
+                        })
+                        .catch(function (error) {
+                            showSweetAlertErr();
+                        });
+                    }
+                },
+
+                handleFileUpload:function(){
+                    this.file = this.$refs.file.files[0];
+                },
+                clickChangeStatusPro:function(){
+                    this.status=1;
+                },
+                clickChangeStatusPen:function(){
+                    this.status=2;
+                },
+                clickChangeStatusSen:function(){
+                    this.status=3;
+                },
+                clickUploadImg:function(){
+                    $('#file').click();
                 },
 
                 handleFileUpload:function(){
