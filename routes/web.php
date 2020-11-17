@@ -57,6 +57,14 @@ Route::get('/home', function () {
 
 Route::get('/private', function () {
     return  view('contacts.private');
+})->name('private');
+
+Route::get('pageNotFound', function(){
+    return abort(404);
+})->name('pageNotFound');
+
+Route::get('/contact', function () {
+    return  view('contacts.contact');
 });
 
 
