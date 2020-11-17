@@ -14,8 +14,9 @@ $(document).ready(function() {
 
     var arrData = []
     let tmpDataText = getAllDataText(arrData);
-    let tmpDataImage = getAllDataImage(arrData); console.log(arrData);
+    let tmpDataImage = getAllDataImage(arrData);
     let tmpListProductId = updateListProductSave(); //Action save to run
+    console.log(loadListIdSectionSave());
     $('body').on('blur',".edit-text",(function(e) {
         e.preventDefault();
         $(".edit-text").editable();
@@ -237,7 +238,26 @@ function loadListIdSectionSave() {
         let itemSection = $(this).data('section-index');
         divList.push(itemSection);
     });
+    if(jQuery.inArray(17, divList) == -1)
+    {
+        divList = addSectionShowDetailProduct(divList, 17);
+    }
     return divList;
+}
+
+function addSectionShowDetailProduct(divList, index_section)
+{
+    divListTmp = [];
+    divList.forEach(function(item, index, array) {
+        if(Math.floor(divList.length/2) == index)
+        {
+            divListTmp.push(17);
+            divListTmp.push(item);
+        }else{
+            divListTmp.push(item);
+        }
+    });
+    return divListTmp;
 }
 
 function getAllDataText(arrData) {

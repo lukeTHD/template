@@ -30,6 +30,7 @@
 </head>
 
 <body>
+
     @if(isset($listSectionDefault) && count($listSectionDefault)>0)
         @foreach($listSectionDefault as $key => $sectionDefault)
             @include('landingpage.page2.sections.section_'.$sectionDefault)

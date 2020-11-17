@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="card card-custom card-container"
-    style="padding-left: 30px; padding-right: 30px; margin: 36px 8px;">
+    style="padding-left: 30px; padding-right: 30px;">
     <div style=" margin-top:30px;">
         @if (session('success'))
         <div class="alert alert-success" role="alert">

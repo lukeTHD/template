@@ -22,11 +22,11 @@ class PageContentController extends Controller
     public function savePage(Request $request)
     {
         $param = $request->all();
-        $id_user = 1;
+        $id_user = session('user_data') ? session('user_data')['Id'] : '';
         $id_page = 1;
         $data = [
             'status' => isset($param['status']) ? $param['status'] : 1,
-            'id_user' => 1,
+            'id_user' => $id_user,
             'id_page' => isset($param['id']) ? $param['id'] : '',
             'name' => isset($param['name']) ? $param['name'] : '',
             'content' =>  isset($param['content']) ? json_encode($param['content']) : '',
@@ -40,11 +40,11 @@ class PageContentController extends Controller
     public function updatePage(Request $request)
     {
         $param = $request->all();
-        $id_user = 1;
+        $id_user = session('user_data') ? session('user_data')['Id'] : '';
         $id = isset($param['id']) ? $param['id'] : '';
         $data = [
             'status' => isset($param['status']) ? $param['status'] : 1,
-            'id_user' => 1,
+            'id_user' => $id_user,
             'content' =>  isset($param['content']) ? json_encode($param['content']) : '',
             'list_product' =>  isset($param['list_product']) ? json_encode($param['list_product']) : '',
             'list_section' =>  isset($param['list_section']) ? json_encode($param['list_section']) : '',
