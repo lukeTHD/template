@@ -78,25 +78,13 @@
 
         <li class="nav-item " id="imgupload">
 
-            <i class="fa fa-facebook"></i> Thay ảnh
-
-        </li>
-
-        <li class="nav-item ">
-
-            <i class="fa fa-facebook"></i> Setting
-
-        </li>
-
-        <li class="nav-item">
-
-            <i class="fa fa-facebook"></i> Delete
+            <i class="fa fa-image"></i> Thay ảnh
 
         </li>
 
         <li class="nav-item" id="closeToolbarImg">
 
-            <i class=""></i> Close
+            <i class="fa fa-window-close"></i> Close
 
         </li>
     </ul>

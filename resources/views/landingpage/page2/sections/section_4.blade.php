@@ -6,7 +6,7 @@
                     <div class="col-sm-8">
                         <div class="media">
                             <div class="media-left"> <img src="{{ asset('landingpage/page2/images/call-down.svg')}}"
-                                    alt="img" class="img-fluid edit-image" data-number-text="34"
+                                    alt="img" class="edit-image" data-number-text="34"
                                     data-content="{{ asset('landingpage/page2/images/call-down.svg')}}" data-type="image" data-height="49"  data-width="49"> </div>
                             <div class="media-body">
                                 <h3 class="text-primary edit-text" data-number-text="35"

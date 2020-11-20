@@ -238,6 +238,10 @@ function loadListIdSectionSave() {
         let itemSection = $(this).data('section-index');
         divList.push(itemSection);
     });
+    if(jQuery.inArray(14, divList) == -1)
+    {
+        divList = addSectionShowDetailProduct(divList, 14);
+    }
     if(jQuery.inArray(17, divList) == -1)
     {
         divList = addSectionShowDetailProduct(divList, 17);
@@ -251,7 +255,7 @@ function addSectionShowDetailProduct(divList, index_section)
     divList.forEach(function(item, index, array) {
         if(Math.floor(divList.length/2) == index)
         {
-            divListTmp.push(17);
+            divListTmp.push(index_section);
             divListTmp.push(item);
         }else{
             divListTmp.push(item);

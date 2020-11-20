@@ -14,7 +14,7 @@
                     <!-- InfoBox Left  <Start> -->
                     <div class="cs-infobox-left mt-4" data-aos="fade-up" data-aos-anchor-placement="top-bottom"
                         data-aos-duration="1000">
-                        <img src="{{ asset('landingpage/page2/images/icn1.svg')}}" alt="" class="img-fluid edit-image"
+                        <img src="{{ asset('landingpage/page2/images/icn1.svg')}}" alt="" class="edit-image"
                             data-number-text="39" data-content="{{ asset('landingpage/page2/images/icn1.svg')}}" data-type="image" data-height="49"  data-width="49">
                         <h4 class="text-primary edit-text" data-number-text="40" data-content="Quality Resources"
                             data-type="text">Quality Resources</h4>
@@ -29,7 +29,7 @@
                     <!-- InfoBox Center  <Start> -->
                     <div class="cs-infobox-left mt-4" data-aos="fade-up" data-aos-anchor-placement="top-bottom"
                         data-aos-duration="1200">
-                        <img src="{{ asset('landingpage/page2/images/icn2.svg')}}" alt="" class="img-fluid edit-image"
+                        <img src="{{ asset('landingpage/page2/images/icn2.svg')}}" alt="" class="edit-image"
                             data-number-text="42" data-content="{{ asset('landingpage/page2/images/icn2.svg')}}" data-type="image" data-height="49"  data-width="49">
                         <h4 class="text-primary edit-text" data-number-text="43" data-content="At solmen va esser"
                             data-type="text">At solmen va esser</h4>
@@ -44,7 +44,7 @@
                     <!-- InfoBox Center  <Start> -->
                     <div class="cs-infobox-left mt-4" data-aos="fade-up" data-aos-anchor-placement="top-bottom"
                         data-aos-duration="1400">
-                        <img src="{{ asset('landingpage/page2/images/icn3.svg')}}" alt="" class="img-fluid edit-image"
+                        <img src="{{ asset('landingpage/page2/images/icn3.svg')}}" alt="" class="edit-image"
                             data-number-text="45" data-content="{{ asset('landingpage/page2/images/icn3.svg')}}" data-type="image" data-height="49"  data-width="49">
                         <h4 class="text-primary edit-text" data-number-text="46" data-content="Pronunciation sommun"
                             data-type="text">Pronunciation sommun</h4>
@@ -59,7 +59,7 @@
                     <!-- InfoBox Center  <Start> -->
                     <div class="cs-infobox-left mt-4" data-aos="fade-up" data-aos-anchor-placement="top-bottom"
                         data-aos-duration="1600">
-                        <img src="{{ asset('landingpage/page2/images/icn4.svg')}}" alt="" class="img-fluid edit-image"
+                        <img src="{{ asset('landingpage/page2/images/icn4.svg')}}" alt="" class="edit-image"
                             data-number-text="48" data-content="{{ asset('landingpage/page2/images/icn4.svg')}}" data-type="image" data-height="49"  data-width="49">
                         <h4 class="text-primary edit-text" data-number-text="49" data-content="Uniform Grammatica"
                             data-type="text">Uniform Grammatica</h4>
@@ -74,7 +74,7 @@
                     <!-- InfoBox Center  <Start> -->
                     <div class="cs-infobox-left mt-4" data-aos="fade-up" data-aos-anchor-placement="top-bottom"
                         data-aos-duration="1800">
-                        <img src="{{ asset('landingpage/page2/images/icn5.svg')}}" alt="" class="img-fluid edit-image"
+                        <img src="{{ asset('landingpage/page2/images/icn5.svg')}}" alt="" class="edit-image"
                             data-number-text="51" data-content="{{ asset('landingpage/page2/images/icn5.svg')}}" data-type="image" data-height="49"  data-width="49">
                         <h4 class="text-primary edit-text" data-number-text="52" data-content="Omnicos al desirabilite"
                             data-type="text">Omnicos al desirabilite</h4>
@@ -89,7 +89,7 @@
                     <!-- InfoBox Center  <Start> -->
                     <div class="cs-infobox-left mt-4" data-aos="fade-up" data-aos-anchor-placement="top-bottom"
                         data-aos-duration="2000">
-                        <img src="{{ asset('landingpage/page2/images/icn6.svg')}}" alt="" class="img-fluid edit-image"
+                        <img src="{{ asset('landingpage/page2/images/icn6.svg')}}" alt="" class="edit-image"
                             data-number-text="54" data-content="{{ asset('landingpage/page2/images/icn6.svg')}}" data-type="image" data-height="49"  data-width="49">
                         <h4 class="text-primary edit-text" data-number-text="55" data-content="Commun Vocabules"
                             data-type="text">Commun Vocabules</h4>

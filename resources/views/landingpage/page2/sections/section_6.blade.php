@@ -8,11 +8,11 @@
                             <a class="venobox vbox-item video-play" data-autoplay="true" data-vbtype="video"
                                 href="https://youtu.be/kubGCSj5y3k" >
                                 <img src="{{ asset('landingpage/page2/images/video-bg.png')}}" alt=""
-                                    class="img-fluid edit-image" data-number-text="57" data-content="{{ asset('landingpage/page2/images/video-bg.png')}}"
+                                    class="edit-image" data-number-text="57" data-content="{{ asset('landingpage/page2/images/video-bg.png')}}"
                                     data-type="image" data-height="530.6"  data-width="930">
                                 <div class="vid-fixed-icn"><img
                                         src="{{ asset('landingpage/page2/images/video-thumb.png')}}" alt=""
-                                        class="img-fluid edit-image" data-number-text="58" data-content="{{ asset('landingpage/page2/images/video-thumb.png')}}"
+                                        class="edit-image" data-number-text="58" data-content="{{ asset('landingpage/page2/images/video-thumb.png')}}"
                                         data-type="image" data-height="72"  data-width="71.1"></div>
                             </a>
                         </div>
@@ -24,7 +24,7 @@
                                     <div class="testimonial-default">
                                         <div class="testimonial-default-img"><img
                                                 src="{{ asset('landingpage/page2/images/female-75.jpg')}}" alt=""
-                                                class="center-block img-fluid edit-image" data-number-text="59"
+                                                class="center-block edit-image" data-number-text="59"
                                                 data-content="{{ asset('landingpage/page2/images/female-75.jpg')}}" data-type="image" data-height="99"  data-width="99"></div>
                                         <h4 class="edit-text" data-number-text="60"
                                             data-content='“On refusa continuar payar custosi traductores. At solmen va esser necessi far uniform grammatica, pronunciation plu sommun paroles.”'
@@ -40,7 +40,7 @@
                                     <div class="testimonial-default">
                                         <div class="testimonial-default-img"><img
                                                 src="{{ asset('landingpage/page2/images/male-14.jpg')}}" alt=""
-                                                class="center-block img-fluid edit-image" data-number-text="62"
+                                                class="center-block edit-image" data-number-text="62"
                                                 data-content="{{ asset('landingpage/page2/images/male-14.jpg')}}" data-type="image" data-height="99"  data-width="99"></div>
                                         <h4 class="edit-text" data-number-text="63"
                                             data-content='“On refusa continuar payar custosi traductores. At solmen va esser necessi far uniform grammatica, pronunciation plu sommun paroles.”'
@@ -56,7 +56,7 @@
                                     <div class="testimonial-default">
                                         <div class="testimonial-default-img"><img
                                                 src="{{ asset('landingpage/page2/images/29.jpg')}}" alt=""
-                                                class="center-block img-fluid edit-image" data-number-text="65"
+                                                class="center-block edit-image" data-number-text="65"
                                                 data-content="{{ asset('landingpage/page2/images/29.jpg')}}" data-type="image" data-height="99"  data-width="99"></div>
                                         <h4 class="edit-text" data-number-text="66"
                                             data-content='“On refusa continuar payar custosi traductores. At solmen va esser necessi far uniform grammatica, pronunciation plu sommun paroles.”'
