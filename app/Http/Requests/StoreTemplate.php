@@ -28,7 +28,7 @@ class StoreTemplate extends FormRequest
             'name' => 'required|max:255',
             'avatar' => 'required|mimes:jpg,jpeg,png,gif|max:2048',
             'price' => 'required',
-            'code' => 'unique:list_template'
+            'section' => 'required',
         ];
     }
 
@@ -48,6 +48,7 @@ class StoreTemplate extends FormRequest
             'name'      =>  'Tên Template',
             'avatar'    =>  'Avatar Template',
             'price'     =>  'Giá',
+            'section'     =>  'Section',
         ];
     }
 }

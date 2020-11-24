@@ -76,16 +76,25 @@
                 $.ajax({
                     url: "{{ route('template.destroy') }}/" + id,
                     method: "GET",
-                    success: function() {
-                        Swal.fire({
-                            title: "Bạn đã xóa thành công !",
-                            icon: "success",
-                        }).then((OK) => {
-                            if (OK) {
-                                location.reload();
-                            }
-                        });
-                    }
+                    success: function(data) {
+                        if(data == 'success') {
+                            Swal.fire({
+                                title: "Bạn đã xóa thành công !",
+                                icon: "success",
+                            }).then((OK) => {
+                                if (OK) {
+                                    location.reload();
+                                }
+                            });
+                        }
+                        else if(data == 'error') {
+                            Swal.fire({
+                                title: "Template không thể xóa !",
+                                icon: "error",
+                            }).then((OK) => {});
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) { errorFunction(); }
                 })
             }
         });

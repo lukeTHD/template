@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ListTemplate;
+use App\PageContent;
 use URL;
 use File;
 use App\Http\Requests\StoreTemplate;
@@ -16,14 +17,16 @@ class ListTemplateController extends Controller
 {
     private $api;
     private $listCurrency;
+    private $pageContent;
 
     protected $listTemplateRepository;
 
-    public function __construct(ListTemplateRepository $listTemplateRepository , Api $api)
+    public function __construct(ListTemplateRepository $listTemplateRepository , Api $api, PageContent $pageContent)
     {
         $this->listTemplateRepository = $listTemplateRepository;
         $this->api = $api;
         $this->listCurrency = ['VND', 'USD'];
+        $this->pageContent = $pageContent;
     }
 
     public function create()
@@ -38,30 +41,35 @@ class ListTemplateController extends Controller
         return back()->with('success', 'Thêm Template thành công');
     }
 
+    public function getSection($id)
+    {
+        $id = $id!='' ? $id : 0;
+        $list_section = $id !='' ? $this->countImages($id) : 0;
+        return $list_section;
+    }
+
     public function destroy($id)
     {
-        $this->listTemplateRepository->destroy($id);
-        return back()->with('success', 'Xóa Template thành công');
+        $list_page = $this->pageContent->where('id_page', $id)->get();
+        if(count($list_page) == 0){
+            $this->listTemplateRepository->destroy($id);
+            return 'success';
+        }
+        return 'error';
     }
 
     public function edit($id)
     {
         $page_title = 'Edit Template';
         $template = $this->listTemplateRepository->findByID($id);
-        return view('template.edit', compact('page_title', 'template'));
+        $list_section = $this->countImages($template->code);
+        $list_section_default = json_decode($template->list_section_default);
+        return view('template.edit', compact('page_title', 'template', 'list_section', 'list_section_default'));
     }
 
     public function update(UpdateTemplate $updateTemplate, $id)
     {
         $template = ListTemplate::find($id);
-        if($updateTemplate->code != $template->code)
-        {
-            $code = ListTemplate::where('code', $updateTemplate->code)->get()->toArray();
-            if($code)
-            {
-                return back()->with('error', 'Đường dẫn đã tồn tại. Vui lòng nhập đường dẫn khác!');
-            }
-        }
         $template = $this->listTemplateRepository->update($updateTemplate, $id);
         return back()->with('success', 'Cập nhật Template thành công');
     }

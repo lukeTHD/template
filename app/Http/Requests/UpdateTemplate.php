@@ -27,6 +27,7 @@ class UpdateTemplate extends FormRequest
             'name' => 'required|max:255',
             'avatar' => 'mimes:jpg,jpeg,png,gif|max:2048',
             'price' => 'required',
+            'section' => 'required',
         ];
     }
 
@@ -44,6 +45,7 @@ class UpdateTemplate extends FormRequest
             'name'      =>  'Tên Template',
             'avatar'    =>  'Avatar Template',
             'price'     =>  'Giá',
+            'section'   =>  'Section',
         ];
     }
 }

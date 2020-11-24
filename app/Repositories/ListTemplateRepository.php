@@ -25,20 +25,21 @@ class ListTemplateRepository
 
     public function store($request)
     {
-        DB::beginTransaction();
-        try {
-            $template = new ListTemplate();
-            $template->name = $request->name;
-            $template->price = $request->price;
-            $template->code = $request->code;
-            $template->avatar = $this->getImg($request);
-            $template->save();
-            DB::commit();
-            return $template;
-        } catch (\Exception $ex) {
-            DB::rollback();
-            throw new $ex;
+        $template = new ListTemplate();
+        $template->name = $request->name;
+        $template->price = $request->price;
+        $template->code = $request->code;
+        $list_section = $request->section;
+        $array_list_section = [];
+        foreach ($list_section as $key => $value) {
+            $array_list_section [] = $value;
         }
+        $array_list_section [] = "14";
+        $array_list_section [] = "16";
+        $template->list_section_default = json_encode($array_list_section);
+        $template->avatar = $this->getImg($request);
+        $template->save();
+        return $template;
     }
 
     public function update($request, $id)
@@ -53,6 +54,14 @@ class ListTemplateRepository
             }
             $template->avatar = $this->getImg($request);
         }
+        $list_section = $request->section;
+        $array_list_section = [];
+        foreach ($list_section as $key => $value) {
+            $array_list_section [] = $value;
+        }
+        $array_list_section [] = "14";
+        $array_list_section [] = "16";
+        $template->list_section_default = json_encode($array_list_section);
         $template->save();
         return $template;
     }

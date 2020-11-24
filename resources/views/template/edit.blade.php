@@ -92,10 +92,34 @@
                                             <!--end::Group-->
                                             <!--begin::Group-->
                                             <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">Link Code Template</label>
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Page</label>
                                                 <div class="col-lg-9 col-xl-9">
-                                                    <textarea class="form-control form-control-solid form-control-lg"
-                                                        rows="2" name="code">{{ $template->code }}</textarea>
+                                                    <input class="form-control form-control-solid form-control-lg"
+                                                        type="text" name="code" min="0" value="{{ $template->code }}" />
+                                                </div>
+                                            </div>
+                                            <!--end::Group-->
+                                            <!--begin::Group-->
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Section</label>
+                                                <div class="col-lg-9 col-xl-9">
+                                                    <div class="form-group">
+                                                        <div class="checkbox-inline">
+                                                            @for( $key = 1; $key <= $list_section; $key++)
+                                                                @if(in_array($key, $list_section_default))
+                                                                <label class="checkbox checkbox-primary" style="width: 130px;">
+                                                                <input type="checkbox" checked="checked" name="section[]" value="{{$key}}"
+                                                                {{  $key == 14 || $key == 16 ? 'disabled' : ''}}>
+                                                                <span></span>Section {{ $key }}</label>
+                                                                @else
+                                                                <label class="checkbox checkbox-primary" style="width: 130px;">
+                                                                <input type="checkbox" name="section[]" value="{{$key}}"
+                                                                {{  $key == 14 || $key == 16 ? 'disabled' : ''}}>
+                                                                <span></span>Section {{ $key }}</label>
+                                                                @endif
+                                                            @endfor
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!--end::Group-->
@@ -145,6 +169,43 @@
 <script src="{{ asset('js/pages/crud/datatables/basic/basic.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/profile.js') }}" type="text/javascript"></script>
+<script>
+    $( document ).ready(function () {
+        $('input[name=code]').keyup(function() {
+            $( ".checkbox-inline" ).empty();
+            getSection();
+        }); 
+    });
+    function getSection(){
+        let code = $( "input[name='code']" ).val();
+        if(code!='') {
+            $.ajax({
+                url: "{{ route('template.getSection') }}/" + code,
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                method: "GET",
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    for (let index = 1; index <= data; index++) {
+                        if(index != 14 && index != 16) {
+                            $( ".checkbox-inline" ).append(`<label class="checkbox checkbox-primary" style="width: 130px;">
+                                                        <input type="checkbox" name="section[]" value="`+index+`">
+                                                        <span></span>Section `+index+`</label>`);
+                        }
+                    }
+                    $( ".checkbox-inline" ).append(`<label class="checkbox checkbox-primary" style="width: 130px;">
+                                                        <input type="checkbox" name="section[]" value="14" checked="checked" disabled="disabled">
+                                                        <span></span>Section 14</label>`);
+                    $( ".checkbox-inline" ).append(`<label class="checkbox checkbox-primary" style="width: 130px;">
+                                                    <input type="checkbox" name="section[]" value="16" checked="checked" disabled="disabled">
+                                                    <span></span>Section 16</label>`);
+                }
+            })
+        }
+    }
+</script>
 @endsection
 <!--  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -51,6 +51,7 @@ Route::group(['prefix' => '/', 'middleware' => ['checkLogin']], function () {
 Route::get('/details-template/{code}', 'ListTemplateController@detailsTemplate')->name('template.detailsTemplate');
 
 Route::get('/create-template', 'ListTemplateController@create')->name('template.create');
+Route::get('/get-section/{id?}', 'ListTemplateController@getSection')->name('template.getSection');
 Route::post('/store-template', 'ListTemplateController@store')->name('template.store');
 Route::get('/destroy-template/{id?}', 'ListTemplateController@destroy')->name('template.destroy');
 Route::get('/edit-template/{id}', 'ListTemplateController@edit')->name('template.edit');

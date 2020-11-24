@@ -4,7 +4,8 @@
 {{-- Content --}}
 @section('content')
 <!--begin::Card-->
-<div class="card card-custom gutter-b">
+<div class="card card-custom">
+    <!--begin::Body-->
     <div class="card-body">
         <!--begin: Datatable-->
         @if (session('success'))
@@ -22,11 +23,6 @@
                             <span style="width: 250px;">
                                 <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">{{ $page->name }}</div>
                                 <div class="text-muted" style="visibility:hidden;">Date updated</div>
-                                <!-- <div class="d-flex align-items-center">
-                                            <div class="ml-3">
-                                                <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">{{ $page->name }}</div>
-                                            </div>
-                                        </div> -->
                             </span>
                         </td>
                         <td data-field="ShipDate" aria-label="3/3/2017" class="datatable-cell">
@@ -100,11 +96,12 @@
         </div>
         <!--end: Datatable-->
     </div>
+    <!--end::Body-->
 </div>
 <!--end::Card-->
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
-$( document ).ready(function() {
+$(document).ready(function() {
     $('.destroy_page').on('click', function(e) {
         let id = $(this).data('id');
         swal.fire({

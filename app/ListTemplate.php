@@ -22,4 +22,5 @@ class ListTemplate extends Model
     ];
 
     public $timestamps = false;
+
 }
