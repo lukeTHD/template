@@ -8,11 +8,18 @@ class Message extends Model
 {
     protected $guarded = [];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function subject(){
+    public function subject()
+    {
         return $this->belongsTo(Subject::class, 'subject_id');
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->toDayDateTimeString();
     }
 }

@@ -41,32 +41,33 @@ Route::get('/edit_template/{id}', 'ListTemplateController@edit')->name('template
 Route::post('/update_template/{id}', 'ListTemplateController@update')->name('template.update');
 
 
-Route::get('/listcontact', function () {
-    $page_title = 'List Contact';
-    $page_description = 'This is list contact page';
-    return  view('contacts.HomeContact', [
-        "page_title" => $page_title,
-        "page_description" => $page_description,
-    ]);
+// Route::get('/listcontact', function () {
+//     $page_title = 'List Contact';
+//     $page_description = 'This is list contact page';
+//     return  view('contacts.HomeContact', [
+//         "page_title" => $page_title,
+//         "page_description" => $page_description,
+//     ]);
+// });
+
+
+
+Route::group(['prefix' => 'tickets', 'as' => 'tickets.'], function(){
+    Route::get('/all', 'TicketController@index')->name('index');
+    
+    Route::get('/detail/{id}', 'TicketController@show')->name('show');
+    
+    Route::get('/pageNotFound', function(){
+        return abort(404);
+    })->name('pageNotFound');
+
 });
 
-Route::get('/home', function () {
-    return  view('contacts.home');
-});
 
+// Route::get('/contact', function () {
+//     return  view('contacts.contact');
+// });
 
-Route::get('/private', function () {
-    return  view('contacts.private');
-})->name('private');
-
-Route::get('pageNotFound', function(){
-    return abort(404);
-})->name('pageNotFound');
-
-Route::get('/contact', function () {
-    return  view('contacts.contact');
-});
-
-Route::get('/testapi', function () {
-    return  view('testapi');
-});
+// Route::get('/testapi', function () {
+//     return  view('testapi');
+// });

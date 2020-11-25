@@ -14,7 +14,7 @@ class Subject extends Model
     }
 
     public function messages(){
-        return $this->hasMany(Subject::class, 'subject_id');
+        return $this->hasMany(Message::class, 'subject_id');
     }
 
     public function getCreatedAtAttribute($value){

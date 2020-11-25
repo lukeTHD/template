@@ -18,10 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('subjects', 'Api\SubjectController');
-Route::get('subject/messages/{id}', 'Api\SubjectController@getAllMessage')->name('subject.all-message');
-// Route::post('uploadImg', 'Api\contacts@uploadImg');
-// Route::post('getSubjectByNameStatus', 'Api\contacts@getSubjectByNameStatus');
-// Route::post('getSubjectByStatus', 'Api\contacts@getSubjectByStatus');
-Route::post('fill-data', 'Api\SubjectController@fillData')->name('fillData');
-Route::post('store-message', 'Api\SubjectController@storeMessage')->name('message.store-message');
+Route::group(['namespace' => 'Api', 'as' => 'api.'], function(){
+    Route::get('tickets', 'TicketController@index')->name('tickets.index');
+    Route::get('tickets/update-status/{id}/{status}', 'TicketController@updateStatus')->name('tickets.update-status');
+    Route::post('tickets/insert-message', 'TicketController@insertMessage')->name('tickets.insert-message');
+    Route::post('tickets/update-rows-status', 'TicketController@updateRowsStatus')->name('tickets.update-rows-status');
+});
+
