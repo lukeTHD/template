@@ -94,6 +94,7 @@
                 </tbody>
             </table>
         </div>
+        @include('template.pagination.default', ['paginator' => $list_page ])
         <!--end: Datatable-->
     </div>
     <!--end::Body-->

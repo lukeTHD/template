@@ -40,7 +40,11 @@
             @hasSection('page_toolbar')
             @section('page_toolbar')
             @endif
-
+            @php
+                $session = session()->get('profile');
+                $group_id = $session['group_id'];
+            @endphp
+            @if($group_id && $group_id == 2)
             <div class="dropdown dropdown-inline" data-toggle="tooltip" title="" data-placement="left">
                 <a href="{{ route('template.create') }}" class="btn btn-primary font-weight-bolder">
                     <span class="svg-icon svg-icon-md">
@@ -50,6 +54,7 @@
                     <!-- </span>Thêm Template</a> -->
                     </span>{{__('label.template.add_template')}}</a>
             </div>
+            @endif
         </div>
 
     </div>

@@ -44,33 +44,35 @@ Route::group(['prefix' => '/', 'middleware' => ['checkLogin']], function () {
     Route::get('/', 'UserController@showDashboard')->name('user.get.showDashboard');
     //Begin::Template
     Route::get('/list-template', 'ListTemplateController@listTemplate')->name('template.listTemplate');
+
+    Route::get('/details-template/{code}', 'ListTemplateController@detailsTemplate')->name('template.detailsTemplate');
+
+    Route::group(['middleware' => ['checkAdmin']], function () {
+        Route::get('/create-template', 'ListTemplateController@create')->name('template.create');
+        Route::post('/store-template', 'ListTemplateController@store')->name('template.store');
+        Route::get('/destroy-template/{id?}', 'ListTemplateController@destroy')->name('template.destroy');
+        Route::get('/edit-template/{id}', 'ListTemplateController@edit')->name('template.edit');
+        Route::post('/update-template/{id}', 'ListTemplateController@update')->name('template.update');
+    });
+
+    Route::get('/get-section/{id?}', 'ListTemplateController@getSection')->name('template.getSection');
+
+    //Upload file type image
+    Route::post('/upload-file/{imagePath?}', 'ListTemplateController@upLoadFile')->name('template.upLoadFile');
+    Route::get('/preview-template/{id}', 'ListTemplateController@previewTemplate')->name('template.previewTemplate');
+    Route::get('/get-detail-code-section', 'ListTemplateController@getDetailCodeSection')->name('template.getDetailCodeSection');
+    Route::get('/get-list-section', 'ListTemplateController@getListSection')->name('template.getListSection');
+    // save Page
+    Route::post('/save-page', 'PageContentController@savePage')->name('page.savePage');
+    Route::get('/list-page', 'PageContentController@listPage')->name('page.listPage');
+    Route::get('/page/{id?}', 'PageContentController@showPage')->name('page.showPage');
+    Route::get('/page-detail-product/{id?}/{id_product?}', 'PageContentController@showDetailProduct')->name('page.showDetailProduct');
+    Route::get('/edit-page/{id?}', 'PageContentController@editPage')->name('page.editPage');
+    Route::post('/update-page/{id?}', 'PageContentController@updatePage')->name('page.updatePage');
+    Route::get('/destroy-page/{id?}', 'PageContentController@destroy')->name('page.destroy');
+    Route::get('/get-detail-page/{id?}', 'PageContentController@getDetailPage')->name('page.getDetailPage');
 });
 
-
-
-Route::get('/details-template/{code}', 'ListTemplateController@detailsTemplate')->name('template.detailsTemplate');
-
-Route::get('/create-template', 'ListTemplateController@create')->name('template.create');
-Route::get('/get-section/{id?}', 'ListTemplateController@getSection')->name('template.getSection');
-Route::post('/store-template', 'ListTemplateController@store')->name('template.store');
-Route::get('/destroy-template/{id?}', 'ListTemplateController@destroy')->name('template.destroy');
-Route::get('/edit-template/{id}', 'ListTemplateController@edit')->name('template.edit');
-Route::post('/update-template/{id}', 'ListTemplateController@update')->name('template.update');
-
-//Upload file type image
-Route::post('/upload-file/{imagePath?}', 'ListTemplateController@upLoadFile')->name('template.upLoadFile');
-Route::get('/preview-template/{id}', 'ListTemplateController@previewTemplate')->name('template.previewTemplate');
-Route::get('/get-detail-code-section', 'ListTemplateController@getDetailCodeSection')->name('template.getDetailCodeSection');
-Route::get('/get-list-section', 'ListTemplateController@getListSection')->name('template.getListSection');
-// save Page
-Route::post('/save-page', 'PageContentController@savePage')->name('page.savePage');
-Route::get('/list-page', 'PageContentController@listPage')->name('page.listPage');
-Route::get('/page/{id?}', 'PageContentController@showPage')->name('page.showPage');
-Route::get('/page-detail-product/{id?}/{id_product?}', 'PageContentController@showDetailProduct')->name('page.showDetailProduct');
-Route::get('/edit-page/{id?}', 'PageContentController@editPage')->name('page.editPage');
-Route::post('/update-page/{id?}', 'PageContentController@updatePage')->name('page.updatePage');
-Route::get('/destroy-page/{id?}', 'PageContentController@destroy')->name('page.destroy');
-Route::get('/get-detail-page/{id?}', 'PageContentController@getDetailPage')->name('page.getDetailPage');
 
 //End::Template
 Route::get('/listcontact', function () {

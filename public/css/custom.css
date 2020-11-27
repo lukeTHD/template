@@ -19,14 +19,19 @@
 }
 
 .theme-actions button{
-    color: #212529;
+    color: white;
     background-color: #ffb822;
     border-color: #ffb822;
     border-radius: 5px;
 }
 
 .theme-actions a{
-    color: #212529;
+    color: white;
+}
+
+.theme-actions button:hover{
+    background-color: #ff8d22;
+    border-color: #ff8d22;
 }
 
 .theme-actions{

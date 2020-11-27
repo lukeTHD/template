@@ -9,7 +9,7 @@ class ListTemplateRepository
 {
     public function getAll()
     {
-        return ListTemplate::all();
+        return ListTemplate::paginate(3);;
     }
 
     public function findByID($id)
@@ -32,10 +32,13 @@ class ListTemplateRepository
         $list_section = $request->section;
         $array_list_section = [];
         foreach ($list_section as $key => $value) {
+            if($key == ceil(count($list_section)/2))
+            {
+                $array_list_section [] = "14";
+                $array_list_section [] = "16";
+            }
             $array_list_section [] = $value;
         }
-        $array_list_section [] = "14";
-        $array_list_section [] = "16";
         $template->list_section_default = json_encode($array_list_section);
         $template->avatar = $this->getImg($request);
         $template->save();
@@ -57,10 +60,13 @@ class ListTemplateRepository
         $list_section = $request->section;
         $array_list_section = [];
         foreach ($list_section as $key => $value) {
+            if($key == ceil(count($list_section)/2))
+            {
+                $array_list_section [] = "14";
+                $array_list_section [] = "16";
+            }
             $array_list_section [] = $value;
         }
-        $array_list_section [] = "14";
-        $array_list_section [] = "16";
         $template->list_section_default = json_encode($array_list_section);
         $template->save();
         return $template;

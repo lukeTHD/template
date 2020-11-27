@@ -13,7 +13,7 @@ class PageContentRepository
 
     public function getAll()
     {
-        return $this->PageContent->all();
+        return $this->PageContent->paginate(5);
 
     }
 
