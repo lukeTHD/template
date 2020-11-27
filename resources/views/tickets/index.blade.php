@@ -86,7 +86,7 @@
             <div class="col-12 col-sm-6 col-xxl-4 order-2 order-xxl-3 d-flex align-items-center justify-content-sm-end text-right my-2">
                 <!--begin::Per Page Dropdown-->
                 <div class="d-flex align-items-center mr-2" data-toggle="tooltip">
-                    <span class="text-muted font-weight-bold mr-2 count-subjects">{{ $countSubjects}} {{ ($countSubjects > 1) ? 'tickets' : 'ticket' }}</span>
+                    <span class="text-muted font-weight-bold mr-2 count-subjects"></span>
                 </div>
                 <!--end::Per Page Dropdown-->
             </div>
@@ -122,6 +122,7 @@
         }, {
             field: 'user',
             title: 'REQUESTER',
+            width: 160,
             sortable: false,
             template: function(data) {
                 var number = KTUtil.getRandomInt(1, 14);
@@ -134,7 +135,7 @@
                             <div class="symbol-label" style="' + user_img + '"></div>\
                         </div>\
                         <div class="ml-2">\
-                            <div class="text-dark-75 font-weight-bold line-height-sm">' + data.user.name + '</div>\
+                            <div class="text-dark-75 font-weight-bold line-height-sm">' + data.user.display_name + '</div>\
                             <a href="#" class="font-size-sm text-dark-50 text-hover-primary">' +
                             data.user.email + '</a>\
                         </div>\
@@ -155,10 +156,10 @@
 
                     output = '<div class="d-flex align-items-center">\
                         <div class="symbol symbol-40 symbol-'+state+' flex-shrink-0">\
-                            <div class="symbol-label">' + data.user.name.substring(0, 1) + '</div>\
+                            <div class="symbol-label">' + data.user.display_name.substring(0, 1) + '</div>\
                         </div>\
                         <div class="ml-2">\
-                            <div class="text-dark-75 font-weight-bold line-height-sm">' + data.user.name + '</div>\
+                            <div class="text-dark-75 font-weight-bold line-height-sm">' + data.user.display_name + '</div>\
                             <a class="font-size-sm text-dark-50 text-hover-primary">' +
                                 data.user.email + '</a>\
                         </div>\
@@ -168,7 +169,7 @@
                 return output;
             },
         }, {
-            field: 'content',
+            field: 'title',
             title: 'SUBJECT',
             width: 200,
             class: 'text-truncate',
@@ -192,11 +193,7 @@
             width: 160,
             sortable: false,
             template: function (data) {
-                let length = data.messages.length;
-                if(length > 0) {
-                    return data.messages[length-1].created_at;
-                }
-                
+                return data.message_one.created_at;
             }
         }, {
             field: 'actions',

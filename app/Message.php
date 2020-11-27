@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Message extends Model
 {
@@ -20,6 +21,10 @@ class Message extends Model
 
     public function getCreatedAtAttribute($value)
     {
-        return \Carbon\Carbon::parse($value)->toDayDateTimeString();
+        $date = Carbon::parse($value);
+        if($date->isYesterday()){
+            return $date->format('h:i d/m/Y');
+        }
+        return $date->diffForHumans();
     }
 }

@@ -20,7 +20,15 @@ jQuery(document).ready(function () {
                         }
                         return dataSet;
                     },
+                    "drawCallback": function (settings) { 
+                        // Here the response
+                        console.log(settings);
+                    },
                 },
+            },
+            "drawCallback": function (settings) { 
+                // Here the response
+                console.log(settings);
             },
             pageSize: 10,
             serverPaging: true,
@@ -48,6 +56,15 @@ jQuery(document).ready(function () {
 
         // columns definition
         columns: KTDB_COLUMNS,
+    });
+
+    datatable.on('datatable-on-layout-updated', function () {
+        let totalRow = datatable.getTotalRows();console.log(totalRow);
+        let text = 'ticket';
+        if(totalRow > 1){
+            text = 'tickets'
+        }
+        $('.count-subjects').text(totalRow + " " + text);
     });
 
     $("#kt_datatable_reload").on("click", function() {
@@ -104,6 +121,3 @@ jQuery(document).ready(function () {
         }
     });
 });
-// $(window).on("load", function () {
-//     console.log(datatable.getTotalRows());
-// });

@@ -20,8 +20,6 @@ class CreateMessagesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->longText('content');
-            $table->tinyInteger('status')->nullable();
-            $table->tinyInteger('is_read')->default(0);
             $table->timestamps();
         });
     }

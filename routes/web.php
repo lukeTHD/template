@@ -53,13 +53,12 @@ Route::post('/update_template/{id}', 'ListTemplateController@update')->name('tem
 
 
 Route::group(['prefix' => 'tickets', 'as' => 'tickets.'], function(){
+
+    Route::get('/dashboard', 'TicketController@getDashboard')->name('dashboard');
+    
     Route::get('/all', 'TicketController@index')->name('index');
     
     Route::get('/detail/{id}', 'TicketController@show')->name('show');
-    
-    Route::get('/pageNotFound', function(){
-        return abort(404);
-    })->name('pageNotFound');
 
 });
 

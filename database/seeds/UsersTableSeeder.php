@@ -13,22 +13,22 @@ class UsersTableSeeder extends Seeder
     {
         \App\User::insert([
             [
-                'name' => 'Admin',
+                'username' => 'admin',
+                'display_name' => 'Admin',
                 'email' => 'admin@gmail.com',
                 'password' => 123123,
-                'group_id' => 1
             ],
             [
-                'name' => 'Nguyễn Văn A',
+                'username' => 'nguyen_a',
+                'display_name' => 'Nguyễn Văn A',
                 'email' => 'a@gmail.com',
                 'password' => 123123,
-                'group_id' => 2
             ],
             [
-                'name' => 'Nguyễn Văn B',
+                'username' => 'nguyen_b',
+                'display_name' => 'Nguyễn Văn B',
                 'email' => 'b@gmail.com',
                 'password' => 123123,
-                'group_id' => 2
             ]
         ]);
     }

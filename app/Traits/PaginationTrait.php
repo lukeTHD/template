@@ -119,15 +119,14 @@ trait PaginationTrait
 
     protected function total()
     {
-        $this->total = $this->query->limit($this->per_page)->count();
+        $this->total = $this->query->where('status', '!=', 2)->limit($this->per_page)->count();
     }
 
     protected function results()
     {
         $query = $this->query->skip(($this->page - 1) * $this->per_page)
             ->take($this->per_page)->orderBy($this->order_field, $this->order_sort);
-        if ($this->with) $query->with($this->with);
-        if ($this->where) $query->where($this->where_field, $this->operator, $this->where_value);
+        if ($this->with) $query->with($this->with)->where('status', '!=', 2);
         $this->results = $query->get();
     }
 

@@ -16,7 +16,7 @@
                     </a>
                     <!--begin::Title-->
                     <div class="d-flex align-items-center mr-2 py-2">
-                        <div class="font-weight-bold font-size-h3 mr-3">{{ $subject['content'] }}</div>
+                        <div class="font-weight-bold font-size-h3 mr-3">{{ $subject['title'] }}</div>
                         <span class="label label-{{ ($subject['status'] == 0) ? 'success' : 'danger' }} font-weight-bold label-inline mr-2 status">{{ ($subject['status'] == 0) ? 'Open' : 'Close' }}</span>
                     </div>
                     <!--end::Title-->
@@ -27,7 +27,7 @@
             <!--begin::Body-->
             <div class="card-body p-0">
                 <!--begin::Messages-->
-                <div class="mb-3" id="show-message" style="height:300px;overflow-y: scroll;">
+                <div class="mb-3" id="show-message" style="height:400px;overflow-y: scroll;">
                     @foreach($subject->messages as $message)
                     <div class="cursor-pointer shadow-xs inbox-message {{ $loop->last ? 'toggle-on' : 'toggle-off' }}" data-inbox="message">
                         <!--begin::Message Heading-->
@@ -39,16 +39,15 @@
                                 <div class="d-flex flex-column flex-grow-1 flex-wrap mr-2">
                                     <div class="d-flex align-items-center justify-content-between" data-toggle="expand">
                                         <div>
-                                            <a href="#" class="font-size-lg font-weight-bolder text-dark-75 text-hover-primary mr-2">{{ $message['user']['name'] }}</a>
-                                            <span class="label label-success label-dot mr-2"></span>{{ \Carbon\Carbon::parse($message['created_at'])->diffForHumans() }}
+                                            <a href="#" class="font-size-lg font-weight-bolder text-dark-75 text-hover-primary mr-2">{{ $message['user']['display_name'] }}</a>
+                                            <span class="label label-success label-dot mr-2"></span>{{ $message['created_at'] }}
                                         </div>
-                                        <span>{{ $message['created_at'] }}</span>
                                     </div>
                                     <div class="d-flex flex-column">
                                         <div class="toggle-off-item">
                                             <span>{{ $message['user']['email'] }}</span>
                                         </div>
-                                        <div class="text-muted font-weight-bold toggle-on-item text-truncate" style="max-width: 550px" data-toggle="expand">{!! (substr($message['content'],4,3) == 'img') ? 'Attachments file' : strip_tags($message['content']); !!}</div>
+                                        <div class="text-muted font-weight-bold toggle-on-item text-truncate" style="max-width: 550px" data-toggle="expand">{!! (strpos($message['content'],'img')) ? 'Attachments file' : strip_tags($message['content']); !!}</div>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +67,7 @@
                             <div class="summernote" id="kt_summernote_1"></div>
                             <!--begin::Footer-->
                             <div class="d-flex align-items-center justify-content-between py-4 pl-5 pr-5 border-top">
-                                <div class="invalid-feedback">* Please enter your content.</div>
+                                <div class="invalid-feedback d-block"></div>
                                 <!--begin::Actions-->
                                 <div class="d-flex align-items-center ml-auto">
                                     <!--begin::Status-->
@@ -159,8 +158,45 @@
                     <span class="label label-{{ ($subject['status'] == 0) ? 'success' : 'danger' }} font-weight-bold label-inline mr-2 status">{{ ($subject['status'] == 0) ? 'Open' : 'Close' }}</span>
                 </div>
                 <!--end::Item-->
+                <div class="mb-6 my-10" style="border-bottom: 1px solid #EBEDF3;"></div>
+                <!--begin::Item-->
+                <div class="mb-6">
+                    <span class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">Supporter</span>
+                </div>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <div class="mb-6">
+                    <div class="d-flex align-items-center">								
+                        <div class="symbol symbol-40 symbol-light-danger flex-shrink-0">									
+                            <span class="symbol-label font-size-h4 font-weight-bold">{{ substr($user['display_name'],0,1) }}</span>								
+                        </div>								
+                        <div class="ml-4">									
+                            <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">{{ $user['display_name'] }}</div>									
+                            <a class="text-muted font-weight-bold text-hover-primary">{{ $user['email'] }}</a>								
+                        </div>							
+                    </div>
+                </div>
+                <!--end::Item-->
+                <div class="mb-6 my-10" style="border-bottom: 1px solid #EBEDF3;"></div>
+                <!--begin::Item-->
+                <div class="mb-6">
+                    <span class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">Requester</span>
+                </div>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <div class="mb-6">
+                    <div class="d-flex align-items-center">								
+                        <div class="symbol symbol-40 symbol-light-success flex-shrink-0">									
+                            <span class="symbol-label font-size-h4 font-weight-bold">{{ substr($subject['user']['display_name'],0,1) }}</span>								
+                        </div>								
+                        <div class="ml-4">									
+                            <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">{{ $subject['user']['display_name'] }}</div>									
+                            <a class="text-muted font-weight-bold text-hover-primary">{{ $subject['user']['email'] }}</a>								
+                        </div>							
+                    </div>
+                </div>
+                <!--end::Item-->
             </div>
-            <!--end::Body-->
         </div>
         <!--end::Mixed Widget 14-->
     </div>
@@ -168,7 +204,7 @@
 <!--end::Content-->
 @endsection
 
-Styles Section
+{{--  Styles Section  --}}
 @section('styles')
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 @endsection

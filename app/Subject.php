@@ -17,7 +17,11 @@ class Subject extends Model
         return $this->hasMany(Message::class, 'subject_id');
     }
 
+    public function messageOne(){
+        return $this->hasOne(Message::class, 'subject_id')->latest();
+    }
+
     public function getCreatedAtAttribute($value){
-        return \Carbon\Carbon::parse($value)->format('d/m/Y');
+        return \Carbon\Carbon::parse($value)->format('h:i d/m/Y');
     }
 }

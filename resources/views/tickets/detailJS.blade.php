@@ -62,17 +62,20 @@
         });
     })
     
-    $('#send-message').click(function(){//console.log($('#kt_summernote_1').summernote('code'));
+    $('#send-message').click(function(){console.log($("#kt_summernote_1").summernote("code"));
+        let content = $("#kt_summernote_1").summernote("code");
         if($('#kt_summernote_1').summernote('isEmpty')){
-            $('.invalid-feedback').css('display', 'block');
-            return;
+            $('.invalid-feedback').text('* Please enter your content.');
+        }
+        else if(content.replace(/&nbsp;|<\/?[^>]+(>|$)/g, "").trim().length < 20 && $(content).find('img').length == 0){
+            $('.invalid-feedback').text('* Content must has at least 20 characters.');
         }
         else{
-            $('.invalid-feedback').css('display', 'none');
+            $('.invalid-feedback').text('');
             let message = {
                 subject_id : id,
                 user_id : "{{ $userId }}",
-                content : $('#kt_summernote_1').summernote('code'),
+                content : content.replace(/&nbsp;/g, "").trim(),
             };
             $.ajax({
                 url : "{{ route('api.tickets.insert-message') }}",
@@ -90,12 +93,9 @@
                     }).then(function(result) {
                         if (result.dismiss === "timer") {
                             $('#kt_summernote_1').summernote('code', '');
-                            let message_preview = null;
-                            if(data.content.substring(4,7) == 'img'){
+                            let message_preview = data.content.replace(/(<([^>]+)>)/ig, " ");
+                            if($(data.content).find('img').length > 0){
                                 message_preview = 'Attachments file';
-                            }
-                            else{
-                                message_preview = data.content.replace(/(<([^>]+)>)/ig, "");
                             }
                             $('#show-message').append(`<div class="cursor-pointer shadow-xs inbox-message toggle-on" data-inbox="message">
                                     <!--begin::Message Heading-->
@@ -107,7 +107,7 @@
                                             <div class="d-flex flex-column flex-grow-1 flex-wrap mr-2">
                                                 <div class="d-flex align-items-center justify-content-between" data-toggle="expand">
                                                     <div>
-                                                        <a href="#" class="font-size-lg font-weight-bolder text-dark-75 text-hover-primary mr-2">{{ $user['name'] }}</a>
+                                                        <a href="#" class="font-size-lg font-weight-bolder text-dark-75 text-hover-primary mr-2">{{ $user['display_name'] }}</a>
                                                         <span class="label label-success label-dot mr-2"></span>{{ \Carbon\Carbon::parse(` + data.created_at + `)->diffForHumans() }}
                                                     </div>
                                                     <span>` + data.created_at + `</span>

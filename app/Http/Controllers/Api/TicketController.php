@@ -23,9 +23,8 @@ class TicketController extends Controller
         if ($request->has('is_pagination') && $request->is_pagination) {
             $this->params = $request->all();
             $this->query = $this->subject->query();
-            $this->field_search = ['content'];
-            $this->with = ['user', 'messages'];
-            $this->where = true;
+            $this->field_search = ['title'];
+            $this->with = ['user:id,display_name,email', 'messageOne'];
 
             $this->setStatus('search', true);
 
