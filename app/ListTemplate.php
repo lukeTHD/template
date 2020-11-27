@@ -17,8 +17,10 @@ class ListTemplate extends Model
         'avatar',
         'price',
         'status',
-        'code'
+        'code',
+        'list_section_default'
     ];
 
     public $timestamps = false;
+
 }

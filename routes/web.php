@@ -30,43 +30,74 @@ Route::get('/icons/svg', 'PagesController@svg');
 // Quick search dummy route to display html elements in search dropdown (header search)
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
 
-//
-Route::get('/list_template', 'ListTemplateController@list_template');
-Route::get('/details_template/{id}', 'ListTemplateController@details_template')->name('template.details');
-
-Route::get('/create_template', 'ListTemplateController@create')->name('template.create');
-Route::post('/store_template', 'ListTemplateController@store')->name('template.store');
-Route::get('/destroy_template/{id?}', 'ListTemplateController@destroy')->name('template.destroy');
-Route::get('/edit_template/{id}', 'ListTemplateController@edit')->name('template.edit');
-Route::post('/update_template/{id}', 'ListTemplateController@update')->name('template.update');
+//Begin:: Set Language Website
+Route::get('set-lang/{locale}', 'UserController@setLang')->name('user.get.setLanguage');
 
 
-// Route::get('/listcontact', function () {
-//     $page_title = 'List Contact';
-//     $page_description = 'This is list contact page';
-//     return  view('contacts.HomeContact', [
-//         "page_title" => $page_title,
-//         "page_description" => $page_description,
-//     ]);
-// });
+//Begin::Check Login Admin
+Route::get('/check-login', 'UserController@checkLogin')->name('user.get.checkLogin');
+Route::get('/login', 'UserController@showLogin')->name('user.get.login');
+Route::post('/login', 'UserController@login')->name('user.post.login');
+Route::get('/logout', 'UserController@logout')->name('user.get.logout');
+
+Route::group(['prefix' => '/', 'middleware' => ['checkLogin']], function () {
+    Route::get('/', 'UserController@showDashboard')->name('user.get.showDashboard');
+    //Begin::Template
+    Route::get('/list-template', 'ListTemplateController@listTemplate')->name('template.listTemplate');
+
+    Route::get('/details-template/{code}', 'ListTemplateController@detailsTemplate')->name('template.detailsTemplate');
+
+    Route::group(['middleware' => ['checkAdmin']], function () {
+        Route::get('/create-template', 'ListTemplateController@create')->name('template.create');
+        Route::post('/store-template', 'ListTemplateController@store')->name('template.store');
+        Route::get('/destroy-template/{id?}', 'ListTemplateController@destroy')->name('template.destroy');
+        Route::get('/edit-template/{id}', 'ListTemplateController@edit')->name('template.edit');
+        Route::post('/update-template/{id}', 'ListTemplateController@update')->name('template.update');
+    });
+
+    Route::get('/get-section/{id?}', 'ListTemplateController@getSection')->name('template.getSection');
+
+    //Upload file type image
+    Route::post('/upload-file/{imagePath?}', 'ListTemplateController@upLoadFile')->name('template.upLoadFile');
+    Route::get('/preview-template/{id}', 'ListTemplateController@previewTemplate')->name('template.previewTemplate');
+    Route::get('/get-detail-code-section', 'ListTemplateController@getDetailCodeSection')->name('template.getDetailCodeSection');
+    Route::get('/get-list-section', 'ListTemplateController@getListSection')->name('template.getListSection');
+    // save Page
+    Route::post('/save-page', 'PageContentController@savePage')->name('page.savePage');
+    Route::get('/list-page', 'PageContentController@listPage')->name('page.listPage');
+    Route::get('/page/{id?}', 'PageContentController@showPage')->name('page.showPage');
+    Route::get('/page-detail-product/{id?}/{id_product?}', 'PageContentController@showDetailProduct')->name('page.showDetailProduct');
+    Route::get('/edit-page/{id?}', 'PageContentController@editPage')->name('page.editPage');
+    Route::post('/update-page/{id?}', 'PageContentController@updatePage')->name('page.updatePage');
+    Route::get('/destroy-page/{id?}', 'PageContentController@destroy')->name('page.destroy');
+    Route::get('/get-detail-page/{id?}', 'PageContentController@getDetailPage')->name('page.getDetailPage');
+});
+
+
+//End::Template
+Route::get('/listcontact', function () {
+    $page_title = 'List Contact';
+    $page_description = 'This is list contact page';
+    return  view('contacts.HomeContact', [
+        "page_title" => $page_title,
+        "page_description" => $page_description,
+    ]);
+});
 
 
 
 Route::group(['prefix' => 'tickets', 'as' => 'tickets.'], function(){
 
     Route::get('/dashboard', 'TicketController@getDashboard')->name('dashboard');
-    
+
     Route::get('/all', 'TicketController@index')->name('index');
-    
+
     Route::get('/detail/{id}', 'TicketController@show')->name('show');
 
 });
 
+// API
+Route::get('/list-campaign', 'CampaignController@listCampaginsApi')->name('campaign.listCampaginsApi');
+Route::get('/list-product', 'CampaignController@listProductsApi')->name('campaign.listProductsApi');
+Route::get('/list-product-table', 'CampaignController@listProductsApiTable')->name('campaign.listProductsApiTable');
 
-// Route::get('/contact', function () {
-//     return  view('contacts.contact');
-// });
-
-// Route::get('/testapi', function () {
-//     return  view('testapi');
-// });

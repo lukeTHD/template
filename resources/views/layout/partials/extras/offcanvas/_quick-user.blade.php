@@ -19,12 +19,12 @@
 		{{-- Header --}}
         <div class="d-flex align-items-center mt-5">
             <div class="symbol symbol-100 mr-5">
-                <div class="symbol-label" style="background-image:url('{{ asset('media/users/300_21.jpg') }}')"></div>
+                <div class="symbol-label" style="background-image:url('{{ session('profile') ? session('profile')['avatar'] : asset('media/users/300_21.jpg') }}')"></div>
 				<i class="symbol-badge bg-success"></i>
             </div>
             <div class="d-flex flex-column">
                 <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
-					James Jones
+				{{ session('profile') ? session('profile')['display_name'] : ''}}
 				</a>
                 <div class="text-muted mt-1">
                     Application Developer
@@ -35,7 +35,7 @@
                             <span class="navi-icon mr-1">
 								{{ Metronic::getSVG("media/svg/icons/Communication/Mail-notification.svg", "svg-icon-lg svg-icon-primary") }}
 							</span>
-                            <span class="navi-text text-muted text-hover-primary">jm@softplus.com</span>
+                            <span class="navi-text text-muted text-hover-primary">{{ session('profile') ? session('profile')['email'] : ''}}</span>
                         </span>
                     </a>
                 </div>
@@ -122,7 +122,14 @@
 		                </div>
 		            </div>
 		        </div>
-		    </a>
+			</a>
+			{{-- Footer --}}
+			<div class="navi-separator mt-3"></div>
+			<div class="navi-footer  px-8 py-5">
+				<a href="{{route('user.get.logout')}}" target="_blank" class="btn btn-light-primary font-weight-bold">{{__('label.logout')}}</a>
+				<a href="#" target="_blank" class="btn btn-clean font-weight-bold">Upgrade Plan</a>
+			</div>
+
 		</div>
 
 		{{-- Separator --}}

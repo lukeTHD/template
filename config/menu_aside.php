@@ -20,7 +20,14 @@ return [
             'title' => 'Danh sách các Theme',
             'root' => true,
             'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
-            'page' => '/list_template',
+            'page' => '/list-template',
+            'new-tab' => false,
+        ],
+        [
+            'title' => 'Danh sách Theme của bạn',
+            'root' => true,
+            'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
+            'page' => '/list-page',
             'new-tab' => false,
         ],
         // Custom

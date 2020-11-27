@@ -18,6 +18,7 @@ class CreateTableListTemplateTable extends Migration
             $table->string('name')->nullable();
             $table->text('avatar')->nullable();
             $table->text('code')->nullable();
+            $table->string('list_section_default')->nullable();
             $table->timestamps();
         });
     }
