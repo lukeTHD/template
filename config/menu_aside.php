@@ -30,6 +30,24 @@ return [
             'page' => '/list-page',
             'new-tab' => false,
         ],
+        [
+            'title' => 'Ticket',
+            'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
+            'bullet' => 'line',
+            'root' => true,
+            'submenu' => [
+                [
+                    'title' => 'Dashboard',
+                    'bullet' => 'dot',
+                    'page' => 'tickets/dashboard'
+                ],
+                [
+                    'title' => 'List Ticket',
+                    'bullet' => 'dot',
+                    'page' => 'tickets/all'
+                ]
+            ]
+        ],
         // Custom
         [
             'section' => 'Custom',

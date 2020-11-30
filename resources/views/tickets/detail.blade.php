@@ -8,20 +8,20 @@
     <div class="col-lg-8">
         <div class="card card-custom card-stretch">
             <!--begin::Header-->
-            <div class="card-header align-items-center flex-wrap justify-content-between py-5 h-auto">
-                <!--begin::Left-->
-                <div class="d-flex align-items-center my-2">
+            <div class="card-header align-items-center px-4 py-3">
+                <div class="text-left flex-grow-1">
                     <a href="{{ route('tickets.index') }}" class="btn btn-clean btn-icon btn-sm mr-6" data-inbox="back">
                         <i class="flaticon2-left-arrow-1"></i>
                     </a>
-                    <!--begin::Title-->
-                    <div class="d-flex align-items-center mr-2 py-2">
-                        <div class="font-weight-bold font-size-h3 mr-3">{{ $subject['title'] }}</div>
-                        <span class="label label-{{ ($subject['status'] == 0) ? 'success' : 'danger' }} font-weight-bold label-inline mr-2 status">{{ ($subject['status'] == 0) ? 'Open' : 'Close' }}</span>
-                    </div>
-                    <!--end::Title-->
                 </div>
-                <!--end::Left-->
+                <div class="text-center flex-grow-1">
+                    <div class="text-dark-75 font-weight-bold font-size-h5 text-truncate" style="max-width: 500px">{{ $subject['title'] }}</div>
+                </div>
+                <div class="text-right flex-grow-1">
+                    <a href="{{ request()->fullUrl() }}" class="btn btn-clean btn-icon btn-sm" data-inbox="back">
+                        <i class="flaticon2-refresh-arrow"></i>
+                    </a>
+                </div>
             </div>
             <!--end::Header-->
             <!--begin::Body-->
