@@ -12,7 +12,7 @@
             <!--begin::Body-->
             <div class="card-body d-flex flex-column p-0">
                 <figure class="highcharts-figure">
-                    <div id="container" style="height: 300px"></div>
+                    <div id="container" style="height: 300px;"></div>
                   </figure>
             </div>
             <!--end::Body-->
@@ -49,12 +49,12 @@
                             <tr>
                                 <td class="pl-0">
                                     <div class="d-flex align-items-center">								
-                                        <div class="symbol symbol-40 symbol-light-danger flex-shrink-0">									
-                                            <span class="symbol-label font-size-h4 font-weight-bold">{{ substr($subject['user']['display_name'],0,1) }}</span>								
+                                        <div class="symbol symbol-40 symbol-light-success flex-shrink-0">									
+                                            <span class="symbol-label font-size-h4 font-weight-bold">{{ substr($subject['display_name'],0,1) }}</span>								
                                         </div>								
                                         <div class="ml-4">									
-                                            <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">{{ $subject['user']['display_name'] }}</div>									
-                                            <a class="text-muted font-weight-bold text-hover-primary">{{ $subject['user']['email'] }}</a>								
+                                            <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">{{ $subject['display_name'] }}</div>									
+                                            <a class="text-muted font-weight-bold text-hover-primary">{{ $subject['email'] }}</a>								
                                         </div>							
                                     </div>
                                 </td>
@@ -121,14 +121,14 @@
                                     @foreach($subjectsExpired as $subjectEx)
                                     <tr>
                                         <td class="pl-0 py-4">
-                                            <div class="symbol symbol-40 symbol-light-danger flex-shrink-0">									
-                                                <span class="symbol-label font-size-h4 font-weight-bold">{{ substr($subjectEx['user']['display_name'],0,1) }}</span>								
+                                            <div class="symbol symbol-40 symbol-light-success flex-shrink-0">									
+                                                <span class="symbol-label font-size-h4 font-weight-bold">{{ substr($subjectEx['display_name'],0,1) }}</span>								
                                             </div>
                                         </td>
                                         <td class="pl-0">
-                                            <a class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{ $subjectEx['user']['display_name'] }}</a>
+                                            <a class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{ $subjectEx['display_name'] }}</a>
                                             <div>
-                                                <a class="text-muted font-weight-bold text-hover-primary">{{ $subjectEx['user']['email'] }}</a>
+                                                <a class="text-muted font-weight-bold text-hover-primary">{{ $subjectEx['email'] }}</a>
                                             </div>
                                         </td>
                                         <td class="text-right">
@@ -216,7 +216,8 @@
                     y: (100 - data_percent),
                     color: "#1bc5bd"
                 }]
-            }]
+            }],
+            
         });
     </script>
     

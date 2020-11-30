@@ -71,30 +71,22 @@ Route::group(['prefix' => '/', 'middleware' => ['checkLogin']], function () {
     Route::post('/update-page/{id?}', 'PageContentController@updatePage')->name('page.updatePage');
     Route::get('/destroy-page/{id?}', 'PageContentController@destroy')->name('page.destroy');
     Route::get('/get-detail-page/{id?}', 'PageContentController@getDetailPage')->name('page.getDetailPage');
+
+    Route::group(['prefix' => 'tickets', 'as' => 'tickets.'], function(){
+
+        Route::get('/dashboard', 'TicketController@getDashboard')->name('dashboard')->middleware('checkAuth');
+    
+        Route::get('/all', 'TicketController@index')->name('index');
+    
+        Route::get('/detail/{id}', 'TicketController@show')->name('show');
+    
+    });
 });
 
 
-//End::Template
-Route::get('/listcontact', function () {
-    $page_title = 'List Contact';
-    $page_description = 'This is list contact page';
-    return  view('contacts.HomeContact', [
-        "page_title" => $page_title,
-        "page_description" => $page_description,
-    ]);
-});
 
 
 
-Route::group(['prefix' => 'tickets', 'as' => 'tickets.'], function(){
-
-    Route::get('/dashboard', 'TicketController@getDashboard')->name('dashboard');
-
-    Route::get('/all', 'TicketController@index')->name('index');
-
-    Route::get('/detail/{id}', 'TicketController@show')->name('show');
-
-});
 
 // API
 Route::get('/list-campaign', 'CampaignController@listCampaginsApi')->name('campaign.listCampaginsApi');

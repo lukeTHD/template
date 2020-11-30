@@ -20,15 +20,7 @@ jQuery(document).ready(function () {
                         }
                         return dataSet;
                     },
-                    "drawCallback": function (settings) { 
-                        // Here the response
-                        console.log(settings);
-                    },
                 },
-            },
-            "drawCallback": function (settings) { 
-                // Here the response
-                console.log(settings);
             },
             pageSize: 10,
             serverPaging: true,
@@ -59,7 +51,7 @@ jQuery(document).ready(function () {
     });
 
     datatable.on('datatable-on-layout-updated', function () {
-        let totalRow = datatable.getTotalRows();console.log(totalRow);
+        let totalRow = datatable.getTotalRows();
         let text = 'ticket';
         if(totalRow > 1){
             text = 'tickets'

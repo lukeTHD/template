@@ -11,10 +11,9 @@ class PageContentRepository
         $this->PageContent = $PageContent;
     }
 
-    public function getAll()
+    public function getAll($id_user)
     {
-        return $this->PageContent->paginate(5);
-
+        return $this->PageContent->where('id_user', $id_user)->paginate(5);
     }
 
     public function create(array $data)

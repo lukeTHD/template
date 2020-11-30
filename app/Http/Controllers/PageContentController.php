@@ -55,9 +55,10 @@ class PageContentController extends Controller
 
     public function listPage()
     {
+        $id_user = session('user_data') ? session('user_data')['Id'] : '';
         $page_title = 'List Pages';
         $page_description = 'This is your list page';
-        $list_page = $this->pageContentRepository->getAll();
+        $list_page = $this->pageContentRepository->getAll($id_user);
         return view('list_page.list_page', compact('page_title', 'page_description', 'list_page'));
     }
 

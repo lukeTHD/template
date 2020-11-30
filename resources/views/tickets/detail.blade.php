@@ -33,19 +33,19 @@
                         <!--begin::Message Heading-->
                         <div class="d-flex card-spacer-x py-6 flex-column flex-md-row flex-lg-column flex-xxl-row justify-content-between">
                             <div class="d-flex align-items-center">
-                                <span class="symbol symbol-50 mr-4" data-toggle="expand">
-                                    <span class="symbol-label" style="background-image: url({{ asset('media/users/100_11.jpg') }})"></span>
-                                </span>
-                                <div class="d-flex flex-column flex-grow-1 flex-wrap mr-2">
+                                <div class="symbol symbol-40 symbol-light-{{ ($message['user_id'] == $fCode) ? 'danger' : 'success' }} flex-shrink-0">									
+                                    <span class="symbol-label font-size-h4 font-weight-bold">{{ substr(($message['user_id'] == $fCode) ? 'Admin' : $subject['display_name'],0,1) }}</span>								
+                                </div>
+                                <div class="d-flex flex-column flex-grow-1 flex-wrap mr-2 ml-4">
                                     <div class="d-flex align-items-center justify-content-between" data-toggle="expand">
                                         <div>
-                                            <a href="#" class="font-size-lg font-weight-bolder text-dark-75 text-hover-primary mr-2">{{ $message['user']['display_name'] }}</a>
+                                            <a href="#" class="font-size-lg font-weight-bolder text-dark-75 text-hover-primary mr-2">{{ ($message['user_id'] == $fCode) ? 'Admin' : $subject['display_name'] }}</a>
                                             <span class="label label-success label-dot mr-2"></span>{{ $message['created_at'] }}
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column">
                                         <div class="toggle-off-item">
-                                            <span>{{ $message['user']['email'] }}</span>
+                                            <span>{{ ($message['user_id'] == $fCode) ? '' : $subject['email'] }}</span>
                                         </div>
                                         <div class="text-muted font-weight-bold toggle-on-item text-truncate" style="max-width: 550px" data-toggle="expand">{!! (strpos($message['content'],'img')) ? 'Attachments file' : strip_tags($message['content']); !!}</div>
                                     </div>
@@ -70,6 +70,7 @@
                                 <div class="invalid-feedback d-block"></div>
                                 <!--begin::Actions-->
                                 <div class="d-flex align-items-center ml-auto">
+                                    @if($user['Id'] == $fCode)
                                     <!--begin::Status-->
                                     <div class="btn-group mr-4">
                                         <button type="button" class="btn btn-outline-secondary status">{{ ($subject['status'] == 0) ? 'Open' : 'Close' }}</button>
@@ -82,6 +83,7 @@
                                         </div>
                                     </div>
                                     <!--end::Status-->
+                                    @endif
                                     <!--begin::Send-->
                                     <div class="btn-group">
                                         <span class="btn btn-primary font-weight-bold px-6" id="send-message">Send</span>
@@ -168,11 +170,11 @@
                 <div class="mb-6">
                     <div class="d-flex align-items-center">								
                         <div class="symbol symbol-40 symbol-light-danger flex-shrink-0">									
-                            <span class="symbol-label font-size-h4 font-weight-bold">{{ substr($user['display_name'],0,1) }}</span>								
+                            <span class="symbol-label font-size-h4 font-weight-bold">{{ substr('Admin',0,1) }}</span>								
                         </div>								
                         <div class="ml-4">									
-                            <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">{{ $user['display_name'] }}</div>									
-                            <a class="text-muted font-weight-bold text-hover-primary">{{ $user['email'] }}</a>								
+                            <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">Admin</div>									
+                            {{--  <a class="text-muted font-weight-bold text-hover-primary">{{ $user['email'] }}</a>								  --}}
                         </div>							
                     </div>
                 </div>
@@ -187,11 +189,11 @@
                 <div class="mb-6">
                     <div class="d-flex align-items-center">								
                         <div class="symbol symbol-40 symbol-light-success flex-shrink-0">									
-                            <span class="symbol-label font-size-h4 font-weight-bold">{{ substr($subject['user']['display_name'],0,1) }}</span>								
+                            <span class="symbol-label font-size-h4 font-weight-bold">{{ substr($subject['display_name'],0,1) }}</span>								
                         </div>								
                         <div class="ml-4">									
-                            <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">{{ $subject['user']['display_name'] }}</div>									
-                            <a class="text-muted font-weight-bold text-hover-primary">{{ $subject['user']['email'] }}</a>								
+                            <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">{{ $subject['display_name'] }}</div>									
+                            <a class="text-muted font-weight-bold text-hover-primary">{{ $subject['email'] }}</a>								
                         </div>							
                     </div>
                 </div>

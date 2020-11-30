@@ -168,8 +168,8 @@ $(document).ready(function() {
                         let height = $('.selected-image').data("height");
                         let width = $('.selected-image').data("width");
                         $('.selected-image').css({
-                            "max-height": height,
-                            "max-width": width
+                            "height": height,
+                            "width": width
                         });
                         let dataNumberText = $('.selected-image').attr("data-number-text");
                         let dataContent = $('.selected-image').attr("data-content");

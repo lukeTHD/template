@@ -21,8 +21,8 @@
                 </div>
                 <div class="col-sm-6 col-md-5">
                     <img src="{{ asset('landingpage/page2/images/hero-img.png')}}" alt=""
-                        class="hero-img cs-fade-in-up edit-image" data-number-text="17"
-                        data-content="{{ asset('landingpage/page2/images/hero-img.png')}}" data-type="image" data-height="421" data-width="513">
+                        class="hero-img img-fluid cs-fade-in-up edit-image" data-number-text="17"
+                        data-content="{{ asset('landingpage/page2/images/hero-img.png')}}" data-type="image" data-height="365" data-width="445" height="365" width="445">
                 </div>
             </div>
         </div>

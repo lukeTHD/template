@@ -6,6 +6,21 @@
 
 <div class="card card-custom card-container" style="padding-left: 30px; padding-right: 30px;">
     <div style=" margin-top:30px;">
+        @php
+            $session = session()->get('profile');
+            $group_id = $session['group_id'];
+        @endphp
+        @if($group_id && $group_id == 2)
+        <div class="dropdown dropdown-inline" data-toggle="tooltip" title="" data-placement="left" style=" margin-left:8px;">
+            <a href="{{ route('template.create') }}" class="btn btn-primary font-weight-bolder">
+                <span class="svg-icon svg-icon-md">
+                    <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                    <i class="flaticon2-plus"></i>
+                    <!--end::Svg Icon-->
+                    <!-- </span>Thêm Template</a> -->
+                </span>{{__('label.template.add_template')}}</a>
+        </div>
+        @endif
         @if (session('success'))
         <div class="alert alert-success" role="alert">
             {{ session('success') }}

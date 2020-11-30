@@ -22,9 +22,14 @@ class TicketController extends Controller
     {
         if ($request->has('is_pagination') && $request->is_pagination) {
             $this->params = $request->all();
-            $this->query = $this->subject->query();
+            $fCode = session()->get('f_code');
+            $userId = session()->get('user_data')['Id'];
+            $this->query = $this->subject->query()->where('status', '!=', 2);
+            if($userId != $fCode){
+                $this->query = $this->subject->query()->where('status', '!=', 2)->where('user_id', $userId);
+            }
             $this->field_search = ['title'];
-            $this->with = ['user:id,display_name,email', 'messageOne'];
+            $this->with = ['messageOne'];
 
             $this->setStatus('search', true);
 
@@ -53,7 +58,31 @@ class TicketController extends Controller
         }
     }
 
-    public function insertMessage(Request $request)
+    public function sendTicket(Request $request)
+    {//dd(session()->all);
+        if ($request->ajax()) {
+            
+            $dataSub = [
+                'owner' => $request['owner'],
+                'user_id' => $request['user_id'],
+                'display_name' => $request['display_name'],
+                'email' => $request['email'],
+                'title' => $request['title'],
+            ];
+            $subject = $this->subject->create($dataSub);
+
+            $dataMess = [
+                'subject_id' => $subject['id'],
+                'user_id' => $request['user_id'],
+                'content' => $request['content']
+            ];
+            $message = $this->message->create($dataMess);
+
+            return 'success';
+        }
+    }
+
+    public function sendMessage(Request $request)
     {
         if ($request->ajax()) {
             $data = [

@@ -67,7 +67,7 @@
                                 <div class="col-sm-6 col-md-8">
                                     <img src="{{ asset('landingpage/page2/images/mockup.png')}}"
                                         class="edit-image" data-number-text="22" data-content="{{ asset('landingpage/page2/images/mockup.png')}}"
-                                        data-type="image" data-height="427.28"  data-width="729.99" alt="" data-aos="fade-up"
+                                        data-type="image" data-height="427"  data-width="730" alt="" data-aos="fade-up" style="width: 730px; height:427px;"
                                         data-aos-anchor-placement="top-bottom">
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                                     <img src="{{ asset('landingpage/page2/images/dashboard.png')}}"
                                         class="edit-text edit-image" data-number-text="30"
                                         data-type="image" data-content="{{ asset('landingpage/page2/images/dashboard.png')}}" data-height="374.09"  data-width="729.99"
-                                        alt="">
+                                        style="width:730px; height:374px" alt="">
                                 </div>
                             </div>
                             <!-- /Tab Content -->

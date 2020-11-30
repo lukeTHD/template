@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckAdmin
+class CheckAuth
 {
     /**
      * Handle an incoming request.
@@ -15,12 +15,9 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(!session()->has('user_data') || !session()->has('profile')){
-            abort(401);
-        }
-        $session = session()->get('profile');
-        $group_id = $session['group_id'];
-        if($group_id != 2){
+        $user = session()->get('profile');
+        $fCode = session()->get('f_code');
+        if($user['Id'] != $fCode){
             abort(401);
         }
         return $next($request);

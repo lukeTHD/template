@@ -17,7 +17,8 @@ class CreateSubjectsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('owner');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('display_name', 255);
+            $table->string('email', 255);
             $table->string('title', 255);
             $table->tinyInteger('status')->default(0);
             $table->timestamps();

@@ -30,12 +30,6 @@ trait PaginationTrait
 
     protected $with;
 
-    protected $where_field = 'status';
-
-    protected $operator = '!=';
-
-    protected $where_value = 2;
-
     protected $status = [
         'status' => true,
         'search' => true
@@ -119,14 +113,14 @@ trait PaginationTrait
 
     protected function total()
     {
-        $this->total = $this->query->where('status', '!=', 2)->limit($this->per_page)->count();
+        $this->total = $this->query->limit($this->per_page)->count();
     }
 
     protected function results()
     {
         $query = $this->query->skip(($this->page - 1) * $this->per_page)
             ->take($this->per_page)->orderBy($this->order_field, $this->order_sort);
-        if ($this->with) $query->with($this->with)->where('status', '!=', 2);
+        if ($this->with) $query->with($this->with);
         $this->results = $query->get();
     }
 

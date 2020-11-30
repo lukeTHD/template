@@ -14,14 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::group(['namespace' => 'Api', 'as' => 'api.'], function(){
     Route::get('tickets', 'TicketController@index')->name('tickets.index');
-    Route::get('tickets/update-status/{id}/{status}', 'TicketController@updateStatus')->name('tickets.update-status');
-    Route::post('tickets/insert-message', 'TicketController@insertMessage')->name('tickets.insert-message');
-    Route::post('tickets/update-rows-status', 'TicketController@updateRowsStatus')->name('tickets.update-rows-status');
+    Route::get('tickets/update-status/{id}/{status}', 'TicketController@updateStatus')->name('tickets.update-status')->middleware('checkAuth:api');
+    Route::post('tickets/update-rows-status', 'TicketController@updateRowsStatus')->name('tickets.update-rows-status')->middleware('checkAuth:api');
+    Route::post('tickets/send-ticket', 'TicketController@sendTicket')->name('tickets.send-ticket');
+    Route::post('tickets/send-message', 'TicketController@sendMessage')->name('tickets.send-message');
 });
 

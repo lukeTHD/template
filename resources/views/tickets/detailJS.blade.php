@@ -62,7 +62,7 @@
         });
     })
     
-    $('#send-message').click(function(){console.log($("#kt_summernote_1").summernote("code"));
+    $('#send-message').click(function(){
         let content = $("#kt_summernote_1").summernote("code");
         if($('#kt_summernote_1').summernote('isEmpty')){
             $('.invalid-feedback').text('* Please enter your content.');
@@ -74,11 +74,11 @@
             $('.invalid-feedback').text('');
             let message = {
                 subject_id : id,
-                user_id : "{{ $userId }}",
+                user_id : "{{ $user['Id'] }}",
                 content : content.replace(/&nbsp;/g, "").trim(),
             };
             $.ajax({
-                url : "{{ route('api.tickets.insert-message') }}",
+                url : "{{ route('api.tickets.send-message') }}",
                 method: "POST",
                 data : message,
                 headers : {
@@ -98,34 +98,33 @@
                                 message_preview = 'Attachments file';
                             }
                             $('#show-message').append(`<div class="cursor-pointer shadow-xs inbox-message toggle-on" data-inbox="message">
-                                    <!--begin::Message Heading-->
-                                    <div class="d-flex card-spacer-x py-6 flex-column flex-md-row flex-lg-column flex-xxl-row justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <span class="symbol symbol-50 mr-4" data-toggle="expand">
-                                                <span class="symbol-label" style="background-image: url({{ asset('media/users/100_11.jpg') }})"></span>
-                                            </span>
-                                            <div class="d-flex flex-column flex-grow-1 flex-wrap mr-2">
-                                                <div class="d-flex align-items-center justify-content-between" data-toggle="expand">
-                                                    <div>
-                                                        <a href="#" class="font-size-lg font-weight-bolder text-dark-75 text-hover-primary mr-2">{{ $user['display_name'] }}</a>
-                                                        <span class="label label-success label-dot mr-2"></span>{{ \Carbon\Carbon::parse(` + data.created_at + `)->diffForHumans() }}
-                                                    </div>
-                                                    <span>` + data.created_at + `</span>
+                                <!--begin::Message Heading-->
+                                <div class="d-flex card-spacer-x py-6 flex-column flex-md-row flex-lg-column flex-xxl-row justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <div class="symbol symbol-40 symbol-light-` + "{{ ($user['Id'] == $fCode) ? 'danger' : 'success' }}" + ` flex-shrink-0">									
+                                            <span class="symbol-label font-size-h4 font-weight-bold">` + "{{ substr($user['display_name'],0,1) }}" + `</span>								
+                                        </div>
+                                        <div class="d-flex flex-column flex-grow-1 flex-wrap mr-2 ml-4">
+                                            <div class="d-flex align-items-center justify-content-between" data-toggle="expand">
+                                                <div>
+                                                    <a href="#" class="font-size-lg font-weight-bolder text-dark-75 text-hover-primary mr-2">` + "{{ $user['display_name'] }}" + `</a>
+                                                    <span class="label label-success label-dot mr-2"></span>` + data.created_at + `
                                                 </div>
-                                                <div class="d-flex flex-column">
-                                                    <div class="toggle-off-item">
-                                                        <span>{{ $user['email'] }}</span>
-                                                    </div>
-                                                    <div class="text-muted font-weight-bold toggle-on-item text-truncate" style="max-width: 550px" data-toggle="expand">` + message_preview + `</div>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <div class="toggle-off-item">
+                                                    <span>` + "{{ $user['email'] }}" + `</span>
                                                 </div>
+                                                <div class="text-muted font-weight-bold toggle-on-item text-truncate" style="max-width: 550px" data-toggle="expand">` + message_preview + `</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!--end::Message Heading-->
-                                    <div class="card-spacer-x py-3 toggle-off-item">
-                                        ` + data.content + `
-                                    </div>
-                                </div>`);
+                                </div>
+                                <!--end::Message Heading-->
+                                <div class="card-spacer-x py-3 toggle-off-item">
+                                    ` + data.content + `
+                                </div>
+                            </div>`);
                             console.log('Insert successful')
                         }
                     });
@@ -162,6 +161,7 @@
                     error: function(){
                         Swal.fire(
                             "Cancelled",
+                            "Unauthorized.",
                             "error"
                         )
                     }
