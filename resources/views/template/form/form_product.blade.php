@@ -4,7 +4,7 @@
         <div class="col-lg-7 col-md-7">
             <div class="cs-blog-view">
                 <div class="cs-blog-view-img">
-                    <img src="{{ isset($detailProduct['avatar']) ? $detailProduct['avatar'] : '' }}" alt="avatar product"class="img-fluid rounded-top">
+                    <img src="{{ isset($detailProduct['avatar']) ? $detailProduct['avatar'] : '' }}" alt="avatar product"class="img-fluid rounded-top" style="width: 635px;">
                 </div>
                 <div class="box-shadow p-5 rounded-top">
                     <div class="cs-blog-content">

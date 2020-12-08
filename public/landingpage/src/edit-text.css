@@ -17,10 +17,10 @@
     cursor: pointer;
 }
 
-.sticky-toolbar-setting-image {
+.sticky-toolbar-setting-image,
+.sticky-toolbar-setting-button {
     z-index: 9999;
     background: #007bff;
-    position: absolute;
     bottom: 0;
     left: 0;
     opacity: 0;
@@ -32,7 +32,12 @@
     height: 34px;
 }
 
-.sticky-toolbar-setting-image li {
+.sticky-toolbar-setting-image {
+    position: absolute;
+}
+
+.sticky-toolbar-setting-image li ,
+.sticky-toolbar-setting-button li {
     padding: 5px 8px;
     text-align: center;
     cursor: pointer;

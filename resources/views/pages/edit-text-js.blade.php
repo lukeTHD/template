@@ -1,22 +1,70 @@
 <script>
 $(document).ready(function() {
-
     $(".edit-text").editable();
     $(".btn-href").removeAttr("href");
-    $('.btn-href').on('dblclick', function(e) {
-        e.preventDefault();
-        $(this).attr('contenteditable', 'true');
-    });
+    // $('.btn-href').on('dblclick', function(e) {
+    //     e.preventDefault();
+    //     $(this).attr('contenteditable', 'true');
+    // });
+    $(".btn-href").attr("data-link", "null");
+    $(".btn-href").attr("data-target", "null");
+
     $('.edit-text-double-click').on('dblclick', function(e) {
         e.preventDefault();
         $(this).attr('contenteditable', 'true');
     });
 
+    $(".btn-href").on('click',(function(e) {
+        e.preventDefault();
+        let that = $(this);
+        var posP = that.offset();
+        $(".sticky-toolbar-setting-button").css({
+            "opacity": "1",
+            "position": "absolute",
+            "left": posP.left,
+            "top": posP.top,
+        });
+
+        $('.btn-href').removeClass('selected-btn');
+        that.addClass('selected-btn');
+    }));
+
+    $('#showEditLink').on('click', function() {
+        $(".sticky-toolbar-setting-button").css({
+            "opacity": "0",
+            "position": "",
+            "bottom": "0px",
+        });
+    });
+
+    //start:: get data edit button
+    $('#saveButton').on('click', function(e) {
+        let link = ($( "#link" ).val()) !='' ? ($( "#link" ).val()) : 'null';
+        let text = $( "#text" ).val();
+        let load = $("#loadNew").is(":checked"); // true or false is load page in new page
+        let dataNumberText = $('.selected-btn').data('number-text');
+        let dataType = $('.selected-btn').data('type');
+
+        $('.selected-btn').attr("data-content", text);
+        $('.selected-btn').attr("data-link", link);
+        $('.selected-btn').attr("data-target", load);
+        $('.selected-btn').text(text);
+        arrData[dataNumberText] = {
+            'number-text': dataNumberText,
+            'content': text,
+            'type': dataType,
+            'link': link,
+            'target': load,
+        };
+
+        $("#exampleModal").modal('hide');
+    });
+    // end:: get data edit button
+
     var arrData = []
     let tmpDataText = getAllDataText(arrData);
     let tmpDataImage = getAllDataImage(arrData);
     let tmpListProductId = updateListProductSave(); //Action save to run
-    console.log(loadListIdSectionSave());
     $('body').on('blur',".edit-text",(function(e) {
         e.preventDefault();
         $(".edit-text").editable();
@@ -120,6 +168,14 @@ $(document).ready(function() {
     $('#closeToolbarImg').on('click', function(e) {
         $(".sticky-toolbar-setting-image").css({
             "opacity": "0",
+        });
+    });
+
+    $('#closeToolbarButton').on('click', function(e) {
+        $(".sticky-toolbar-setting-button").css({
+            "opacity": "0",
+            "position": "",
+            "bottom": "0px",
         });
     });
 
@@ -271,10 +327,24 @@ function getAllDataText(arrData) {
         let dataContent = that.data('content');
         let dataType = that.data('type');
 
-        arrData[dataNumberText] = {
+        if(dataType == "button") {
+            let link = that.attr('data-link') != 'null' ? that.attr('data-link') : 'null';
+            let load = that.attr('data-target') != 'null' ? that.attr('data-target') : 'null';
+
+            arrData[dataNumberText] = {
+            'number-text': dataNumberText,
+            'content': dataContent,
+            'type': dataType,
+            'link': link,
+            'target': load,
+            }
+        }
+        else{
+            arrData[dataNumberText] = {
             'number-text': dataNumberText,
             'content': dataContent,
             'type': dataType
+            }
         }
     });
 
@@ -303,10 +373,24 @@ function getAllAttrText(arrData) {
         let dataContent = that.attr('data-content');
         let dataType = that.attr('data-type');
 
-        arrData[dataNumberText] = {
+        if(dataType == "button") {
+            let link = (that.attr('data-link') != 'null') ? that.attr('data-link') : 'null';
+            let load = (that.attr('data-target') != 'null') ? that.attr('data-target') : 'null';
+
+            arrData[dataNumberText] = {
+            'number-text': dataNumberText,
+            'content': dataContent,
+            'type': dataType,
+            'link': link,
+            'target': load,
+            }
+        }
+        else{
+            arrData[dataNumberText] = {
             'number-text': dataNumberText,
             'content': dataContent,
             'type': dataType
+            }
         }
     });
 

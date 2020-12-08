@@ -3,9 +3,9 @@
 $(document).ready(function () {
 
     let listProductForPage =  <?= isset($listProduct) ? json_encode($listProduct) : [] ?> ;
-    
-    let itemProductHtml = $('#list-product-page-tmpl:first').clone(); 
- 
+
+    let itemProductHtml = $('#list-product-page-tmpl:first').clone();
+
     if(listProductForPage.length > 0){
         let listProductDivHtml = listProductForPage.map(function(item) {
             return getItemProduct( itemProductHtml , item.id,  item.name , item.avatar, 'abc.com' , item.price , item.currency ) ;
@@ -49,7 +49,7 @@ $(document).ready(function () {
             $(`.id-product-tmpl[data-id-product="${valIdProduct}"]`).remove();
             that.parent().removeClass('border-active');
         }
-    }); 
+    });
 
 
 });
@@ -63,7 +63,7 @@ let DatatablesSearchOptionsAdvancedSearchTableProduct = function() {
     let table;
     let initTableProduct = function() {
         // begin first table
-        
+
         table = $('#data-table-product').DataTable({
             responsive: true,
             // Pagination settings
@@ -115,7 +115,7 @@ let DatatablesSearchOptionsAdvancedSearchTableProduct = function() {
                     title: 'Hình ảnh',
                     width: 150,
                     orderable: false,
-                    render: function(data, type, full, meta) {   
+                    render: function(data, type, full, meta) {
                         return  `<img class="image-product" src="` + (data !== '' && data !== null ? data :'') +`" alt="avatar" >`
                     },
                     // autoWidth: false,
@@ -159,7 +159,7 @@ let DatatablesSearchOptionsAdvancedSearchTableProduct = function() {
                         return `<p class="text-center">${data}</p>`;
                     },
                 },
-               
+
             ],
         });
 
@@ -206,7 +206,7 @@ function formatUSD(number, decPlaces, decSep, thouSep){
     var sign = number < 0 ? "-" : "";
     var i = String(parseInt(number = Math.abs(Number(number) || 0).toFixed(decPlaces)));
     var j = (j = i.length) > 3 ? j % 3 : 0;
-    
+
     return sign + (j ? i.substr(0, j) + thouSep : "") + i.substr(j).replace(/(\decSep{3})(?=\decSep)/g, "$1" + thouSep) + (decPlaces ? decSep + Math.abs(number - i).toFixed(decPlaces).slice(2) : "");
 }
 
@@ -232,7 +232,7 @@ function getListIdProductChecked(){
 };
 
 function getItemProduct( itemHtml , id_product , name_product , avatar_product, href_product , price_product , currency_product){
-   
+
     let itemHtmlNew = itemHtml;
     itemHtmlNew.find('.id-product-tmpl').attr('data-id-product', id_product);
     itemHtmlNew.find('.name-product').text(name_product);

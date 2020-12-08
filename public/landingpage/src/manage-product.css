@@ -2,6 +2,7 @@
     position: absolute;
     opacity: 1;
     font-family: 'K2D', 'Roboto', sans-serif;
+    z-index: 20000;
 }
 
 #tool-manage-products-tmpl .btn-show-manage-products{
@@ -71,10 +72,10 @@
     height: 18px;
 }
 #show-modal-list-product-table .table td, #show-modal-list-product-table .table th {
-    border-top: 0px solid #fff; 
+    border-top: 0px solid #fff;
     border-bottom: 1px solid #0080ff2a;
     vertical-align: baseline;
-    
+
 }
 #show-modal-list-product-table .table th {
     padding-top: 20px;
@@ -138,7 +139,7 @@
 #show-modal-list-product-table .btn-control-yellow{
     background: #ffca2c;
     color: rgb(7, 7, 7);
-    
+
 }
 #show-modal-list-product-table .custom-data-tables-bottom{
     margin-top: 1rem;
@@ -230,7 +231,7 @@
     opacity: 0;
     transition: all 0.6s ease;
   }
-  
+
 @keyframes wave {
     50% {
       transform: scale(0.9);

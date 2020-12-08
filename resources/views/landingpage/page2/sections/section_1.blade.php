@@ -47,11 +47,11 @@
                             </ul>
                         </li>
                         <li class="nav-item"> <a
-                                class="btn btn-secondary text-white btn-round btn-nav edit-text edit-text-double-click"
+                                class="btn btn-secondary text-white btn-round btn-nav edit-text edit-text-double-click btn-href"
                                 data-number-text="159" data-content="Signup" data-type="button" data-toggle="modal"
                                 data-target="#signup-modal">Signup</a> </li>
                         <li class="nav-item"> <a
-                                class="btn btn-primary btn-shadow  text-white btn-round btn-nav edit-text edit-text-double-click"
+                                class="btn btn-primary btn-shadow  text-white btn-round btn-nav edit-text edit-text-double-click btn-href"
                                 data-number-text="160" data-content="Login" data-type="button" data-toggle="modal"
                                 data-target="#signin-modal">Login</a> </li>
                     </ul>

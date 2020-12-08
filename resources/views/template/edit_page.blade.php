@@ -5,15 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Template Website</title>
-    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700;800&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,300&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700;800&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,300&display=swap"
+        rel="stylesheet">
     <link href="{{ asset('landingpage/src/action-section.css ')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('landingpage/src/edit-text.css ')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('landingpage/src/manage-product.css ')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('landingpage/src/form-product.css ')}}" rel="stylesheet" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css" />
     <!--end::Layout Skins -->
-	<link rel="shortcut icon" href="{{ asset('img/logos/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('img/logos/favicon.ico') }}" />
 </head>
 
 <body>
@@ -30,49 +32,57 @@
 
     </ul> -->
     @if(isset($list_content))
-        <script>
-            $( document ).ready(function() {
-                let id = <?php echo $id; ?>;
-                $.ajax({
-                    url: "{{ route('page.getDetailPage') }}/" + id,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    method: "GET",
-                    contentType: false,
-                    processData: false,
-                    success: function(data) {
-                        $.each(data.list_content, function(k,v){
-                            if(v!= null){
-                                var arr = Object.keys(v).map(function (key) { return v[key]; });
-                                $('.edit-text , .edit-image').each(function(){
-                                    if($(this).data("number-text") == (arr[0]))
-                                    {
-                                            $(this).attr("data-content", arr[1]);
-                                            $(this).text(arr[1]);
-                                            $(this).attr("src", arr[1]);
-                                            let type = $(this).attr("data-type");
-                                            if(type == 'image'){
-                                                let height = $(this).attr("data-height");
-                                                let width = $(this).attr("data-width");
-                                                $(this).attr("height", height);
-                                                $(this).attr("width", width);
-                                            }
-                                    }
-                                });
+    <script>
+    $(document).ready(function() {
+        let id = <?php echo $id; ?>;
+        $.ajax({
+            url: "{{ route('page.getDetailPage') }}/" + id,
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            method: "GET",
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                $.each(data.list_content, function(k, v) {
+                    if (v != null) {
+                        var arr = Object.keys(v).map(function(key) {
+                            return v[key];
+                        });
+                        $('.edit-text , .edit-image').each(function() {
+                            if ($(this).data("number-text") == (arr[0])) {
+                                $(this).attr("data-content", arr[1]);
+                                $(this).text(arr[1]);
+                                $(this).attr("src", arr[1]);
+                                let type = $(this).attr("data-type");
+                                if (type == 'image') {
+                                    let height = $(this).attr("data-height");
+                                    let width = $(this).attr("data-width");
+                                    $(this).attr("height", height);
+                                    $(this).attr("width", width);
+                                }else if (type == 'button') {
+                                    $(this).attr("href", arr[3]);
+                                    $(this).attr("data-link", arr[3]);
+                                    let target = ((arr[4] == 'true') ? '_blank' : '');
+                                    $(this).attr("target", target);
+                                    $(this).attr("data-target", arr[4]);
+                                }
                             }
-
-                        })
+                        });
                     }
+
                 })
-            });
-        </script>
+            }
+        })
+    });
+    </script>
     @endif
 
     @if(isset($preview) && $preview == true)
     @else
     <!-- End::Sticky toolbar all page -->
-    @include('pages.option-section', [ 'arrSection' => isset($arrSection)? $arrSection : [] , 'code' => isset($code)? $code : '' ])
+    @include('pages.option-section', [ 'arrSection' => isset($arrSection)? $arrSection : [] , 'code' => isset($code)?
+    $code : '' ])
     <!-- Begin::Sticky toolbar image -->
     <ul class="sticky-toolbar-setting-image nav flex-row ">
 
@@ -134,6 +144,70 @@
     <!-- End::Sticky toolbar image -->
     @endif
 
+    <!-- Begin::Sticky toolbar button -->
+    <ul class="sticky-toolbar-setting-button nav flex-row ">
+
+        <li class="nav-item " id="showEditLink" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@mdo">
+
+            <i class="fa fa-link"></i> Chèn link và text
+
+        </li>
+
+        <input type="hidden" id='data-id-button' data-id-button="">
+
+        <li class="nav-item" id="closeToolbarButton">
+
+            <i class="fa fa-window-close"></i> Close
+
+        </li>
+    </ul>
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+        data-whatever="@mdo">Open modal for @mdo</button> -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cập nhật thông tin button</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="text" class="col-form-label">Text:</label>
+                            <textarea class="form-control" id="text"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="link" class="col-form-label">Link:</label>
+                            <input type="text" class="form-control" id="link">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="load"
+                                    value="load">
+                                <label class="form-check-label" for="inlineRadio1">Load tại trang</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="loadNew"
+                                    value="loadNew" checked>
+                                <label class="form-check-label" for="inlineRadio1">Load sang trang mới</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="saveButton">Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit-text -->
 </body>
 
 </html>

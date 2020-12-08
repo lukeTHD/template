@@ -152,7 +152,7 @@
 
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block edit-text edit-text-double-click"
+                            <button type="submit" class="btn btn-primary btn-block edit-text edit-text-double-click btn-href"
                                 data-number-text="161" data-content="Signup for Free" data-type="button">Signup for
                                 Free</button>
                         </div>

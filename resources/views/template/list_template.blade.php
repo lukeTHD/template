@@ -30,8 +30,7 @@
         <div class="alert alert-danger text-center">{{ session('error') }}</div>
         @endif
         <div class="portfolio-content portfolio-1">
-            <div id="js-grid-juicy-projects" class="cbp cbp-caption-active cbp-caption-overlayBottomReveal cbp-ready"
-                style="height: 415px">
+            <div id="js-grid-juicy-projects" class="cbp cbp-caption-active cbp-caption-overlayBottomReveal cbp-ready">
                 <div class="cbp-wrapper-outer">
                     <div class="cbp-wrapper">
                         @php
