@@ -24,5 +24,6 @@ Route::group(['namespace' => 'Api', 'as' => 'api.'], function(){
     Route::post('tickets/update-rows-status', 'TicketController@updateRowsStatus')->name('tickets.update-rows-status')->middleware('checkAuth:api');
     Route::post('tickets/send-ticket', 'TicketController@sendTicket')->name('tickets.send-ticket');
     Route::post('tickets/send-message', 'TicketController@sendMessage')->name('tickets.send-message');
+    Route::post('tickets/upload-image', 'TicketController@upLoadFile')->name('tickets.upload-image');
 });
 

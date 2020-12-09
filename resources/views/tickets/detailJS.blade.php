@@ -14,8 +14,43 @@
     });
 
     $('#kt_summernote_1').summernote({
-        height: 150
+        height: 150,
+        toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'help']],
+                ],
+        callbacks: {
+            onImageUpload: function(image) {
+                uploadImage(image[0]);
+            }
+        }
     });
+
+    function uploadImage(image) {
+        var data = new FormData();
+        data.append("image", image);
+        $.ajax({
+            url: "{{ route('api.tickets.upload-image') }}",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: data,
+            type: "post",
+            success: function(data) {
+                var image = $('<img>').attr({'src':data.link, 'width':'600px'});
+                $('#kt_summernote_1').summernote("insertNode", image[0]);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    }
 
     $('.dropdown-item').click(function(){
         let status = $(this).data('status');

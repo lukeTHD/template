@@ -213,7 +213,6 @@
 
 {{-- Scripts Section --}}
 @section('scripts')
-    <script src="{{ asset('js/pages/crud/forms/editors/summernote.js') }}"></script>
     <script src="{{ asset('js/pages/features/miscellaneous/sweetalert2.js') }}"></script>
     @include('tickets.detailJS')
     

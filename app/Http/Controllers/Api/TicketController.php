@@ -22,8 +22,8 @@ class TicketController extends Controller
     {
         if ($request->has('is_pagination') && $request->is_pagination) {
             $this->params = $request->all();
-            $fCode = session()->get('f_code');
-            $userId = session()->get('user_data')['Id'];
+            $fCode = $request['f_code'];
+            $userId = $request['user_id'];
             $this->query = $this->subject->query()->where('status', '!=', 2);
             if($userId != $fCode){
                 $this->query = $this->subject->query()->where('status', '!=', 2)->where('user_id', $userId);
@@ -93,5 +93,15 @@ class TicketController extends Controller
             $message = $this->message->create($data);
             return $message;
         }
+    }
+
+    public function upLoadFile(Request $request)
+    {
+        $file = $request->image;
+        $nameImg = time().'_'.$request->image->getClientOriginalName();
+        $file->move('upload/images', $nameImg);
+        $link = \URL::to('/upload/images').'/'. $nameImg; 
+
+        return response()->json(['link' =>$link]);
     }
 }

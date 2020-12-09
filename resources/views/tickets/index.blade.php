@@ -98,7 +98,9 @@
     var KTDB_URL = '{{ route('api.tickets.index') }}';
     var REMOVE_ROWS_URL= "{{ route('api.tickets.update-rows-status') }}";
     var KTDB_PARAMS = {
-        'is_pagination': true
+        'is_pagination': true,
+        'user_id' : "{{ $user['Id'] }}",
+        'f_code' : "{{ $fCode }}",
     };
     var KTDB_COLUMNS = [
         {

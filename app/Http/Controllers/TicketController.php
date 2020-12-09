@@ -52,4 +52,6 @@ class TicketController extends Controller
         //dd(session()->get('profile'));
         return view('tickets.detail', compact('subject', 'user', 'fCode'));
     }
+
+
 }
